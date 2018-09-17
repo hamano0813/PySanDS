@@ -1,0 +1,11 @@
+./                              项目根目录
+    docs/                           文档文件夹
+    editors/                        编辑器主目录
+        attributes/                     数据基础属性包
+            address.py                      用以解析数据偏移地址的类模块
+            length.py                       用以解析数据位长度的类模块
+            quantity.py                     用以解析数据的序列数量的类模块
+        parsers/                        数据类型解析包
+            character.py                    用以解析文本类数据的类模块
+            numerical.py                    用以解析数值类数据的类模块
+            picture.py                      用以解析图像类数据的类模块
