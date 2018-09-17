@@ -1,11 +1,21 @@
-./                              项目根目录
-    docs/                           文档文件夹
-    editors/                        编辑器主目录
+./
+    SanDS_RomEditor/                修改器根目录
         attributes/                     数据基础属性包
             address.py                      用以解析数据偏移地址的类模块
             length.py                       用以解析数据位长度的类模块
             quantity.py                     用以解析数据的序列数量的类模块
+        configs/                        配置文件目录
+            aliases.py                      文字编码设置和特殊文字映射文件
+            character.txt                   文本类控件可输入的字符清单
+            parameter.py                    数据设置配置文件
+            rec.qrc                         资源路径配置文件
+        editors/                        编辑器主目录包
+            window.py                       编辑器主窗口模块
         parsers/                        数据类型解析包
             character.py                    用以解析文本类数据的类模块
             numerical.py                    用以解析数值类数据的类模块
             picture.py                      用以解析图像类数据的类模块
+        tests/                          程序测试包
+        widgets/                        自定义控件包
+            abstract/                       抽象控件包
+            common/                         普通控件包
