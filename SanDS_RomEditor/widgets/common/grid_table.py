@@ -3,7 +3,7 @@
 
 from PyQt5.QtWidgets import QTableView, QStyledItemDelegate
 from PyQt5.QtCore import QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal
-from widgets.abstract import ColumnObject
+from widgets.abstract import ColumnObject, ControlObject
 
 
 class GridModel(QAbstractTableModel):
@@ -66,7 +66,7 @@ class GridDelegate(QStyledItemDelegate):
         editor.setGeometry(option.rect)
 
 
-class GridTable(QTableView):
+class GridTable(QTableView, ControlObject):
     currentIndexChanged = pyqtSignal(int)
 
     def __init__(self, parent, column_settings: iter):
@@ -77,6 +77,7 @@ class GridTable(QTableView):
         self.refresh_data()
         # noinspection PyUnresolvedReferences
         self.clicked[QModelIndex].connect(self.index_changed)
+        self.currentIndexChanged[int].connect(self.control_index)
 
     def refresh_data(self):
         self.setModel(GridModel(self, self.column_settings))
