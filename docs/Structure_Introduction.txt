@@ -1,4 +1,6 @@
-./
+PySanDS/                        项目根目录
+    docs/                           项目文档目录
+        Structure_Introduction.txt      项目结构说明文档
     SanDS_RomEditor/                修改器根目录
         attributes/                     数据基础属性包
             address.py                      用以解析数据偏移地址的类模块
