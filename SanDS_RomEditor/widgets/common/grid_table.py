@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from PyQt5.QtWidgets import QTableView, QStyledItemDelegate
+from PyQt5.QtCore import QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal
+from widgets.abstract import ColumnObject
+
+
+class GridModel(QAbstractTableModel):
+    def __init__(self, parent, column_settings: iter):
+        QAbstractTableModel.__init__(self, parent)
+        self.column_objects = [ColumnObject(parent, *settings) for settings in column_settings]
+
+    def rowCount(self, parent=None, *args, **kwargs):
+        return self.column_objects[0].data_type.real_quantity
+
+    def columnCount(self, parent=None, *args, **kwargs):
+        return len(self.column_objects)
+
+    def headerData(self, section: int, orientation, role=Qt.DisplayRole):
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            return self.column_objects[section].data_name.split('_')[-1]
+        elif orientation == Qt.Vertical and role == Qt.DisplayRole:
+            return section + 1
+
+    def data(self, index: QModelIndex, role=None):
+        if not index.isValid():
+            return QVariant()
+        if role == Qt.DisplayRole:
+            return self.column_objects[index.column()].get_data(index, role)
+        if role == Qt.EditRole:
+            return self.column_objects[index.column()].get_data(index, role)
+        if role == Qt.TextAlignmentRole:
+            return self.column_objects[index.column()].get_data(index, role)
+
+    def setData(self, index: QModelIndex, data_value, role=Qt.EditRole):
+        if index.isValid() and role == Qt.EditRole:
+            self.column_objects[index.column()].set_data(index, data_value, role)
+
+    def flags(self, index: QModelIndex):
+        if not index.isValid():
+            return QVariant()
+        if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
+            return Qt.ItemIsEnabled
+        return Qt.ItemIsEditable | Qt.ItemIsEnabled | Qt.ItemIsSelectable
+
+
+class GridDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None):
+        QStyledItemDelegate.__init__(self, parent)
+
+    def createEditor(self, parent, option, index: QModelIndex):
+        parent.buffer = self.parent().buffer
+        model: GridModel = index.model()
+        editor = model.column_objects[index.column()].editor(parent)
+        return editor
+
+    def setEditorData(self, editor, index: QModelIndex):
+        value = index.model().data(index, Qt.EditRole)
+        editor.set_value(value)
+
+    def setModelData(self, editor, model: GridModel, index: QModelIndex):
+        index.model().setData(index, editor.get_value(), Qt.EditRole)
+
+    def updateEditorGeometry(self, editor, option, index: QModelIndex):
+        editor.setGeometry(option.rect)
+
+
+class GridTable(QTableView):
+    currentIndexChanged = pyqtSignal(int)
+
+    def __init__(self, parent, column_settings: iter):
+        QTableView.__init__(self, parent)
+        self.buffer = parent.buffer
+        self.column_settings = column_settings
+        self.setModel = self.set_width(self.setModel)
+        self.refresh_data()
+        # noinspection PyUnresolvedReferences
+        self.clicked[QModelIndex].connect(self.index_changed)
+
+    def refresh_data(self):
+        self.setModel(GridModel(self, self.column_settings))
+        self.setItemDelegate(GridDelegate(self))
+
+    def index_changed(self, index: QModelIndex):
+        row_index = index.row()
+        self.currentIndexChanged.emit(row_index)
+
+    def set_width(self, func):
+        def wrapper(model: GridModel):
+            func(model)
+            for idx, widget in enumerate(model.widgets):
+                self.setColumnWidth(idx, widget.widget_width + 1)
+            for idx in range(model.rowCount()):
+                self.setRowHeight(idx, 26)
+
+        return wrapper

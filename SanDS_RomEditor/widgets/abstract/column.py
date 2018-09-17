@@ -4,7 +4,7 @@
 from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant
 from parsers import Character, Numerical, Picture
 from configs import DATA_PARAMETER
-from widgets.common import FixedText, ValueSpin
+from widgets.common import FixedText, ValueSpin, MapCombo
 
 
 class ColumnObject(QObject):
@@ -72,5 +72,12 @@ class ColumnObject(QObject):
             else:
                 max_value = 0x2 ** (self.data_type.bit[1] - self.data_type.bit[0]) - 1
             return len(str(max_value)) * 7 + 25
+        elif self.editor == MapCombo:
+            if self.mapping_type:
+                return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 25
+            return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 10
         else:
             return 50
+
+    def create_editor(self, parent):
+        self.editor(parent, self.data_name, self.mapping_name, self.attach)
