@@ -3,4 +3,4 @@
 
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
-from widgets.common.map_combo import MapCombo
+from widgets.common.mapping_combo import MappingCombo

@@ -6,7 +6,7 @@ from parsers import Numerical, Character
 from widgets.abstract import SingleObject
 
 
-class MapCombo(QComboBox, SingleObject):
+class MappingCombo(QComboBox, SingleObject):
     parser_type = Numerical
 
     def __init__(self, parent, data_name, mapping_name, attach=None):
