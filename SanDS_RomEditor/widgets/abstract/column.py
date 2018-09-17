@@ -4,10 +4,11 @@
 from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant
 from parsers import Character, Numerical, Picture
 from configs import DATA_PARAMETER
+from widgets.common import FixedText
 
 
 class ColumnObject(QObject):
-    mapping: dict
+    mapping: dict = None
 
     def __init__(self, parent, editor, data_name: str, mapping_name: str = None, attach=None):
         QObject.__init__(self, parent)
@@ -60,3 +61,10 @@ class ColumnObject(QObject):
     def set_data(self, index: QModelIndex, data, role=Qt.EditRole):
         if index.isValid() and role == Qt.EditRole:
             self.data_parser.set_data(index.row(), data)
+
+    @property
+    def widget_width(self):
+        if self.editor == FixedText:
+            return self.data_parser.length.normal_length * 8
+        else:
+            return 20
