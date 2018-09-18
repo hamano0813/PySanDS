@@ -6,9 +6,11 @@ from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBo
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.commander.commander_attribute import CommanderAttribute
+from editors.commander.commander_debut import CommanderDebut
 
 CHILD_MAPPING = {
     '武将属性': CommanderAttribute,
+    '武将登场': CommanderDebut,
 
 }
 
@@ -34,8 +36,9 @@ class MainWindow(QMainWindow):
         exit_editor = self.create_action('退出', self.close)
 
         commander_attribute = self.create_action('武将属性', self.open_editor_frame)
+        commander_debut = self.create_action('武将登场', self.open_editor_frame)
 
-        commander_menu = self.create_menu('武将编辑', None, [commander_attribute])
+        commander_menu = self.create_menu('武将编辑', None, [commander_attribute, commander_debut])
         commander_menu.setEnabled(False)
 
         file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
