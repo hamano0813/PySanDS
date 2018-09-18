@@ -7,10 +7,16 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.commander.commander_attribute import CommanderAttribute
 
+CHILD_MAPPING = {
+    '武将属性': CommanderAttribute,
+
+}
+
 
 class MainWindow(QMainWindow):
     file_path: str = None
     buffer: bytearray = None
+    child_frame = None
 
     def __init__(self):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
@@ -24,25 +30,17 @@ class MainWindow(QMainWindow):
         save_rom.setEnabled(False)
         save_as = self.create_action('另存为', self.save_as)
         save_as.setEnabled(False)
-        exit = self.create_action('退出', self.close)
+        close_child = self.create_action('关闭窗口', self.close_child)
+        exit_editor = self.create_action('退出', self.close)
 
         commander_attribute = self.create_action('武将属性', self.open_editor_frame)
 
         commander_menu = self.create_menu('武将编辑', None, [commander_attribute])
         commander_menu.setEnabled(False)
 
-        file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, exit])
+        file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         self.menuBar().addMenu(file_menu)
         self.menuBar().addMenu(commander_menu)
-
-    def create_action(self, name: str, slot: MethodType=None, icon: str=None) -> QAction:
-        action = QAction(name, self)
-        action.setObjectName(name)
-        if slot:
-            action.triggered.connect(slot)
-        if icon:
-            action.setIcon(QIcon(icon))
-        return action
 
     def load_rom(self):
         file_path = QFileDialog().getOpenFileName(None, '打开Rom文件', './', 'Rom文件 *.nds',
@@ -70,10 +68,23 @@ class MainWindow(QMainWindow):
             self.file_path = file_path
             self.save_rom()
 
+    def close_child(self):
+        if self.centralWidget():
+            self.centralWidget().close()
+
     def start_edit(self):
         self.findChild(QAction, '保存Rom').setEnabled(True)
         self.findChild(QAction, '另存为').setEnabled(True)
         self.findChild(QMenu, '武将编辑').setEnabled(True)
+
+    def create_action(self, name: str, slot: MethodType=None, icon: str=None) -> QAction:
+        action = QAction(name, self)
+        action.setObjectName(name)
+        if slot:
+            action.triggered.connect(slot)
+        if icon:
+            action.setIcon(QIcon(icon))
+        return action
 
     def create_menu(self, name: str, icon: str=None, child_objects: iter=None) -> QMenu:
         menu = QMenu(name, self)
@@ -92,6 +103,5 @@ class MainWindow(QMainWindow):
 
     def open_editor_frame(self):
         frame_name = self.sender().objectName()
-        print(frame_name)
-        self.frame = CommanderAttribute(self.buffer)
-        self.setCentralWidget(self.frame)
+        child_frame = CHILD_MAPPING[frame_name](self.buffer)
+        self.setCentralWidget(child_frame)
