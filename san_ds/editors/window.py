@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
         self.findChild(QAction, '另存为').setEnabled(True)
         self.findChild(QMenu, '武将编辑').setEnabled(True)
 
-    def create_action(self, name: str, slot: MethodType=None, icon: str=None) -> QAction:
+    def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)
         action.setObjectName(name)
         if slot:
@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
             action.setIcon(QIcon(icon))
         return action
 
-    def create_menu(self, name: str, icon: str=None, child_objects: iter=None) -> QMenu:
+    def create_menu(self, name: str, icon: str = None, child_objects: iter = None) -> QMenu:
         menu = QMenu(name, self)
         menu.setObjectName(name)
         if icon:

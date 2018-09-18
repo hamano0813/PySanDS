@@ -3,7 +3,7 @@
 
 from PyQt5.QtWidgets import QGridLayout
 from widgets.common.background_frame import BackgroundFrame
-from widgets.common.grid_table import GridTable, GridModel
+from widgets.common.grid_table import GridTable
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
 from widgets.common.mapping_combo import MappingCombo
@@ -27,16 +27,11 @@ identity = {
     255: '死亡'
 }
 
-debut_offsets = [0x0,
-                 -0xC04,
-                 -0x1808,
-                 -0x240C,
-                 -0x3010,
-                 -0x3C14,
-                 0xC04]
+debut_offsets = [0x0, -0xC04, -0x1808, -0x240C, -0x3010, -0x3C14, 0xC04]
 
 
 class CommanderDebut(BackgroundFrame):
+    # noinspection PyArgumentList
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
@@ -46,8 +41,8 @@ class CommanderDebut(BackgroundFrame):
             (FixedText, '武将属性_姓名'),
             (ValueSpin, '武将登场_登场年'),
             (MappingCombo, '武将登场_血缘', '武将属性_姓名', True),
-            (MappingCombo, '武将登场_都市', '都市属性_名称', True),
             (MappingCombo, '武将登场_身份', None, identity),
+            (MappingCombo, '武将登场_都市', '都市属性_名称', True),
             (ValueSpin, '武将登场_忠诚', None, 100),
             (ValueSpin, '武将登场_士兵数', None, 200),
         ], Quantity(0x301))

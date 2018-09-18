@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QLineEdit
-from PyQt5.QtCore import QRegExp, QFile, QIODevice
+from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from parsers import Character
 from widgets.abstract import SingleObject
@@ -18,8 +18,6 @@ class FixedText(QLineEdit, SingleObject):
         self.mapping_name = mapping_name
         self.attach = attach
         self.data_type: Character = self.parser(self.parser_type, data_name)
-        # char_file = QFile(':/character.txt')
-        # char_file.open(QIODevice.ReadOnly | QIODevice.Text)
         char_file = open('./configs/character.txt', 'r', encoding='UTF-8')
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
