@@ -4,7 +4,9 @@
 from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant
 from parsers import Character, Numerical, Picture
 from configs import DATA_PARAMETER
-from widgets.common import FixedText, ValueSpin, MappingCombo
+from widgets.common.fixed_text import FixedText
+from widgets.common.value_spin import ValueSpin
+from widgets.common.mapping_combo import MappingCombo
 
 
 class ColumnObject(QObject):
@@ -53,9 +55,9 @@ class ColumnObject(QObject):
             if isinstance(self.data_type, Character):
                 return Qt.AlignLeft | Qt.AlignVCenter
             elif isinstance(self.data_type, Numerical):
-                if self.mapping:
-                    return Qt.AlignRight | Qt.AlignVCenter
-                return Qt.AlignLeft | Qt.AlignVCenter
+                if self.editor == MappingCombo:
+                    return Qt.AlignLeft | Qt.AlignVCenter
+                return Qt.AlignRight | Qt.AlignVCenter
         return QVariant()
 
     def set_data(self, index: QModelIndex, data, role=Qt.EditRole):
@@ -80,4 +82,4 @@ class ColumnObject(QObject):
             return 50
 
     def create_editor(self, parent):
-        self.editor(parent, self.data_name, self.mapping_name, self.attach)
+        return self.editor(parent, self.data_name, self.mapping_name, self.attach)

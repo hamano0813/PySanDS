@@ -18,9 +18,11 @@ class FixedText(QLineEdit, SingleObject):
         self.mapping_name = mapping_name
         self.attach = attach
         self.data_type: Character = self.parser(self.parser_type, data_name)
-        char_file = QFile(':/character.txt')
-        char_file.open(QIODevice.ReadOnly | QIODevice.Text)
-        regex_char = bytearray(char_file.readAll()).decode('UTF-8') + EXPAND_CHARACTER
+        # char_file = QFile(':/character.txt')
+        # char_file.open(QIODevice.ReadOnly | QIODevice.Text)
+        char_file = open('./configs/character.txt', 'r', encoding='UTF-8')
+        regex_char = char_file.read() + EXPAND_CHARACTER
+        char_file.close()
         self.setValidator(QRegExpValidator(QRegExp(f'[{regex_char}\\n\\r]+')))
 
     def refresh_data(self):

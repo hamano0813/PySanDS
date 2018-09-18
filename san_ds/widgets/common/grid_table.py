@@ -52,7 +52,7 @@ class GridDelegate(QStyledItemDelegate):
     def createEditor(self, parent, option, index: QModelIndex):
         parent.buffer = self.parent().buffer
         model: GridModel = index.model()
-        editor = model.column_objects[index.column()].editor(parent)
+        editor = model.column_objects[index.column()].create_editor(parent)
         return editor
 
     def setEditorData(self, editor, index: QModelIndex):
@@ -90,7 +90,7 @@ class GridTable(QTableView, ControlObject):
     def set_width(self, func):
         def wrapper(model: GridModel):
             func(model)
-            for idx, widget in enumerate(model.widgets):
+            for idx, widget in enumerate(model.column_objects):
                 self.setColumnWidth(idx, widget.widget_width + 1)
             for idx in range(model.rowCount()):
                 self.setRowHeight(idx, 26)

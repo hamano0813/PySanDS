@@ -13,7 +13,6 @@ class ValueSpin(QSpinBox, SingleObject):
 
     def __init__(self, parent, data_name, mapping_name=None, attach=None):
         QSpinBox.__init__(self, parent)
-        self.max_value = 0
         self.data_name = data_name
         self.mapping_name = mapping_name
         self.attach = attach
@@ -21,9 +20,11 @@ class ValueSpin(QSpinBox, SingleObject):
         if self.data_type.bit is None:
             self.lineEdit().setValidator(QIntValidator(0, 0x100 ** self.data_type.length.normal_length - 1))
             self.setRange(0, 0x100 ** self.data_type.length.normal_length - 1)
+            self.max_value = 0x100 ** self.data_type.length.normal_length - 1
         else:
             self.lineEdit().setValidator(QIntValidator(0, 0x2 ** (self.data_type.bit[1] - self.data_type.bit[0]) - 1))
             self.setRange(0, 0x2 ** (self.data_type.bit[1] - self.data_type.bit[0]) - 1)
+            self.max_value = 0x2 ** (self.data_type.bit[1] - self.data_type.bit[0]) - 1
         self.setAlignment(Qt.AlignRight)
 
     def refresh_data(self):
