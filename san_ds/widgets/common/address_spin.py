@@ -6,19 +6,16 @@ from attributes import Address
 
 
 class AddressSpin(QSpinBox):
-    def __init__(self, parent, main_address: Address, offset_range: tuple=None, mirror_address: Address=None):
+    def __init__(self, parent, main_address: Address, mirror_address: Address = None):
         QSpinBox.__init__(self, parent)
         self.main_offset = 0
         self.mirror_offset = 0
         self.control_targets = []
-
         self.main_address = main_address
         self.mirror_address = mirror_address
         self.setFixedWidth(90)
-        if offset_range:
-            self.setRange(*offset_range)
-        else:
-            self.setRange(0, 0x7FFFFFFF)
+        self.setRange(0, 0x7FFFFFFF)
+        # noinspection PyUnresolvedReferences
         self.valueChanged[int].connect(self.set_address)
         self.get_address()
 
@@ -27,7 +24,6 @@ class AddressSpin(QSpinBox):
 
     def control_target(self):
         for method, func in self.control_targets:
-            print(method, func(self.value()))
             method(func(self.value()))
 
     def refresh_data(self):
@@ -44,7 +40,8 @@ class AddressSpin(QSpinBox):
 
     def set_address(self, address_offset):
         self.main_address(self.parent().buffer, self.main_offset, address_offset)
-        self.mirror_address(self.parent().buffer, self.mirror_offset, address_offset)
+        if self.mirror_address:
+            self.mirror_address(self.parent().buffer, self.mirror_offset, address_offset)
         self.control_target()
 
     def textFromValue(self, value):

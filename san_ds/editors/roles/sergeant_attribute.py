@@ -26,7 +26,7 @@ family = {
 }
 
 
-class CommanderAttribute(BackgroundFrame):
+class SergeantAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [

@@ -5,13 +5,12 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.commander.commander_attribute import CommanderAttribute
-from editors.commander.commander_debut import CommanderDebut
+from editors.roles.sergeant_attribute import SergeantAttribute
+from editors.roles.sergeant_debut import SergeantDebut
 
 CHILD_MAPPING = {
-    '武将属性': CommanderAttribute,
-    '武将登场': CommanderDebut,
-
+    '武将属性': SergeantAttribute,
+    '武将登场': SergeantDebut,
 }
 
 
