@@ -125,7 +125,7 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x301},
         'record': 0x4},
 
-    '都市属性_都市': {
+    '都市属性_名称': {
         'address': {'normal_offset': 0x0011B15A},
         'length': {'normal_length': 0x8},
         'quantity': {'normal_quantity': 0x2E},
@@ -136,7 +136,7 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x2E},
         'record': 0x26},
 
-    '战场属性_战场': {
+    '战场属性_名称': {
         'address': {'normal_offset': 0x00126F61},
         'length': {'normal_length': 0x8},
         'quantity': {'normal_quantity': 0x16},
