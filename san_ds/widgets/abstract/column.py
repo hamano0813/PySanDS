@@ -33,6 +33,10 @@ class ColumnObject(QObject):
             mapping.update(self.attach)
         elif self.attach is True:
             mapping.update({0x100 ** self.data_type.length.normal_length - 1: 'ーー'})
+        elif isinstance(self.attach, int):
+            number = {i: i for i in range(self.attach + 1)}
+            number.update({0x100 ** self.data_type.length.normal_length - 1: 'ー'})
+            mapping.update(number)
         return mapping
 
     def parser(self, parser_type, parameter_name):

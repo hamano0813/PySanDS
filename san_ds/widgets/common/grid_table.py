@@ -4,14 +4,18 @@
 from PyQt5.QtWidgets import QTableView, QStyledItemDelegate
 from PyQt5.QtCore import QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal
 from widgets.abstract import ColumnObject, ControlObject
+from attributes import Quantity
 
 
 class GridModel(QAbstractTableModel):
-    def __init__(self, parent, column_settings: iter):
+    def __init__(self, parent, column_settings: iter, quantity: Quantity = None):
         QAbstractTableModel.__init__(self, parent)
         self.column_objects = [ColumnObject(parent, *settings) for settings in column_settings]
+        self.quantity = quantity
 
     def rowCount(self, parent=None, *args, **kwargs):
+        if self.quantity:
+            return self.quantity(self.parent().buffer, 0)
         return self.column_objects[0].data_type.real_quantity
 
     def columnCount(self, parent=None, *args, **kwargs):
@@ -27,6 +31,8 @@ class GridModel(QAbstractTableModel):
         if not index.isValid():
             return QVariant()
         if role == Qt.DisplayRole:
+            if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
+                return QVariant()
             return self.column_objects[index.column()].get_data(index, role)
         if role == Qt.EditRole:
             return self.column_objects[index.column()].get_data(index, role)
@@ -69,19 +75,22 @@ class GridDelegate(QStyledItemDelegate):
 class GridTable(QTableView, ControlObject):
     currentIndexChanged = pyqtSignal(int)
 
-    def __init__(self, parent, column_settings: iter):
+    def __init__(self, parent, column_settings: iter, quantity: Quantity = None):
         QTableView.__init__(self, parent)
+        self.control_widgets = []
+        self.control_targets = []
         self.buffer = parent.buffer
+        self.quantity = quantity
         self.column_settings = column_settings
         self.setModel = self.set_width(self.setModel)
-        self.refresh_data()
+        self.setModel(GridModel(self, self.column_settings, self.quantity))
+        self.setItemDelegate(GridDelegate(self))
         # noinspection PyUnresolvedReferences
         self.clicked[QModelIndex].connect(self.index_changed)
         self.currentIndexChanged[int].connect(self.control_index)
 
     def refresh_data(self):
-        self.setModel(GridModel(self, self.column_settings))
-        self.setItemDelegate(GridDelegate(self))
+        self.clicked(self.model().createIndex(0, 0))
 
     def index_changed(self, index: QModelIndex):
         row_index = index.row()
