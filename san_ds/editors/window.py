@@ -5,6 +5,7 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
+from editors.commander.commander_attribute import CommanderAttribute
 
 
 class MainWindow(QMainWindow):
@@ -92,3 +93,5 @@ class MainWindow(QMainWindow):
     def open_editor_frame(self):
         frame_name = self.sender().objectName()
         print(frame_name)
+        self.frame = CommanderAttribute(self.buffer)
+        self.setCentralWidget(self.frame)
