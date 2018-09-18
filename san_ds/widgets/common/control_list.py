@@ -10,6 +10,8 @@ from configs import DATA_PARAMETER
 class ControlList(QListWidget, ControlObject):
     def __init__(self, parent, data_name):
         QListWidget.__init__(self, parent)
+        self.control_widgets = []
+        self.control_targets = []
         self.addItems(Character(parent, **DATA_PARAMETER.get(data_name)).sequence())
         self.setCurrentRow(0)
         # noinspection PyUnresolvedReferences

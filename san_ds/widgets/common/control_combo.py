@@ -10,6 +10,8 @@ from configs import DATA_PARAMETER
 class ControlCombo(QComboBox, ControlObject):
     def __init__(self, parent, data_name):
         QComboBox.__init__(self, parent)
+        self.control_widgets = []
+        self.control_targets = []
         self.addItems(Character(parent, **DATA_PARAMETER.get(data_name)).sequence())
         self.setCurrentIndex(0)
         # noinspection PyUnresolvedReferences
