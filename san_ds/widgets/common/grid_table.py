@@ -90,7 +90,7 @@ class GridTable(QTableView, ControlObject):
         self.currentIndexChanged[int].connect(self.control_index)
 
     def refresh_data(self):
-        self.clicked(self.model().createIndex(0, 0))
+        self.setModel(self.model())
 
     def index_changed(self, index: QModelIndex):
         row_index = index.row()
