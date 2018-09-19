@@ -125,17 +125,15 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x301},
         'record': 0x4},
     '武将登场_登场都市': {
-        'address': {'normal_offset': 0x0},
+        'address': {'normal_offset': 0x000FBC50, 'pointer_offset': -0x1FFC000},
         'length': {'normal_length': 0x2},
-        'quantity': {'normal_quantity': None, 'main_pointer': 0x000FBC50, 'record_length': 0x4, 'sub_pointer': 0x0017B3C4},
+        'quantity': {'main_pointer': 0x000FBC50, 'record_length': 0x4, 'sub_pointer': 0x0017B3C4},
         'record': 0x4},
     '武将登场_未登场武将': {
-        'address': {'normal_offset': 0x0},
+        'address': {'normal_offset': 0x000FBC50, 'pointer_offset': -0x1FFBFFE},
         'length': {'normal_length': 0x2},
-        'quantity': {'normal_quantity': None, 'main_pointer': 0x000FBC50, 'record_length': 0x4,
-                     'sub_pointer': 0x0017B3C4},
+        'quantity': {'main_pointer': 0x000FBC50, 'record_length': 0x4, 'sub_pointer': 0x0017B3C4},
         'record': 0x4},
-
     '都市属性_名称': {
         'address': {'normal_offset': 0x0011B15A},
         'length': {'normal_length': 0x8},
