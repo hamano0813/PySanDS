@@ -15,7 +15,7 @@ person_identity = {0: '君主[流浪]', 1: '军师', 2: '将军', 3: '武将', 4
 debut_offsets = [0x0, -0xC04, -0x1808, -0x240C, -0x3010, -0x3C14, 0xC04]
 
 
-class SergeantDebut(BackgroundFrame):
+class CharDebut(BackgroundFrame):
     # noinspection PyArgumentList
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)

@@ -5,12 +5,12 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.roles.sergeant_attribute import SergeantAttribute
-from editors.roles.sergeant_debut import SergeantDebut
+from editors.char.char_attribute import CharAttribute
+from editors.char.char_debut import CharDebut
 
 CHILD_MAPPING = {
-    '武将属性': SergeantAttribute,
-    '武将登场': SergeantDebut,
+    '武将属性': CharAttribute,
+    '武将登场': CharDebut,
 }
 
 
@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
         self.init_menu()
         self.setWindowTitle('三国志DS Rom编辑器 - by 全力全开')
-        self.setMinimumSize(800, 600)
+        self.setMinimumSize(800, 100)
 
     def init_menu(self):
         load_rom = self.create_action('载入Rom', self.load_rom)

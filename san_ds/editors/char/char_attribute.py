@@ -26,7 +26,7 @@ family = {
 }
 
 
-class SergeantAttribute(BackgroundFrame):
+class CharAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [
@@ -47,6 +47,7 @@ class SergeantAttribute(BackgroundFrame):
             (ValueSpin, '武将属性_生年'),
             (ValueSpin, '武将属性_寿命'),
             (MappingCombo, '武将属性_家族', None, family),
+            (FixedText, '文本_武将列传')
         ])
         layout = QGridLayout()
         layout.addWidget(attribute_table)
