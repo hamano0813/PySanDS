@@ -7,6 +7,7 @@ from widgets.common.grid_table import GridTable
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
 from widgets.common.mapping_combo import MappingCombo
+from widgets.common.multiline_text import MultilineText
 
 family = {
     0: '00.曹操',
@@ -47,7 +48,7 @@ class CharAttribute(BackgroundFrame):
             (ValueSpin, '武将属性_生年'),
             (ValueSpin, '武将属性_寿命'),
             (MappingCombo, '武将属性_家族', None, family),
-            (FixedText, '文本_武将列传')
+            (MultilineText, '文本_角色列传')
         ])
         layout = QGridLayout()
         layout.addWidget(attribute_table)
