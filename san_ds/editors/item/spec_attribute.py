@@ -12,8 +12,16 @@ from attributes import Quantity
 lifetime = {
     0: 'ー',
     1: '+1',
-    256: '=5',
+    256: '=5 ',
 }
+
+unsigned = {0: 'ー'}
+unsigned.update({i : f'{i:+d}' for i in range(1, 16)})
+unsigned.update({256: '=15'})
+
+signed = {0: 'ー'}
+signed.update({65536 + i: f'{i:+d}' for i in range(-1, -16, -1)})
+signed.update({65280: '=0'})
 
 
 class SpecAttribute(BackgroundFrame):
@@ -28,9 +36,12 @@ class SpecAttribute(BackgroundFrame):
             (ValueSpin, '特产效果_魅力', None, 30),
             (ValueSpin, '特产效果_陆指', None, 30),
             (ValueSpin, '特产效果_水指', None, 30),
+            (ValueSpin, '特产效果_义理', None, 30),
             (MappingCombo, '特产效果_寿命', None, lifetime),
-            (ValueSpin, '特产效果_义理', None, 15),
-            (ValueSpin, '特产效果_野望'),
+            (MappingCombo, '特产效果_野望', None, signed),
+            (MappingCombo, '特产效果_幸运', None, unsigned),
+            (MappingCombo, '特产效果_冷静', None, unsigned),
+            (MappingCombo, '特产效果_勇猛', None, unsigned),
 
         ], Quantity(0x36))
 
