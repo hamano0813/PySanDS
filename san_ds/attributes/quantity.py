@@ -17,7 +17,7 @@ class Quantity:
       以总数据区块长度除以区块内每条数据记录的长度record_length获得由指针控制的可变量据数量
     """
 
-    def __init__(self, normal_quantity: int, main_pointer: int = None, record_length: int = 1, sub_pointer: int = None):
+    def __init__(self, normal_quantity=None, main_pointer: int = None, record_length: int = 1, sub_pointer: int = None):
         self.normal_quantity = normal_quantity
         self.main_pointer = main_pointer
         self.record_length = record_length
