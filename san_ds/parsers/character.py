@@ -7,9 +7,8 @@ from configs import CODE_ALIASES, DECODE_MAPPING, ENCODE_MAPPING
 
 
 class Character:
-    offset = start = 0
-
     def __init__(self, parent, address: dict, length: dict, quantity: dict, record: int):
+        self.offset = self.start = 0
         self.buffer = parent.buffer
         self.address = Address(**address)
         self.length = Length(**length)
@@ -38,7 +37,7 @@ class Character:
     def set_data(self, data_index: int, text: str):
         if data_index < self.real_quantity:
             data = self.encode_text(text)
-            self.length(self.buffer, data_index, len(data))
+            self.length(self.buffer, self.record * (data_index + self.start) + self.offset, len(data))
             address = self.address(self.buffer, self.record * (data_index + self.start) + self.offset)
             length = self.length(self.buffer, self.record * (data_index + self.start) + self.offset)
             fmt = f'{length}s'
