@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import *
+from configs import EXPAND_CHARACTER
 
 
 class FixedText(QLineEdit, SingleObject):
