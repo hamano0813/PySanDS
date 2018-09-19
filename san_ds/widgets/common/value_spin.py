@@ -29,6 +29,7 @@ class ValueSpin(QSpinBox, SingleObject):
             self.lineEdit().setValidator(QIntValidator(0, self.bit_value))
             self.setRange(0, self.bit_value)
         self.setAlignment(Qt.AlignRight)
+        self.setWrapping(True)
 
     def refresh_data(self):
         self.setValue(self.data_type.get_data(self.data_index))

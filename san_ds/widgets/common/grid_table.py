@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QTableView, QStyledItemDelegate
-from PyQt5.QtCore import QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal
+from PyQt5.QtCore import QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal, QRect, QSize
 from widgets.abstract import ColumnObject, ControlObject
+from widgets.common.multiline_text import MultilineText
 from attributes import Quantity
 
 
@@ -69,7 +70,17 @@ class GridDelegate(QStyledItemDelegate):
         index.model().setData(index, editor.get_value(), Qt.EditRole)
 
     def updateEditorGeometry(self, editor, option, index: QModelIndex):
-        editor.setGeometry(option.rect)
+        if isinstance(editor, MultilineText):
+            bottom = option.rect.bottom()
+            width = option.rect.width()
+            rect: QRect = option.rect
+            rect.setSize(QSize(width, 100))
+            if option.rect.bottom() > editor.parent().rect().height():
+                rect.setTop(bottom - 100)
+                rect.setBottom(bottom)
+            editor.setGeometry(rect)
+        else:
+            editor.setGeometry(option.rect)
 
 
 class GridTable(QTableView, ControlObject):
