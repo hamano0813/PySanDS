@@ -7,6 +7,7 @@ from configs import DATA_PARAMETER
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
 from widgets.common.mapping_combo import MappingCombo
+from widgets.common.multiline_text import MultilineText
 
 
 class ColumnObject(QObject):
@@ -82,6 +83,8 @@ class ColumnObject(QObject):
             if self.mapping_type:
                 return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 25
             return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 10
+        elif self.editor == MultilineText:
+            return 280
         else:
             return 50
 
