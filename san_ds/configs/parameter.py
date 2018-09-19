@@ -190,117 +190,117 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0x43},
         'record': 0x12},
-    '道具属性_效果1' :{
+    '道具属性_效果1': {
         'address': {'normal_offset': 0x0011AC97},
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0xD},
         'record': 0x12},
-    '道具属性_效果2' :{
+    '道具属性_效果2': {
         'address': {'normal_offset': 0x0011AC98},
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0xD},
         'record': 0x12},
-    '道具归属_剧本1' :{
+    '道具归属_剧本1': {
         'address': {'normal_offset': 0x0011E060},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本2' :{
+    '道具归属_剧本2': {
         'address': {'normal_offset': 0x0011E062},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本3' :{
+    '道具归属_剧本3': {
         'address': {'normal_offset': 0x0011E064},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本4' :{
+    '道具归属_剧本4': {
         'address': {'normal_offset': 0x0011E066},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本5' :{
+    '道具归属_剧本5': {
         'address': {'normal_offset': 0x0011E068},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本6' :{
+    '道具归属_剧本6': {
         'address': {'normal_offset': 0x0011E06A},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '道具归属_剧本7' :{
+    '道具归属_剧本7': {
         'address': {'normal_offset': 0x0011E06C},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0xD},
         'record': 0xE},
-    '特产效果_武力' :{
+    '特产效果_武力': {
         'address': {'normal_offset': 0x000E88A8},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_智力' :{
+    '特产效果_智力': {
         'address': {'normal_offset': 0x000E88A4},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_政治' :{
+    '特产效果_政治': {
         'address': {'normal_offset': 0x000E88B0},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_魅力' :{
+    '特产效果_魅力': {
         'address': {'normal_offset': 0x000E88AC},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_陆指' :{
+    '特产效果_陆指': {
         'address': {'normal_offset': 0x000E88C4},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_水指' :{
+    '特产效果_水指': {
         'address': {'normal_offset': 0x000E88C8},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_寿命' :{
+    '特产效果_寿命': {
         'address': {'normal_offset': 0x000E88F0},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_义理' :{
+    '特产效果_义理': {
         'address': {'normal_offset': 0x000E88CC},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_野望' :{
+    '特产效果_野望': {
         'address': {'normal_offset': 0x000E88D4},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_幸运' :{
+    '特产效果_幸运': {
         'address': {'normal_offset': 0x000E88D0},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_冷静' :{
+    '特产效果_冷静': {
         'address': {'normal_offset': 0x000E88D8},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_勇猛' :{
+    '特产效果_勇猛': {
         'address': {'normal_offset': 0x000E88DC},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_机动力' :{
+    '特产效果_机动力': {
         'address': {'normal_offset': 0x000E88EC},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
-    '特产效果_强制退却' :{
+    '特产效果_强制退却': {
         'address': {'normal_offset': 0x000E88F4},
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
