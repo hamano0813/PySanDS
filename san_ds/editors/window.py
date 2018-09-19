@@ -7,10 +7,16 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.char.char_attribute import CharAttribute
 from editors.char.char_debut import CharDebut
+from editors.char.npc_attribute import NpcAttribute
+from editors.item.prop_attribute import PropAttribute
+from editors.item.spec_attribute import SpecAttribute
 
 CHILD_MAPPING = {
     '武将属性': CharAttribute,
     '武将登场': CharDebut,
+    'NPC属性': NpcAttribute,
+    '道具属性': PropAttribute,
+    '特产属性': SpecAttribute,
 }
 
 
@@ -23,7 +29,7 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
         self.init_menu()
         self.setWindowTitle('三国志DS Rom编辑器 - by 全力全开')
-        self.setMinimumSize(800, 100)
+        self.setMinimumSize(800, 600)
 
     def init_menu(self):
         load_rom = self.create_action('载入Rom', self.load_rom)
@@ -34,15 +40,23 @@ class MainWindow(QMainWindow):
         close_child = self.create_action('关闭窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
 
-        commander_attribute = self.create_action('武将属性', self.open_editor_frame)
-        commander_debut = self.create_action('武将登场', self.open_editor_frame)
+        char_attribute = self.create_action('武将属性', self.open_editor_frame)
+        char_debut = self.create_action('武将登场', self.open_editor_frame)
+        npc_attribute = self.create_action('NPC属性', self.open_editor_frame)
 
-        commander_menu = self.create_menu('武将编辑', None, [commander_attribute, commander_debut])
-        commander_menu.setEnabled(False)
+        char_menu = self.create_menu('角色编辑', None, [char_attribute, char_debut, npc_attribute])
+        char_menu.setEnabled(False)
+
+        prop_attribute = self.create_action('道具属性', self.open_editor_frame)
+        spec_attribute = self.create_action('特产属性', self.open_editor_frame)
+
+        item_menu = self.create_menu('物品编辑', None, [prop_attribute, spec_attribute])
+        item_menu.setEnabled(False)
 
         file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         self.menuBar().addMenu(file_menu)
-        self.menuBar().addMenu(commander_menu)
+        self.menuBar().addMenu(char_menu)
+        self.menuBar().addMenu(item_menu)
 
     def load_rom(self):
         file_path = QFileDialog().getOpenFileName(None, '打开Rom文件', './', 'Rom文件 *.nds',
@@ -77,7 +91,8 @@ class MainWindow(QMainWindow):
     def start_edit(self):
         self.findChild(QAction, '保存Rom').setEnabled(True)
         self.findChild(QAction, '另存为').setEnabled(True)
-        self.findChild(QMenu, '武将编辑').setEnabled(True)
+        self.findChild(QMenu, '角色编辑').setEnabled(True)
+        self.findChild(QMenu, '物品编辑').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)
