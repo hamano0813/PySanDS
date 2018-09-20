@@ -19,8 +19,8 @@ class NpcAttribute(BackgroundFrame):
 
         npc_attribute_model.column_objects[1].data_type.set_start(0x302)
 
-        npc_attribute_table.setColumnWidth(0, 64)
-        npc_attribute_table.setColumnWidth(1, 280)
+        npc_attribute_table.setColumnWidth(0, 56)
+        npc_attribute_table.setColumnWidth(1, 240)
 
         layout = QGridLayout()
         layout.addWidget(npc_attribute_table)

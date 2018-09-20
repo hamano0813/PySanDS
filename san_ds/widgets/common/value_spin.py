@@ -30,6 +30,7 @@ class ValueSpin(QSpinBox, SingleObject):
             self.setRange(0, self.bit_value)
         self.setAlignment(Qt.AlignRight)
         self.setWrapping(True)
+        self.setToolTip(f'數值範圍{self.minimum()}-{self.max_value}')
 
     def refresh_data(self):
         self.setValue(self.data_type.get_data(self.data_index))

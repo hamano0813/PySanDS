@@ -52,12 +52,12 @@ class SpecAttribute(BackgroundFrame):
 
         [spec_attribute_model.column_objects[i].data_type.set_start(0xD) for i in range(4)]
         [spec_attribute_table.setColumnWidth(i, 40) for i in range(5, 19)]
-        spec_attribute_table.setColumnWidth(0, 96)
-        spec_attribute_table.setColumnWidth(1, 64)
+        spec_attribute_table.setColumnWidth(0, 90)
+        spec_attribute_table.setColumnWidth(1, 60)
         spec_attribute_table.setColumnWidth(2, 50)
         spec_attribute_table.setColumnWidth(3, 50)
-        spec_attribute_table.setColumnWidth(4, 160)
-        spec_attribute_table.setColumnWidth(19, 64)
+        spec_attribute_table.setColumnWidth(4, 150)
+        spec_attribute_table.setColumnWidth(19, 56)
 
         layout = QGridLayout()
         layout.addWidget(spec_attribute_table)

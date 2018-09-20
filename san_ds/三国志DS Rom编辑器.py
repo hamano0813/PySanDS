@@ -7,7 +7,7 @@ from editors.window import MainWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyleSheet('''*{font: 10pt 'Inziu Iosevka J'}''')
+    app.setStyleSheet('''*{font: 9pt 'Inziu Iosevka J'}''')
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

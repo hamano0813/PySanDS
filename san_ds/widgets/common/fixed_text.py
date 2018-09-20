@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import EXPAND_CHARACTER
+from configs import CODE_ALIASES, EXPAND_CHARACTER
 
 
 class FixedText(QLineEdit, SingleObject):
@@ -22,6 +22,11 @@ class FixedText(QLineEdit, SingleObject):
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
         self.setValidator(QRegExpValidator(QRegExp(f'[{regex_char}\\n\\r]+')))
+        self.textEdited.connect(self.gogogo)
+
+    def gogogo(self):
+        self.setToolTip(
+            f'''最大字節長度{self.data_type.length(self.data_type.buffer,self.data_type.record * self.parent().parent().currentIndex().row())}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
 
     def refresh_data(self):
         self.setText(self.data_type.get_data(self.data_index))

@@ -41,11 +41,11 @@ class PropAttribute(BackgroundFrame):
         prop_attribute_table.setModel(prop_attribute_model)
         prop_attribute_table.setItemDelegate(GridDelegate(self))
 
-        prop_attribute_table.setColumnWidth(0, 96)
-        prop_attribute_table.setColumnWidth(1, 64)
+        prop_attribute_table.setColumnWidth(0, 90)
+        prop_attribute_table.setColumnWidth(1, 60)
         prop_attribute_table.setColumnWidth(2, 50)
         prop_attribute_table.setColumnWidth(3, 50)
-        [prop_attribute_table.setColumnWidth(i, 112) for i in range(4, 11)]
+        [prop_attribute_table.setColumnWidth(i, 100) for i in range(4, 11)]
 
         layout = QGridLayout()
         layout.addWidget(prop_attribute_table)

@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QTextCursor
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import EXPAND_CHARACTER
+from configs import CODE_ALIASES, EXPAND_CHARACTER
 
 
 class MultilineText(QTextEdit, SingleObject):
@@ -25,6 +25,8 @@ class MultilineText(QTextEdit, SingleObject):
         self.textChanged.connect(self.check_reg_exp)
 
     def check_reg_exp(self):
+        self.setToolTip(
+            f'''最大字節長度{self.data_type.length.normal_length}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
         temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])
         if not temp == self.toPlainText():
             self.setText(temp)
