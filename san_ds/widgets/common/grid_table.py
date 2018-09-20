@@ -29,9 +29,9 @@ class GridDelegate(QStyledItemDelegate):
             bottom = option.rect.bottom()
             width = option.rect.width()
             rect: QRect = option.rect
-            rect.setSize(QSize(width, 100))
+            rect.setSize(QSize(width, width // 3))
             if option.rect.bottom() > editor.parent().rect().height():
-                rect.setTop(bottom - 100)
+                rect.setTop(bottom - width // 3)
                 rect.setBottom(bottom)
             editor.setGeometry(rect)
         else:

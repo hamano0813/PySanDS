@@ -26,7 +26,6 @@ class MultilineText(QTextEdit, SingleObject):
 
     def check_reg_exp(self):
         temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])
-        print(self.toPlainText())
         if not temp == self.toPlainText():
             self.setText(temp)
             self.moveCursor(QTextCursor.End, QTextCursor.MoveAnchor)
