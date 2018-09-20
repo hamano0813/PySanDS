@@ -3,10 +3,12 @@
 
 from PyQt5.QtWidgets import QGridLayout
 from widgets.common.background_frame import BackgroundFrame
-from widgets.common.grid_table import GridTable
+# from widgets.common.grid_table import GridTable
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
 from widgets.common.mapping_combo import MappingCombo
+from widgets.common.grid_table import GridTable, GridDelegate
+from widgets.common.normal_model import NormalModel
 from attributes import Quantity
 
 lifetime = {0: 'ー', 1: '+1', 256: '=5 ', }
@@ -27,11 +29,13 @@ retreat = {0: 'ー', 1: '√'}
 class SpecAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
-        attribute_table = GridTable(self, [
+
+        spec_attribute_table = GridTable(self)
+        spec_attribute_model = NormalModel(self, [
             (FixedText, 'アイテムデータ_アイテム'),
             (ValueSpin, 'アイテムデータ_忠誠上昇', None, 100),
-            (ValueSpin, 'アイテムデータ_効果１', None, 30),
-            (ValueSpin, 'アイテムデータ_効果２', None, 30),
+            (ValueSpin, 'アイテムデータ_効果１'),
+            (ValueSpin, 'アイテムデータ_効果２'),
             (FixedText, '特産アイテム_効果文本'),
             (FixedText, '特産アイテム_種類'),
             (ValueSpin, '特産アイテム_武力', None, 30),
@@ -49,14 +53,18 @@ class SpecAttribute(BackgroundFrame):
             (MappingCombo, '特産アイテム_機動力', None, move),
             (MappingCombo, '特産アイテム_退却確実', None, retreat),
         ], Quantity(0x36))
+        spec_attribute_table.setModel(spec_attribute_model)
+        spec_attribute_table.setItemDelegate(GridDelegate(self))
 
-        [attribute_table.model().column_objects[i].data_type.set_start(0xD) for i in range(4)]
-        [attribute_table.setColumnWidth(i, 50) for i in range(5, 19)]
-        attribute_table.setColumnWidth(1, 64)
-        attribute_table.setColumnWidth(2, 50)
-        attribute_table.setColumnWidth(3, 50)
-        attribute_table.setColumnWidth(4, 160)
-        attribute_table.setColumnWidth(19, 64)
+        [spec_attribute_model.column_objects[i].data_type.set_start(0xD) for i in range(4)]
+        [spec_attribute_table.setColumnWidth(i, 40) for i in range(5, 19)]
+        spec_attribute_table.setColumnWidth(0, 96)
+        spec_attribute_table.setColumnWidth(1, 64)
+        spec_attribute_table.setColumnWidth(2, 50)
+        spec_attribute_table.setColumnWidth(3, 50)
+        spec_attribute_table.setColumnWidth(4, 160)
+        spec_attribute_table.setColumnWidth(19, 64)
+
         layout = QGridLayout()
-        layout.addWidget(attribute_table)
+        layout.addWidget(spec_attribute_table)
         self.setLayout(layout)

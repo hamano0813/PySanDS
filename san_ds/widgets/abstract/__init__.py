@@ -3,4 +3,3 @@
 
 from widgets.abstract.single import SingleObject
 from widgets.abstract.control import ControlObject
-from widgets.abstract.column import ColumnObject

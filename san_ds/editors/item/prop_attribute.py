@@ -3,10 +3,11 @@
 
 from PyQt5.QtWidgets import QGridLayout
 from widgets.common.background_frame import BackgroundFrame
-from widgets.common.grid_table import GridTable
 from widgets.common.fixed_text import FixedText
 from widgets.common.value_spin import ValueSpin
 from widgets.common.mapping_combo import MappingCombo
+from widgets.common.grid_table import GridTable, GridDelegate
+from widgets.common.normal_model import NormalModel
 from attributes import Quantity
 
 npc = {
@@ -27,7 +28,9 @@ npc = {
 class PropAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
-        attribute_table = GridTable(self, [
+
+        prop_attribute_table = GridTable(self)
+        prop_attribute_model = NormalModel(self, [
             (FixedText, 'アイテムデータ_アイテム'),
             (ValueSpin, 'アイテムデータ_忠誠上昇', None, 100),
             (ValueSpin, 'アイテムデータ_効果１'),
@@ -40,9 +43,15 @@ class PropAttribute(BackgroundFrame):
             (MappingCombo, '基本アイテム_シナリオ６', '武将データ_名前', npc),
             (MappingCombo, '基本アイテム_シナリオ７', '武将データ_名前', npc),
         ], Quantity(0xD))
-        attribute_table.setColumnWidth(1, 64)
-        attribute_table.setColumnWidth(2, 50)
-        attribute_table.setColumnWidth(3, 50)
+        prop_attribute_table.setModel(prop_attribute_model)
+        prop_attribute_table.setItemDelegate(GridDelegate(self))
+
+        prop_attribute_table.setColumnWidth(0, 96)
+        prop_attribute_table.setColumnWidth(1, 64)
+        prop_attribute_table.setColumnWidth(2, 50)
+        prop_attribute_table.setColumnWidth(3, 50)
+        [prop_attribute_table.setColumnWidth(i, 112) for i in range(4, 11)]
+
         layout = QGridLayout()
-        layout.addWidget(attribute_table)
+        layout.addWidget(prop_attribute_table)
         self.setLayout(layout)

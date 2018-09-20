@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant
+from PyQt5.QtCore import QObject, QAbstractTableModel, Qt, QModelIndex, QVariant
 from parsers import Character, Numerical, Picture
 from configs import DATA_PARAMETER
-from widgets.common.fixed_text import FixedText
-from widgets.common.value_spin import ValueSpin
-from widgets.common.mapping_combo import MappingCombo
-from widgets.common.multiline_text import MultilineText
+from attributes import Quantity
 
 
 class ColumnObject(QObject):
@@ -60,7 +57,7 @@ class ColumnObject(QObject):
             if isinstance(self.data_type, Character):
                 return Qt.AlignLeft | Qt.AlignVCenter
             elif isinstance(self.data_type, Numerical):
-                if self.editor == MappingCombo:
+                if isinstance(self.attach, dict) or self.mapping_name:
                     return Qt.AlignLeft | Qt.AlignVCenter
                 return Qt.AlignRight | Qt.AlignVCenter
         return QVariant()
@@ -69,27 +66,49 @@ class ColumnObject(QObject):
         if index.isValid() and role == Qt.EditRole:
             self.data_type.set_data(index.row(), data)
 
-    @property
-    def widget_width(self):
-        if self.editor == FixedText:
-            if self.data_type.length.normal_length:
-                return self.data_type.length.normal_length * 8
-            else:
-                return 50
-        elif self.editor == ValueSpin:
-            if self.data_type.bit is None:
-                max_value = 0x100 ** self.data_type.length.normal_length - 1
-            else:
-                max_value = 0x2 ** (self.data_type.bit[1] - self.data_type.bit[0]) - 1
-            return len(str(max_value)) * 7 + 25
-        elif self.editor == MappingCombo:
-            if self.mapping_type:
-                return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 25
-            return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 10
-        elif self.editor == MultilineText:
-            return 280
-        else:
-            return 50
-
     def create_editor(self, parent):
         return self.editor(parent, self.data_name, self.mapping_name, self.attach)
+
+
+class NormalModel(QAbstractTableModel):
+    def __init__(self, parent, column_settings: iter, quantity: Quantity = None):
+        QAbstractTableModel.__init__(self, parent)
+        self.column_objects = [ColumnObject(parent, *settings) for settings in column_settings]
+        self.quantity = quantity
+
+    def rowCount(self, parent=None, *args, **kwargs):
+        if self.quantity:
+            return self.quantity(self.parent().buffer, 0)
+        return self.column_objects[0].data_type.real_quantity
+
+    def columnCount(self, parent=None, *args, **kwargs):
+        return len(self.column_objects)
+
+    def headerData(self, section: int, orientation, role=Qt.DisplayRole):
+        if orientation == Qt.Horizontal and role == Qt.DisplayRole:
+            return self.column_objects[section].data_name.split('_')[-1]
+        elif orientation == Qt.Vertical and role == Qt.DisplayRole:
+            return section + 1
+
+    def data(self, index: QModelIndex, role=None):
+        if not index.isValid():
+            return QVariant()
+        if role == Qt.DisplayRole:
+            if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
+                return QVariant()
+            return self.column_objects[index.column()].get_data(index, role)
+        if role == Qt.EditRole:
+            return self.column_objects[index.column()].get_data(index, role)
+        if role == Qt.TextAlignmentRole:
+            return self.column_objects[index.column()].get_data(index, role)
+
+    def setData(self, index: QModelIndex, data_value, role=Qt.EditRole):
+        if index.isValid() and role == Qt.EditRole:
+            self.column_objects[index.column()].set_data(index, data_value, role)
+
+    def flags(self, index: QModelIndex):
+        if not index.isValid():
+            return QVariant()
+        if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
+            return Qt.ItemIsEnabled
+        return Qt.ItemIsEditable | Qt.ItemIsEnabled | Qt.ItemIsSelectable
