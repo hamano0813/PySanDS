@@ -3,6 +3,7 @@
 
 from PyQt5.QtWidgets import QTextEdit
 from PyQt5.QtCore import QRegExp
+from PyQt5.QtGui import QTextCursor
 from parsers import Character
 from widgets.abstract import SingleObject
 from configs import EXPAND_CHARACTER
@@ -21,6 +22,13 @@ class MultilineText(QTextEdit, SingleObject):
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
         self.reg_exp = QRegExp(f'[{regex_char}\\n\\r]+')
+        self.textChanged.connect(self.check_reg_exp)
+
+    def check_reg_exp(self):
+        temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])
+        if not temp == self.toPlainText():
+            self.setText(temp)
+            self.moveCursor(QTextCursor.End, QTextCursor.MoveAnchor)
 
     def refresh_data(self):
         self.setText(self.data_type.get_data(self.data_index))

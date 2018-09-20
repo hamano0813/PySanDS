@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="PyQt5.QtWidgets.triggered.*" />
+          <option value="PyQt5.QtWidgets.textChanged.*" />
         </list>
       </option>
     </inspection_tool>

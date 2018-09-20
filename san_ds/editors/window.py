@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
         self.init_menu()
         self.setWindowTitle('三国志DS Rom编辑器 - by 全力全开')
-        self.setMinimumSize(800, 600)
+        self.setMinimumSize(1280, 720)
 
     def init_menu(self):
         load_rom = self.create_action('载入Rom', self.load_rom)
