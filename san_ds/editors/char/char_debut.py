@@ -2,14 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QGridLayout
-from widgets.common.background_frame import BackgroundFrame
-from widgets.common.fixed_text import FixedText
-from widgets.common.value_spin import ValueSpin
-from widgets.common.mapping_combo import MappingCombo
-from widgets.common.control_combo import ControlCombo
-from widgets.common.grid_table import GridTable, GridDelegate
-from widgets.common.normal_model import NormalModel
-
+from widgets.common import *
 from attributes import Quantity
 
 person_identity = {0: '君主[放浪]', 1: '軍師', 2: '将軍', 3: '武将', 4: '文官', 5: '放浪', 6: '在野', 7: '未登場',

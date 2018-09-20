@@ -2,12 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QGridLayout
-from widgets.common.background_frame import BackgroundFrame
-from widgets.common.fixed_text import FixedText
-from widgets.common.value_spin import ValueSpin
-from widgets.common.mapping_combo import MappingCombo
-from widgets.common.grid_table import GridTable, GridDelegate
-from widgets.common.normal_model import NormalModel
+from widgets.common import *
 from attributes import Quantity
 
 npc = {

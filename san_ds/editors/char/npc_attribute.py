@@ -2,11 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QGridLayout
-from widgets.common.background_frame import BackgroundFrame
-from widgets.common.fixed_text import FixedText
-from widgets.common.multiline_text import MultilineText
-from widgets.common.grid_table import GridTable, GridDelegate
-from widgets.common.normal_model import NormalModel
+from widgets.common import *
+
 
 class NpcAttribute(BackgroundFrame):
     def __init__(self, buffer):
