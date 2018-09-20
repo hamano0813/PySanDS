@@ -68,7 +68,7 @@ class Length:
         data_bytes = unpack_from('512s', buffer, data_address)[0]
         for idx, character in enumerate(data_bytes[data_bytes.index(b'\00'):]):
             if character != b'\00':
-                return data_bytes.index(b'\00') + idx - 1
+                return data_bytes.index(b'\00') + idx
         return 2
 
     def _get_length(self, buffer: bytearray, global_offset: int) -> int:

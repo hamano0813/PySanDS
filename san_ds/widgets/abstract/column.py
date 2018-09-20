@@ -72,7 +72,10 @@ class ColumnObject(QObject):
     @property
     def widget_width(self):
         if self.editor == FixedText:
-            return self.data_type.length.normal_length * 8
+            if self.data_type.length.normal_length:
+                return self.data_type.length.normal_length * 8
+            else:
+                return 50
         elif self.editor == ValueSpin:
             if self.data_type.bit is None:
                 max_value = 0x100 ** self.data_type.length.normal_length - 1

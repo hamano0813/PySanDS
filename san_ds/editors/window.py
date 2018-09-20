@@ -12,11 +12,11 @@ from editors.item.prop_attribute import PropAttribute
 from editors.item.spec_attribute import SpecAttribute
 
 CHILD_MAPPING = {
-    '武将属性': CharAttribute,
-    '武将登场': CharDebut,
-    'NPC属性': NpcAttribute,
-    '道具属性': PropAttribute,
-    '特产属性': SpecAttribute,
+    '武将データ': CharAttribute,
+    '武将登場': CharDebut,
+    'NPCデータ': NpcAttribute,
+    '基本アイテム': PropAttribute,
+    '特産アイテム': SpecAttribute,
 }
 
 
@@ -28,38 +28,38 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
         self.init_menu()
-        self.setWindowTitle('三国志DS Rom编辑器 - by 全力全开')
+        self.setWindowTitle('三國志DS Rom修改器')
         self.setMinimumSize(1280, 720)
 
     def init_menu(self):
-        load_rom = self.create_action('载入Rom', self.load_rom)
-        save_rom = self.create_action('保存Rom', self.save_rom)
+        load_rom = self.create_action('載入...', self.load_rom)
+        save_rom = self.create_action('保存', self.save_rom)
         save_rom.setEnabled(False)
-        save_as = self.create_action('另存为', self.save_as)
+        save_as = self.create_action('另存為...', self.save_as)
         save_as.setEnabled(False)
-        close_child = self.create_action('关闭窗口', self.close_child)
+        close_child = self.create_action('關閉窗體', self.close_child)
         exit_editor = self.create_action('退出', self.close)
 
-        char_attribute = self.create_action('武将属性', self.open_editor_frame)
-        char_debut = self.create_action('武将登场', self.open_editor_frame)
-        npc_attribute = self.create_action('NPC属性', self.open_editor_frame)
+        char_attribute = self.create_action('武将データ', self.open_editor_frame)
+        char_debut = self.create_action('武将登場', self.open_editor_frame)
+        npc_attribute = self.create_action('NPCデータ', self.open_editor_frame)
 
-        char_menu = self.create_menu('角色编辑', None, [char_attribute, char_debut, npc_attribute])
+        char_menu = self.create_menu('キャラ編集', None, [char_attribute, char_debut, npc_attribute])
         char_menu.setEnabled(False)
 
-        prop_attribute = self.create_action('道具属性', self.open_editor_frame)
-        spec_attribute = self.create_action('特产属性', self.open_editor_frame)
+        prop_attribute = self.create_action('基本アイテム', self.open_editor_frame)
+        spec_attribute = self.create_action('特産アイテム', self.open_editor_frame)
 
-        item_menu = self.create_menu('物品编辑', None, [prop_attribute, spec_attribute])
+        item_menu = self.create_menu('アイテム編集', None, [prop_attribute, spec_attribute])
         item_menu.setEnabled(False)
 
-        file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
+        file_menu = self.create_menu('メニュー', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         self.menuBar().addMenu(file_menu)
         self.menuBar().addMenu(char_menu)
         self.menuBar().addMenu(item_menu)
 
     def load_rom(self):
-        file_path = QFileDialog().getOpenFileName(None, '打开Rom文件', './', 'Rom文件 *.nds',
+        file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', './', 'Rom文件 *.nds',
                                                   options=QFileDialog.DontResolveSymlinks)[0]
         if file_path:
             self.file_path = file_path
@@ -70,15 +70,15 @@ class MainWindow(QMainWindow):
         file = open(self.file_path, 'wb')
         file.write(self.buffer)
         file.close()
-        box = QMessageBox(QMessageBox.Warning, '完毕', '保存完毕\n是否退出？')
-        yes = box.addButton('确定', QMessageBox.YesRole)
+        box = QMessageBox(QMessageBox.Warning, '完成', '保存完畢\n是否退出？')
+        yes = box.addButton('確定', QMessageBox.YesRole)
         box.addButton('取消', QMessageBox.NoRole)
         box.exec_()
         if box.clickedButton() == yes:
             self.close()
 
     def save_as(self):
-        file_path = QFileDialog().getSaveFileName(None, '另存为Rom文件', './', 'Rom文件 *.nds',
+        file_path = QFileDialog().getSaveFileName(None, '保存Rom文件', './', 'Rom文件 *.nds',
                                                   options=QFileDialog.DontResolveSymlinks)[0]
         if file_path:
             self.file_path = file_path
@@ -89,10 +89,10 @@ class MainWindow(QMainWindow):
             self.centralWidget().close()
 
     def start_edit(self):
-        self.findChild(QAction, '保存Rom').setEnabled(True)
-        self.findChild(QAction, '另存为').setEnabled(True)
-        self.findChild(QMenu, '角色编辑').setEnabled(True)
-        self.findChild(QMenu, '物品编辑').setEnabled(True)
+        self.findChild(QAction, '保存').setEnabled(True)
+        self.findChild(QAction, '另存為...').setEnabled(True)
+        self.findChild(QMenu, 'キャラ編集').setEnabled(True)
+        self.findChild(QMenu, 'アイテム編集').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)

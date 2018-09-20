@@ -28,18 +28,21 @@ class PropAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [
-            (FixedText, '物品属性_名称'),
-            (ValueSpin, '物品属性_忠诚', None, 100),
-            (ValueSpin, '道具属性_效果1'),
-            (ValueSpin, '道具属性_效果2'),
-            (MappingCombo, '道具归属_剧本1', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本2', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本3', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本4', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本5', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本6', '武将属性_姓名', npc),
-            (MappingCombo, '道具归属_剧本7', '武将属性_姓名', npc),
+            (FixedText, 'アイテムデータ_アイテム'),
+            (ValueSpin, 'アイテムデータ_忠誠上昇', None, 100),
+            (ValueSpin, 'アイテムデータ_効果１'),
+            (ValueSpin, 'アイテムデータ_効果２'),
+            (MappingCombo, '基本アイテム_シナリオ１', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ２', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ３', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ４', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ５', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ６', '武将データ_名前', npc),
+            (MappingCombo, '基本アイテム_シナリオ７', '武将データ_名前', npc),
         ], Quantity(0xD))
+        attribute_table.setColumnWidth(1, 64)
+        attribute_table.setColumnWidth(2, 50)
+        attribute_table.setColumnWidth(3, 50)
         layout = QGridLayout()
         layout.addWidget(attribute_table)
         self.setLayout(layout)

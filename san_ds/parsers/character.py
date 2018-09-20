@@ -51,8 +51,11 @@ class Character:
 
     @staticmethod
     def decode_text(data: bytes) -> str:
-        return ''.join([DECODE_MAPPING[char] if char in DECODE_MAPPING else char
-                        for char in data.replace(b'\r', b'\n').decode(CODE_ALIASES)])
+        try:
+            return ''.join([DECODE_MAPPING[char] if char in DECODE_MAPPING else char
+                            for char in data.replace(b'\r', b'\n').decode(CODE_ALIASES)])
+        except UnicodeDecodeError:
+            return ''
 
     @staticmethod
     def encode_text(text: str) -> bytes:

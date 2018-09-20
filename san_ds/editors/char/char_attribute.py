@@ -31,24 +31,24 @@ class CharAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [
-            (FixedText, '武将属性_姓名'),
-            (FixedText, '武将属性_读音'),
-            (ValueSpin, '武将属性_武力', None, 100),
-            (ValueSpin, '武将属性_智力', None, 100),
-            (ValueSpin, '武将属性_政治', None, 100),
-            (ValueSpin, '武将属性_魅力', None, 100),
-            (ValueSpin, '武将属性_陆指', None, 100),
-            (ValueSpin, '武将属性_水指', None, 100),
-            (ValueSpin, '武将属性_野望'),
-            (ValueSpin, '武将属性_幸运'),
-            (ValueSpin, '武将属性_冷静'),
-            (ValueSpin, '武将属性_勇猛'),
-            (ValueSpin, '武将属性_相性'),
-            (ValueSpin, '武将属性_义理'),
-            (ValueSpin, '武将属性_生年'),
-            (ValueSpin, '武将属性_寿命'),
-            (MappingCombo, '武将属性_家族', None, family),
-            (MultilineText, '文本_角色列传')
+            (FixedText, '武将データ_名前'),
+            (FixedText, '武将データ_読み'),
+            (ValueSpin, '武将データ_武力', None, 100),
+            (ValueSpin, '武将データ_知力', None, 100),
+            (ValueSpin, '武将データ_政治', None, 100),
+            (ValueSpin, '武将データ_魅力', None, 100),
+            (ValueSpin, '武将データ_陸指', None, 100),
+            (ValueSpin, '武将データ_水指', None, 100),
+            (ValueSpin, '武将データ_野望'),
+            (ValueSpin, '武将データ_幸運'),
+            (ValueSpin, '武将データ_冷静'),
+            (ValueSpin, '武将データ_勇猛'),
+            (ValueSpin, '武将データ_相性'),
+            (ValueSpin, '武将データ_義理'),
+            (ValueSpin, '武将データ_生年'),
+            (ValueSpin, '武将データ_寿命'),
+            (MappingCombo, '武将データ_家族', None, family),
+            (MultilineText, '文本_キャラ伝記')
         ])
         layout = QGridLayout()
         layout.addWidget(attribute_table)

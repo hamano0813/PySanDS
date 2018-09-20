@@ -12,8 +12,8 @@ class NpcAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [
-            (FixedText, 'NPC属性_姓名'),
-            (MultilineText, '文本_角色列传')
+            (FixedText, 'NPCデータ_名前'),
+            (MultilineText, '文本_キャラ伝記')
         ])
         attribute_table.model().column_objects[1].data_type.set_start(0x302)
         layout = QGridLayout()

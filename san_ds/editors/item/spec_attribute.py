@@ -21,34 +21,42 @@ signed.update({65280: '=0'})
 
 move = {0: 'ー', 1: '+1', 2: '+2'}
 
-retreat = {0: 'ー', 1: '是'}
+retreat = {0: 'ー', 1: '√'}
 
 
 class SpecAttribute(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
         attribute_table = GridTable(self, [
-            (FixedText, '物品属性_名称'),
-            (ValueSpin, '物品属性_忠诚', None, 100),
-            (ValueSpin, '特产效果_武力', None, 30),
-            (ValueSpin, '特产效果_智力', None, 30),
-            (ValueSpin, '特产效果_政治', None, 30),
-            (ValueSpin, '特产效果_魅力', None, 30),
-            (ValueSpin, '特产效果_陆指', None, 30),
-            (ValueSpin, '特产效果_水指', None, 30),
-            (ValueSpin, '特产效果_义理', None, 30),
-            (MappingCombo, '特产效果_寿命', None, lifetime),
-            (MappingCombo, '特产效果_野望', None, signed),
-            (MappingCombo, '特产效果_幸运', None, unsigned),
-            (MappingCombo, '特产效果_冷静', None, unsigned),
-            (MappingCombo, '特产效果_勇猛', None, unsigned),
-            (MappingCombo, '特产效果_机动力', None, move),
-            (MappingCombo, '特产效果_强制退却', None, retreat),
+            (FixedText, 'アイテムデータ_アイテム'),
+            (ValueSpin, 'アイテムデータ_忠誠上昇', None, 100),
+            (ValueSpin, 'アイテムデータ_効果１', None, 30),
+            (ValueSpin, 'アイテムデータ_効果２', None, 30),
+            (FixedText, '特産アイテム_効果文本'),
+            (FixedText, '特産アイテム_種類'),
+            (ValueSpin, '特産アイテム_武力', None, 30),
+            (ValueSpin, '特産アイテム_知力', None, 30),
+            (ValueSpin, '特産アイテム_政治', None, 30),
+            (ValueSpin, '特産アイテム_魅力', None, 30),
+            (ValueSpin, '特産アイテム_陸指', None, 30),
+            (ValueSpin, '特産アイテム_水指', None, 30),
+            (ValueSpin, '特産アイテム_義理', None, 30),
+            (MappingCombo, '特産アイテム_寿命', None, lifetime),
+            (MappingCombo, '特産アイテム_野望', None, signed),
+            (MappingCombo, '特産アイテム_幸運', None, unsigned),
+            (MappingCombo, '特産アイテム_冷静', None, unsigned),
+            (MappingCombo, '特産アイテム_勇猛', None, unsigned),
+            (MappingCombo, '特産アイテム_機動力', None, move),
+            (MappingCombo, '特産アイテム_退却確実', None, retreat),
         ], Quantity(0x36))
 
-        [attribute_table.model().column_objects[i].data_type.set_start(0xD) for i in range(2)]
-        [attribute_table.setColumnWidth(i, 50) for i in range(1, 15)]
-        attribute_table.setColumnWidth(15, 60)
+        [attribute_table.model().column_objects[i].data_type.set_start(0xD) for i in range(4)]
+        [attribute_table.setColumnWidth(i, 50) for i in range(5, 19)]
+        attribute_table.setColumnWidth(1, 64)
+        attribute_table.setColumnWidth(2, 50)
+        attribute_table.setColumnWidth(3, 50)
+        attribute_table.setColumnWidth(4, 160)
+        attribute_table.setColumnWidth(19, 64)
         layout = QGridLayout()
         layout.addWidget(attribute_table)
         self.setLayout(layout)
