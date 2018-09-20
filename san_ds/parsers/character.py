@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from struct import unpack_from, pack_into
+from PyQt5.QtCore import QRegExp
 from attributes import Address, Length, Quantity
-from configs import CODE_ALIASES, DECODE_MAPPING, ENCODE_MAPPING
+from configs import CODE_ALIASES, DECODE_MAPPING, ENCODE_MAPPING, EXPAND_CHARACTER
 
 
 class Character:
@@ -14,6 +15,10 @@ class Character:
         self.length = Length(**length)
         self.quantity = Quantity(**quantity)
         self.record = record
+        char_file = open('./configs/character.txt', 'r', encoding='UTF-8')
+        regex_char = char_file.read() + EXPAND_CHARACTER
+        char_file.close()
+        self.reg_exp = QRegExp(f'[{regex_char}\\n\\r]+')
 
     def set_offset(self, offset: int):
         self.offset = offset
@@ -36,7 +41,8 @@ class Character:
 
     def set_data(self, data_index: int, text: str):
         if data_index < self.real_quantity:
-            data = self.encode_text(text)
+            temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in text])
+            data = self.encode_text(temp)
             self.length(self.buffer, self.record * (data_index + self.start) + self.offset, len(data))
             address = self.address(self.buffer, self.record * (data_index + self.start) + self.offset)
             length = self.length(self.buffer, self.record * (data_index + self.start) + self.offset)
