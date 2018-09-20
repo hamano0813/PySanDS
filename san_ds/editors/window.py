@@ -5,11 +5,8 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.char.char_attribute import CharAttribute
-from editors.char.char_debut import CharDebut
-from editors.char.npc_attribute import NpcAttribute
-from editors.item.prop_attribute import PropAttribute
-from editors.item.spec_attribute import SpecAttribute
+from editors.char import CharAttribute, CharDebut, NpcAttribute
+from editors.item import PropAttribute, SpecAttribute
 
 CHILD_MAPPING = {
     '武将データ': CharAttribute,
