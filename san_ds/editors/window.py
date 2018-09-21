@@ -7,6 +7,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.char import CharAttribute, CharDebut, NpcAttribute
 from editors.item import PropAttribute, SpecAttribute
+from editors.scenario import ScenarioData
 
 CHILD_MAPPING = {
     '武将データ': CharAttribute,
@@ -14,6 +15,7 @@ CHILD_MAPPING = {
     'NPCデータ': NpcAttribute,
     '基本アイテム': PropAttribute,
     '特産アイテム': SpecAttribute,
+    '勢力データ': ScenarioData,
 }
 
 
@@ -50,10 +52,15 @@ class MainWindow(QMainWindow):
         item_menu = self.create_menu('アイテム編集', None, [prop_attribute, spec_attribute])
         item_menu.setEnabled(False)
 
+        scenario_data = self.create_action('勢力データ', self.open_editor_frame)
+        scenario_menu = self.create_menu('シナリオ', None, [scenario_data])
+        scenario_menu.setEnabled(False)
+
         file_menu = self.create_menu('メニュー', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         self.menuBar().addMenu(file_menu)
         self.menuBar().addMenu(char_menu)
         self.menuBar().addMenu(item_menu)
+        self.menuBar().addMenu(scenario_menu)
 
     def load_rom(self):
         file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', './', 'Rom文件 *.nds',
@@ -90,6 +97,7 @@ class MainWindow(QMainWindow):
         self.findChild(QAction, '另存為...').setEnabled(True)
         self.findChild(QMenu, 'キャラ編集').setEnabled(True)
         self.findChild(QMenu, 'アイテム編集').setEnabled(True)
+        self.findChild(QMenu, 'シナリオ').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)
