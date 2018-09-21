@@ -41,9 +41,3 @@ class MappingCombo(QComboBox, SingleObject):
 
     def set_value(self, value):
         self.setCurrentText(self.mapping.get(value, 'ーー'))
-
-    @property
-    def widget_width(self):
-        if self.mapping_type:
-            return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 25
-        return max(len(i.split('.')[0]) + 1 + len(i.split('.')[-1]) * 2 for i in self.mapping.values()) * 7 + 10
