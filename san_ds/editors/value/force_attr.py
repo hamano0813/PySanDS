@@ -26,7 +26,7 @@ def header_data(self, section: int, orientation, role=Qt.DisplayRole):
 Model = type('Model', (NormalModel, ), {'headerData': header_data})
 
 
-class ForceData(BackgroundFrame):
+class ForceAttr(BackgroundFrame):
     # noinspection PyArgumentList
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
@@ -36,8 +36,8 @@ class ForceData(BackgroundFrame):
 
         scenario_combo = ControlCombo(self, '劇本屬性_劇本名')
 
-        scenario_data_table = GridTable(self)
-        scenario_data_model = Model(self, [
+        force_attr_table = GridTable(self)
+        force_attr_model = Model(self, [
             (PictureCombo, '劇本勢力_紋章', None, emblem_dict),
             (MappingCombo, '劇本勢力_君主', '武將屬性_姓名', True),
             (MappingCombo, '劇本勢力_首都', '都市屬性_都市名', True),
@@ -63,20 +63,20 @@ class ForceData(BackgroundFrame):
             (ValueSpin, '劇本勢力_敵對20', None, 100),
             (ValueSpin, '劇本勢力_敵對21', None, 100),
         ], Quantity(0x15))
-        scenario_data_table.setModel(scenario_data_model)
-        scenario_data_table.setItemDelegate(GridDelegate(self))
+        force_attr_table.setModel(force_attr_model)
+        force_attr_table.setItemDelegate(GridDelegate(self))
 
-        scenario_combo.add_control_target(scenario_data_model.column_objects[0].data_type.set_offset, emblem_offsets)
-        [scenario_combo.add_control_target(scenario_data_model.column_objects[i].data_type.set_offset, data_offsets)
+        scenario_combo.add_control_target(force_attr_model.column_objects[0].data_type.set_offset, emblem_offsets)
+        [scenario_combo.add_control_target(force_attr_model.column_objects[i].data_type.set_offset, data_offsets)
          for i in range(1, 24)]
-        scenario_combo.add_control_widget(scenario_data_table)
+        scenario_combo.add_control_widget(force_attr_table)
 
-        scenario_data_table.setColumnWidth(0, 30)
-        scenario_data_table.setColumnWidth(1, 100)
-        scenario_data_table.setColumnWidth(2, 72)
-        [scenario_data_table.setColumnWidth(i, 40) for i in range(3, 24)]
+        force_attr_table.setColumnWidth(0, 45)
+        force_attr_table.setColumnWidth(1, 120)
+        force_attr_table.setColumnWidth(2, 90)
+        [force_attr_table.setColumnWidth(i, 55) for i in range(3, 24)]
 
         layout = QGridLayout()
         layout.addWidget(scenario_combo, 0, 0, 1, 1)
-        layout.addWidget(scenario_data_table, 1, 0, 1, 1)
+        layout.addWidget(force_attr_table, 1, 0, 1, 1)
         self.setLayout(layout)

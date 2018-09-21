@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from editors.value.char_attribute import CharAttribute
-from editors.value.char_debut import CharDebut
-from editors.value.npc_attribute import NpcAttribute
-from editors.value.force_data import ForceData
-from editors.value.prop_attribute import PropAttribute
-from editors.value.spec_attribute import SpecAttribute
+from editors.value.char_attr import CharAttr
+from editors.value.debut_attr import DebutAttr
+from editors.value.npc_attr import NpcAttr
+from editors.value.force_attr import ForceAttr
+from editors.value.prop_attr import PropAttr
+from editors.value.spec_attr import SpecAttr

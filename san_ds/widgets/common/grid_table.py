@@ -62,6 +62,6 @@ class GridTable(QTableView, ControlObject):
     def set_width(self, func):
         def wrapper(model):
             func(model)
-            [self.setRowHeight(i, 25) for i in range(self.model().rowCount())]
+            [self.setRowHeight(i, 30) for i in range(self.model().rowCount())]
 
         return wrapper

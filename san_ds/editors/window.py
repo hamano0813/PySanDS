@@ -5,15 +5,15 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.value import CharAttribute, CharDebut, NpcAttribute, PropAttribute, SpecAttribute, ForceData
+from editors.value import CharAttr, DebutAttr, NpcAttr, PropAttr, SpecAttr, ForceAttr
 
 CHILD_MAPPING = {
-    '武將屬性': CharAttribute,
-    '武將登場': CharDebut,
-    'NPC屬性': NpcAttribute,
-    '道具屬性': PropAttribute,
-    '特產屬性': SpecAttribute,
-    '勢力編輯': ForceData,
+    '武將修改': CharAttr,
+    '登場修改': DebutAttr,
+    'NPC修改': NpcAttr,
+    '道具修改': PropAttr,
+    '特產修改': SpecAttr,
+    '勢力修改': ForceAttr,
 }
 
 
@@ -37,16 +37,16 @@ class MainWindow(QMainWindow):
         close_child = self.create_action('關閉窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
         file_menu = self.create_menu('主菜單', None, [load_rom, save_rom, save_as, close_child, exit_editor])
+        
+        char_attr = self.create_action('武將修改', self.open_editor_frame)
+        npc_attr = self.create_action('NPC修改', self.open_editor_frame)
+        debut_attr = self.create_action('登場修改', self.open_editor_frame)
+        prop_attr = self.create_action('道具修改', self.open_editor_frame)
+        spec_attr = self.create_action('特產修改', self.open_editor_frame)
+        force_attr = self.create_action('勢力修改', self.open_editor_frame)
 
-        char_attribute = self.create_action('武將屬性', self.open_editor_frame)
-        char_debut = self.create_action('武將登場', self.open_editor_frame)
-        npc_attribute = self.create_action('NPC屬性', self.open_editor_frame)
-        prop_attribute = self.create_action('道具屬性', self.open_editor_frame)
-        spec_attribute = self.create_action('特產屬性', self.open_editor_frame)
-        force_data = self.create_action('勢力編輯', self.open_editor_frame)
         data_menu = self.create_menu('數值修改', None,
-                                     [char_attribute, char_debut, npc_attribute, prop_attribute, spec_attribute,
-                                      force_data])
+                                     [char_attr, npc_attr, debut_attr, prop_attr, spec_attr, force_attr])
         data_menu.setEnabled(False)
 
         self.menuBar().addMenu(file_menu)

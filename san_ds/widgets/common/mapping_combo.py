@@ -27,11 +27,11 @@ class MappingCombo(QComboBox, SingleObject):
         if isinstance(self.attach, dict):
             mapping.update(self.attach)
         elif self.attach is True:
-            mapping.update({0x100 ** self.data_type.length.normal_length - 1: 'ーー'})
+            mapping.update({0x100 ** self.data_type.length.normal_length - 1: '—'})
         return mapping
 
     def refresh_data(self):
-        self.setCurrentText(self.mapping.get(self.data_type.get_data(self.data_index), 'ーー'))
+        self.setCurrentText(self.mapping.get(self.data_type.get_data(self.data_index), '—'))
 
     def save_data(self):
         self.data_type.set_data(self.data_index, list(self.mapping.keys())[self.currentIndex()])
@@ -40,4 +40,4 @@ class MappingCombo(QComboBox, SingleObject):
         return list(self.mapping.keys())[self.currentIndex()]
 
     def set_value(self, value):
-        self.setCurrentText(self.mapping.get(value, 'ーー'))
+        self.setCurrentText(self.mapping.get(value, '—'))

@@ -16,16 +16,16 @@ npc = {
     845: '845.李意',
     846: '846.吉平',
     847: '847.献帝',
-    65535: 'ーー',
+    65535: '—',
 }
 
 
-class PropAttribute(BackgroundFrame):
+class PropAttr(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
-        prop_attribute_table = GridTable(self)
-        prop_attribute_model = NormalModel(self, [
+        prop_attr_table = GridTable(self)
+        prop_attr_model = NormalModel(self, [
             (FixedText, '物品屬性_物品'),
             (ValueSpin, '物品屬性_忠誠上昇', None, 100),
             (ValueSpin, '物品屬性_效果1'),
@@ -38,15 +38,15 @@ class PropAttribute(BackgroundFrame):
             (MappingCombo, '道具歸屬_劇本6', '武將屬性_姓名', npc),
             (MappingCombo, '道具歸屬_劇本7', '武將屬性_姓名', npc),
         ], Quantity(0xD))
-        prop_attribute_table.setModel(prop_attribute_model)
-        prop_attribute_table.setItemDelegate(GridDelegate(self))
+        prop_attr_table.setModel(prop_attr_model)
+        prop_attr_table.setItemDelegate(GridDelegate(self))
 
-        prop_attribute_table.setColumnWidth(0, 90)
-        prop_attribute_table.setColumnWidth(1, 60)
-        prop_attribute_table.setColumnWidth(2, 50)
-        prop_attribute_table.setColumnWidth(3, 50)
-        [prop_attribute_table.setColumnWidth(i, 100) for i in range(4, 11)]
+        prop_attr_table.setColumnWidth(0, 110)
+        prop_attr_table.setColumnWidth(1, 72)
+        prop_attr_table.setColumnWidth(2, 55)
+        prop_attr_table.setColumnWidth(3, 55)
+        [prop_attr_table.setColumnWidth(i, 120) for i in range(4, 11)]
 
         layout = QGridLayout()
-        layout.addWidget(prop_attribute_table)
+        layout.addWidget(prop_attr_table)
         self.setLayout(layout)

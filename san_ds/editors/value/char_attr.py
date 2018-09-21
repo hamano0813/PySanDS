@@ -18,16 +18,16 @@ family = {
     10: '0A.張魯',
     11: '0B.孟獲',
     12: '0C.荀彧',
-    255: 'ーー'
+    255: '—'
 }
 
 
-class CharAttribute(BackgroundFrame):
+class CharAttr(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
-        char_attribute_table = GridTable(self)
-        char_attribute_model = NormalModel(self, [
+        char_attr_table = GridTable(self)
+        char_attr_model = NormalModel(self, [
             (FixedText, '武將屬性_姓名'),
             (FixedText, '武將屬性_讀音'),
             (ValueSpin, '武將屬性_武力', None, 100),
@@ -47,14 +47,14 @@ class CharAttribute(BackgroundFrame):
             (MappingCombo, '武將屬性_家族', None, family),
             (MultilineText, '文本_人物列傳')
         ])
-        char_attribute_table.setModel(char_attribute_model)
-        char_attribute_table.setItemDelegate(GridDelegate(self))
+        char_attr_table.setModel(char_attr_model)
+        char_attr_table.setItemDelegate(GridDelegate(self))
 
-        [char_attribute_table.setColumnWidth(i, 56) for i in range(2)]
-        [char_attribute_table.setColumnWidth(i, 40) for i in range(2, 16)]
-        char_attribute_table.setColumnWidth(16, 80)
-        char_attribute_table.setColumnWidth(17, 240)
+        [char_attr_table.setColumnWidth(i, 75) for i in range(2)]
+        [char_attr_table.setColumnWidth(i, 55) for i in range(2, 16)]
+        char_attr_table.setColumnWidth(16, 100)
+        char_attr_table.setColumnWidth(17, 300)
 
         layout = QGridLayout()
-        layout.addWidget(char_attribute_table)
+        layout.addWidget(char_attr_table)
         self.setLayout(layout)

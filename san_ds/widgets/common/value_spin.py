@@ -50,10 +50,10 @@ class ValueSpin(QSpinBox, SingleObject):
 
     def textFromValue(self, value):
         if value > self.max_value:
-            return 'ー'
+            return '—'
         return str(value)
 
     def valueFromText(self, text):
-        if text == 'ー':
+        if text == '—':
             return self.max_value
         return int(text)

@@ -10,15 +10,15 @@ person_identity = {0: '君主[放浪]', 1: '軍師', 2: '将軍', 3: '武將', 4
 debut_offsets = [0x0, -0xC04, -0x1808, -0x240C, -0x3010, -0x3C14, 0xC04]
 
 
-class CharDebut(BackgroundFrame):
+class DebutAttr(BackgroundFrame):
     # noinspection PyArgumentList
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
         scenario_combo = ControlCombo(self, '劇本屬性_劇本名')
 
-        scenario_debut_table = GridTable(self)
-        scenario_debut_model = NormalModel(self, [
+        debut_attr_table = GridTable(self)
+        debut_attr_model = NormalModel(self, [
             (FixedText, '武將屬性_姓名'),
             (ValueSpin, '武將登場_登場年'),
             (MappingCombo, '武將登場_血緣', '武將屬性_姓名', True),
@@ -27,16 +27,16 @@ class CharDebut(BackgroundFrame):
             (ValueSpin, '武將登場_忠誠', None, 100),
             (ValueSpin, '武將登場_兵数', None, 200),
         ], Quantity(0x301))
-        scenario_debut_table.setModel(scenario_debut_model)
-        scenario_debut_table.setItemDelegate(GridDelegate(self))
+        debut_attr_table.setModel(debut_attr_model)
+        debut_attr_table.setItemDelegate(GridDelegate(self))
 
-        [scenario_combo.add_control_target(scenario_debut_model.column_objects[i].data_type.set_offset, debut_offsets)
+        [scenario_combo.add_control_target(debut_attr_model.column_objects[i].data_type.set_offset, debut_offsets)
          for i in range(3, 7)]
-        scenario_combo.add_control_widget(scenario_debut_table)
+        scenario_combo.add_control_widget(debut_attr_table)
 
-        [scenario_debut_table.setColumnWidth(i, width) for i, width in enumerate([56, 40, 100, 80, 72, 40, 40])]
+        [debut_attr_table.setColumnWidth(i, width) for i, width in enumerate([75, 60, 120, 120, 90, 60, 60])]
 
         layout = QGridLayout()
         layout.addWidget(scenario_combo, 0, 0, 1, 1)
-        layout.addWidget(scenario_debut_table, 1, 0, 1, 1)
+        layout.addWidget(debut_attr_table, 1, 0, 1, 1)
         self.setLayout(layout)

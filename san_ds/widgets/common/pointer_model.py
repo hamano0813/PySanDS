@@ -46,10 +46,10 @@ class ColumnObject(QObject):
         if isinstance(self.attach, dict):
             mapping.update(self.attach)
         elif self.attach is True:
-            mapping.update({0x100 ** self.data_type.length.normal_length - 1: 'ーー'})
+            mapping.update({0x100 ** self.data_type.length.normal_length - 1: '—'})
         elif isinstance(self.attach, int):
             number = {i: i for i in range(self.attach + 1)}
-            number.update({0x100 ** self.data_type.length.normal_length - 1: 'ー'})
+            number.update({0x100 ** self.data_type.length.normal_length - 1: '—'})
             mapping.update(number)
         return mapping
 
