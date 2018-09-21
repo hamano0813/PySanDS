@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtCore import QObject, QAbstractTableModel, Qt, QModelIndex, QVariant
-from PyQt5.QtGui import QIcon
 from PIL import Image
 from parsers import Character, Numerical
 from configs import DATA_PARAMETER
@@ -49,7 +48,7 @@ class ColumnObject(QObject):
         data = self.data_type.get_data(index.row())
         if role == Qt.DecorationRole:
             if isinstance(self.mapping.get(data), Image.Image):
-                return QIcon(self.mapping.get(data).toqpixmap())
+                return self.mapping.get(data).toqpixmap()
         if role == Qt.DisplayRole:
             if self.mapping:
                 if isinstance(self.mapping.get(data), Image.Image):
