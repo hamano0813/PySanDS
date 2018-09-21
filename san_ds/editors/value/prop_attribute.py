@@ -30,13 +30,13 @@ class PropAttribute(BackgroundFrame):
             (ValueSpin, '物品屬性_忠誠上昇', None, 100),
             (ValueSpin, '物品屬性_效果1'),
             (ValueSpin, '物品屬性_效果2'),
-            (MappingCombo, '道具歸屬_劇本1', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本2', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本3', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本4', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本5', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本6', '道具歸屬_劇本', npc),
-            (MappingCombo, '道具歸屬_劇本7', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本1', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本2', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本3', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本4', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本5', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本6', '武將屬性_姓名', npc),
+            (MappingCombo, '道具歸屬_劇本7', '武將屬性_姓名', npc),
         ], Quantity(0xD))
         prop_attribute_table.setModel(prop_attribute_model)
         prop_attribute_table.setItemDelegate(GridDelegate(self))
