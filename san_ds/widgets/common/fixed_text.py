@@ -26,7 +26,7 @@ class FixedText(QLineEdit, SingleObject):
 
     def gogogo(self):
         self.setToolTip(
-            f'''最大字節長度{self.data_type.length(self.data_type.buffer,self.data_type.record * self.parent().parent().currentIndex().row())}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
+            f'''最大字節長度{self.data_type.length(self.data_type.buffer,self.data_type.record * self.parent().parent().currentIndex().row())}\n當前字節長度{len(self.displayText().encode(CODE_ALIASES))}''')
 
     def refresh_data(self):
         self.setText(self.data_type.get_data(self.data_index))
