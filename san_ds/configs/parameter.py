@@ -180,6 +180,12 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x35D},
         'record': 0xE04,
         'palette': {'normal_offset': 0x009DB274}},
+    '図_紋章1': {
+        'address': {'normal_offset': 0x0088D504},
+        'size': (232, 40),
+        'quantity': {'normal_quantity': 0x1},
+        'record': 0x0,
+        'palette': {'normal_offset': 0x0088F948}},
 
     'アイテムデータ_アイテム': {
         'address': {'normal_offset': 0x0011AC99},
@@ -316,4 +322,125 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x2},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x54},
+
+    'シナリオデータ_紋章': {
+        'address': {'normal_offset': 0x001275BC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1},
+    'シナリオデータ_君主': {
+        'address': {'normal_offset': 0x0012ACA2},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_首都': {
+        'address': {'normal_offset': 0x0012ACA4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対01': {
+        'address': {'normal_offset': 0x0012ACA6},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対02': {
+        'address': {'normal_offset': 0x0012ACA7},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対03': {
+        'address': {'normal_offset': 0x0012ACA8},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対04': {
+        'address': {'normal_offset': 0x0012ACA9},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対05': {
+        'address': {'normal_offset': 0x0012ACAA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対06': {
+        'address': {'normal_offset': 0x0012ACAB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対07': {
+        'address': {'normal_offset': 0x0012ACAC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対08': {
+        'address': {'normal_offset': 0x0012ACAD},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対09': {
+        'address': {'normal_offset': 0x0012ACAE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対10': {
+        'address': {'normal_offset': 0x0012ACAF},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対11': {
+        'address': {'normal_offset': 0x0012ACB0},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対12': {
+        'address': {'normal_offset': 0x0012ACB1},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対13': {
+        'address': {'normal_offset': 0x0012ACB2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対14': {
+        'address': {'normal_offset': 0x0012ACB3},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対15': {
+        'address': {'normal_offset': 0x0012ACB4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対16': {
+        'address': {'normal_offset': 0x0012ACB5},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対17': {
+        'address': {'normal_offset': 0x0012ACB6},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対18': {
+        'address': {'normal_offset': 0x0012ACB7},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対19': {
+        'address': {'normal_offset': 0x0012ACB8},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対20': {
+        'address': {'normal_offset': 0x0012ACB9},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
+    'シナリオデータ_敵対21': {
+        'address': {'normal_offset': 0x0012ACBA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x15},
+        'record': 0x1A},
 }
