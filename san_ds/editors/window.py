@@ -5,17 +5,15 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.char import CharAttribute, CharDebut, NpcAttribute
-from editors.item import PropAttribute, SpecAttribute
-from editors.scenario import ScenarioData
+from editors.value import CharAttribute, CharDebut, NpcAttribute, PropAttribute, SpecAttribute, ForceData
 
 CHILD_MAPPING = {
-    '武将データ': CharAttribute,
-    '武将登場': CharDebut,
-    'NPCデータ': NpcAttribute,
-    '基本アイテム': PropAttribute,
-    '特産アイテム': SpecAttribute,
-    '勢力データ': ScenarioData,
+    '武將屬性': CharAttribute,
+    '武將登場': CharDebut,
+    'NPC屬性': NpcAttribute,
+    '道具屬性': PropAttribute,
+    '特產屬性': SpecAttribute,
+    '勢力編輯': ForceData,
 }
 
 
@@ -31,36 +29,28 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(1280, 720)
 
     def init_menu(self):
-        load_rom = self.create_action('載入...', self.load_rom)
-        save_rom = self.create_action('保存', self.save_rom)
+        load_rom = self.create_action('載入Rom', self.load_rom)
+        save_rom = self.create_action('保存Rom', self.save_rom)
         save_rom.setEnabled(False)
-        save_as = self.create_action('另存為...', self.save_as)
+        save_as = self.create_action('另存為', self.save_as)
         save_as.setEnabled(False)
-        close_child = self.create_action('關閉窗體', self.close_child)
+        close_child = self.create_action('關閉窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
+        file_menu = self.create_menu('主菜單', None, [load_rom, save_rom, save_as, close_child, exit_editor])
 
-        char_attribute = self.create_action('武将データ', self.open_editor_frame)
-        char_debut = self.create_action('武将登場', self.open_editor_frame)
-        npc_attribute = self.create_action('NPCデータ', self.open_editor_frame)
+        char_attribute = self.create_action('武將屬性', self.open_editor_frame)
+        char_debut = self.create_action('武將登場', self.open_editor_frame)
+        npc_attribute = self.create_action('NPC屬性', self.open_editor_frame)
+        prop_attribute = self.create_action('道具屬性', self.open_editor_frame)
+        spec_attribute = self.create_action('特產屬性', self.open_editor_frame)
+        force_data = self.create_action('勢力編輯', self.open_editor_frame)
+        data_menu = self.create_menu('數值修改', None,
+                                     [char_attribute, char_debut, npc_attribute, prop_attribute, spec_attribute,
+                                      force_data])
+        data_menu.setEnabled(False)
 
-        char_menu = self.create_menu('キャラ編集', None, [char_attribute, char_debut, npc_attribute])
-        char_menu.setEnabled(False)
-
-        prop_attribute = self.create_action('基本アイテム', self.open_editor_frame)
-        spec_attribute = self.create_action('特産アイテム', self.open_editor_frame)
-
-        item_menu = self.create_menu('アイテム編集', None, [prop_attribute, spec_attribute])
-        item_menu.setEnabled(False)
-
-        scenario_data = self.create_action('勢力データ', self.open_editor_frame)
-        scenario_menu = self.create_menu('シナリオ', None, [scenario_data])
-        scenario_menu.setEnabled(False)
-
-        file_menu = self.create_menu('メニュー', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         self.menuBar().addMenu(file_menu)
-        self.menuBar().addMenu(char_menu)
-        self.menuBar().addMenu(item_menu)
-        self.menuBar().addMenu(scenario_menu)
+        self.menuBar().addMenu(data_menu)
 
     def load_rom(self):
         file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', './', 'Rom文件 *.nds',
@@ -74,7 +64,7 @@ class MainWindow(QMainWindow):
         file = open(self.file_path, 'wb')
         file.write(self.buffer)
         file.close()
-        box = QMessageBox(QMessageBox.Warning, '完成', '保存完畢\n是否退出？')
+        box = QMessageBox(QMessageBox.Warning, '完成', '保存Rom完畢\n是否退出？')
         yes = box.addButton('確定', QMessageBox.YesRole)
         box.addButton('取消', QMessageBox.NoRole)
         box.exec_()
@@ -93,11 +83,9 @@ class MainWindow(QMainWindow):
             self.centralWidget().close()
 
     def start_edit(self):
-        self.findChild(QAction, '保存').setEnabled(True)
-        self.findChild(QAction, '另存為...').setEnabled(True)
-        self.findChild(QMenu, 'キャラ編集').setEnabled(True)
-        self.findChild(QMenu, 'アイテム編集').setEnabled(True)
-        self.findChild(QMenu, 'シナリオ').setEnabled(True)
+        self.findChild(QAction, '保存Rom').setEnabled(True)
+        self.findChild(QAction, '另存為').setEnabled(True)
+        self.findChild(QMenu, '數值修改').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)

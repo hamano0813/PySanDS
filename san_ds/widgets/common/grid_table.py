@@ -53,6 +53,7 @@ class GridTable(QTableView, ControlObject):
 
     def refresh_data(self):
         self.reset()
+        self.horizontalHeader().reset()
 
     def index_changed(self, index: QModelIndex):
         row_index = index.row()

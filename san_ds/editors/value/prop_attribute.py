@@ -26,17 +26,17 @@ class PropAttribute(BackgroundFrame):
 
         prop_attribute_table = GridTable(self)
         prop_attribute_model = NormalModel(self, [
-            (FixedText, 'アイテムデータ_アイテム'),
-            (ValueSpin, 'アイテムデータ_忠誠上昇', None, 100),
-            (ValueSpin, 'アイテムデータ_効果１'),
-            (ValueSpin, 'アイテムデータ_効果２'),
-            (MappingCombo, '基本アイテム_シナリオ１', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ２', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ３', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ４', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ５', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ６', '武将データ_名前', npc),
-            (MappingCombo, '基本アイテム_シナリオ７', '武将データ_名前', npc),
+            (FixedText, '物品屬性_物品'),
+            (ValueSpin, '物品屬性_忠誠上昇', None, 100),
+            (ValueSpin, '物品屬性_效果1'),
+            (ValueSpin, '物品屬性_效果2'),
+            (MappingCombo, '道具歸屬_劇本1', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本2', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本3', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本4', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本5', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本6', '道具歸屬_劇本', npc),
+            (MappingCombo, '道具歸屬_劇本7', '道具歸屬_劇本', npc),
         ], Quantity(0xD))
         prop_attribute_table.setModel(prop_attribute_model)
         prop_attribute_table.setItemDelegate(GridDelegate(self))

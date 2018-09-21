@@ -13,10 +13,10 @@ buffer = bytearray(open(r'D:\Python\PySanDS\resource\4032.nds', 'rb').read())
 a = QObject()
 a.buffer = buffer
 #
-# char = Character(a, **DATA_PARAMETER.get('武将属性_姓名'))
+# value = Character(a, **DATA_PARAMETER.get('武将属性_姓名'))
 # number = Numerical(a, **DATA_PARAMETER.get('武将属性_武力'))
 # for i in range(770):
-#     print(char.get_data(i),'\t', number.get_data(i))
+#     print(value.get_data(i),'\t', number.get_data(i))
 
 pic = Picture(a, **DATA_PARAMETER.get('図_キャラアバター'))
 
