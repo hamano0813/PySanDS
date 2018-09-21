@@ -26,7 +26,7 @@ class PropAttr(BackgroundFrame):
 
         prop_attr_table = GridTable(self)
         prop_attr_model = NormalModel(self, [
-            (FixedText, '物品屬性_物品'),
+            (LineText, '物品屬性_物品'),
             (ValueSpin, '物品屬性_忠誠上昇', None, 100),
             (ValueSpin, '物品屬性_效果1'),
             (ValueSpin, '物品屬性_效果2'),

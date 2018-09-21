@@ -26,12 +26,12 @@ class SpecAttr(BackgroundFrame):
 
         spec_attr_table = GridTable(self)
         spec_attr_model = NormalModel(self, [
-            (FixedText, '物品屬性_物品'),
+            (LineText, '物品屬性_物品'),
             (ValueSpin, '物品屬性_忠誠上昇', None, 100),
             (ValueSpin, '物品屬性_效果1'),
             (ValueSpin, '物品屬性_效果2'),
-            (FixedText, '文本_道具效果'),
-            (FixedText, '特產屬性_種類'),
+            (LineText, '文本_道具效果'),
+            (LineText, '特產屬性_種類'),
             (ValueSpin, '特產屬性_武力', None, 30),
             (ValueSpin, '特產屬性_智力', None, 30),
             (ValueSpin, '特產屬性_政治', None, 30),

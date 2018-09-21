@@ -11,7 +11,7 @@ class NpcAttr(BackgroundFrame):
 
         npc_attribute_table = GridTable(self)
         npc_attribute_model = NormalModel(self, [
-            (FixedText, 'NPC屬性_姓名'),
+            (LineText, 'NPC屬性_姓名'),
             (MultilineText, '文本_人物列傳')
         ])
         npc_attribute_table.setModel(npc_attribute_model)

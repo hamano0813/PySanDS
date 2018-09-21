@@ -19,7 +19,7 @@ class DebutAttr(BackgroundFrame):
 
         debut_attr_table = GridTable(self)
         debut_attr_model = NormalModel(self, [
-            (FixedText, '武將屬性_姓名'),
+            (LineText, '武將屬性_姓名'),
             (ValueSpin, '武將登場_登場年'),
             (MappingCombo, '武將登場_血緣', '武將屬性_姓名', True),
             (MappingCombo, '武將登場_身份', None, person_identity),

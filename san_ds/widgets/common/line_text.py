@@ -9,7 +9,7 @@ from widgets.abstract import SingleObject
 from configs import CODE_ALIASES, EXPAND_CHARACTER
 
 
-class FixedText(QLineEdit, SingleObject):
+class LineText(QLineEdit, SingleObject):
     parser_type = Character
 
     def __init__(self, parent, data_name, mapping_name=None, attach=None):
@@ -22,11 +22,18 @@ class FixedText(QLineEdit, SingleObject):
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
         self.setValidator(QRegExpValidator(QRegExp(f'[{regex_char}\\n\\r]+')))
-        self.textEdited.connect(self.gogogo)
+        offset = self.data_type.record * self.parent().parent().currentIndex().row()
+        self.set_tip(f'最大字節長度{self.data_type.length(self.data_type.buffer, offset)}')
+        self.textEdited.connect(self.set_tip)
 
-    def gogogo(self):
-        self.setToolTip(
-            f'''最大字節長度{self.data_type.length(self.data_type.buffer,self.data_type.record * self.parent().parent().currentIndex().row())}\n當前字節長度{len(self.displayText().encode(CODE_ALIASES))}''')
+    def set_tip(self, tips: str = None):
+        if tips.startswith('最大字節長度'):
+            self.setToolTip(tips)
+        else:
+            max_len = self.data_type.length(self.data_type.buffer,
+                                            self.data_type.record * self.parent().parent().currentIndex().row())
+            current_len = len(self.displayText().encode(CODE_ALIASES))
+            self.setToolTip(f'最大字節長度{max_len}\n當前字節長度{current_len}')
 
     def refresh_data(self):
         self.setText(self.data_type.get_data(self.data_index))

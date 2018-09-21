@@ -28,8 +28,8 @@ class CharAttr(BackgroundFrame):
 
         char_attr_table = GridTable(self)
         char_attr_model = NormalModel(self, [
-            (FixedText, '武將屬性_姓名'),
-            (FixedText, '武將屬性_讀音'),
+            (LineText, '武將屬性_姓名'),
+            (LineText, '武將屬性_讀音'),
             (ValueSpin, '武將屬性_武力', None, 100),
             (ValueSpin, '武將屬性_智力', None, 100),
             (ValueSpin, '武將屬性_政治', None, 100),
