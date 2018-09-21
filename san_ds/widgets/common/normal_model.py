@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtCore import QObject, QAbstractTableModel, Qt, QModelIndex, QVariant
-from parsers import Character, Numerical, Picture
+from PyQt5.QtGui import QIcon
+from PIL import Image
+from parsers import Character, Numerical
 from configs import DATA_PARAMETER
 from attributes import Quantity
 
@@ -44,11 +46,14 @@ class ColumnObject(QObject):
         return parser_type(self.parent(), **parameter)
 
     def get_data(self, index: QModelIndex, role=Qt.DisplayRole):
+        data = self.data_type.get_data(index.row())
+        if role == Qt.DecorationRole:
+            if isinstance(self.mapping.get(data), Image.Image):
+                return QIcon(self.mapping.get(data).toqpixmap())
         if role == Qt.DisplayRole:
-            if isinstance(self.data_type, Picture):
-                return str(index.row()) + 'Picture'
-            data = self.data_type.get_data(index.row())
             if self.mapping:
+                if isinstance(self.mapping.get(data), Image.Image):
+                    return f'{list(self.mapping.keys()).index(data) + 1: {len(str(len(self.mapping) + 1))}d}'
                 return self.mapping.get(data) if self.mapping.get(data) is not None else QVariant()
             return str(data)
         if role == Qt.EditRole:
@@ -93,6 +98,8 @@ class NormalModel(QAbstractTableModel):
     def data(self, index: QModelIndex, role=None):
         if not index.isValid():
             return QVariant()
+        if role == Qt.DecorationRole:
+            return self.column_objects[index.column()].get_data(index, role)
         if role == Qt.DisplayRole:
             if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
                 return QVariant()
