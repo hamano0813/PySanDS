@@ -84,3 +84,6 @@ class Picture:
             b, g, r = palette[(0 + 3 * i): (3 + 3 * i)]
             pal = (r << 7) | (g << 2) | (b >> 3)
             pack_into('H', self.buffer, address + i * 2, pal)
+
+    def mapping(self) -> dict:
+        return {i: self.get_data(i) for i in range(self.real_quantity)}
