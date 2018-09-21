@@ -62,7 +62,7 @@ class ColumnObject(QObject):
         if role == Qt.DisplayRole:
             if self.mapping:
                 if isinstance(self.mapping.get(data), Image.Image):
-                    return f'{list(self.mapping.keys()).index(data) + 1: {len(str(len(self.mapping) + 1))}d}'
+                    return QVariant()
                 return self.mapping.get(data) if self.mapping.get(data) is not None else QVariant()
             return str(data)
         if role == Qt.EditRole:

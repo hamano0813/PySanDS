@@ -53,7 +53,7 @@ class ColumnObject(QObject):
         if role == Qt.DisplayRole:
             if self.mapping:
                 if isinstance(self.mapping.get(data), Image.Image):
-                    return f'{list(self.mapping.keys()).index(data) + 1: {len(str(len(self.mapping) + 1))}d}'
+                    return QVariant()
                 return self.mapping.get(data) if self.mapping.get(data) is not None else QVariant()
             return str(data)
         if role == Qt.EditRole:
@@ -62,6 +62,8 @@ class ColumnObject(QObject):
             if isinstance(self.data_type, Character):
                 return Qt.AlignLeft | Qt.AlignVCenter
             elif isinstance(self.data_type, Numerical):
+                if isinstance(self.mapping.get(data), Image.Image):
+                    return Qt.AlignCenter
                 if isinstance(self.attach, dict) or self.mapping_name:
                     return Qt.AlignLeft | Qt.AlignVCenter
                 return Qt.AlignRight | Qt.AlignVCenter

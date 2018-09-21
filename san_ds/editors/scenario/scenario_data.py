@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import QGridLayout
+from PyQt5.QtCore import Qt
 from widgets.common import *
 from parsers import Picture
 from attributes import Quantity
@@ -17,7 +18,7 @@ class ScenarioData(BackgroundFrame):
         BackgroundFrame.__init__(self, buffer)
 
         picture = Picture(self, **DATA_PARAMETER.get('図_紋章1')).get_data(0)
-        emblem_dict = {i + 1: picture.crop((10 + 10 * i, 0 ,20 + 10 * i, 10)) for i in range(21)}
+        emblem_dict = {i + 1: picture.crop((10 + 10 * i, 0, 20 + 10 * i, 10)).resize((18, 18)) for i in range(21)}
 
         scenario_combo = ControlCombo(self, 'シナリオデータ_シナリオ名')
 
@@ -54,7 +55,9 @@ class ScenarioData(BackgroundFrame):
         scenario_combo.add_control_target(scenario_data_model.column_objects[0].data_type.set_offset, emblem_offsets)
         [scenario_combo.add_control_target(scenario_data_model.column_objects[i].data_type.set_offset, data_offsets)
          for i in range(1, 24)]
-        scenario_data_table.setColumnWidth(0, 60)
+        scenario_combo.add_control_widget(scenario_data_table)
+
+        scenario_data_table.setColumnWidth(0, 30)
         scenario_data_table.setColumnWidth(1, 100)
         scenario_data_table.setColumnWidth(2, 72)
         [scenario_data_table.setColumnWidth(i, 40) for i in range(3, 24)]

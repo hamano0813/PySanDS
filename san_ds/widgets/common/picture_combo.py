@@ -18,7 +18,7 @@ class PictureCombo(QComboBox, SingleObject):
         self.attach = attach
         self.data_type: Numerical = self.parser(self.parser_type, data_name)
         self.mapping_type: Picture = self.parser(Picture, mapping_name)
-        [self.addItem(QIcon(pic.toqpixmap()), str(code)) for code, pic in self.mapping.items()]
+        [self.addItem(QIcon(pic.toqpixmap()), '') for code, pic in self.mapping.items()]
         self.setIconSize(QSize(*list(self.mapping.values())[0].size))
         self.setMaxVisibleItems(10)
 

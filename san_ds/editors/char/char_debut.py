@@ -32,6 +32,7 @@ class CharDebut(BackgroundFrame):
 
         [scenario_combo.add_control_target(scenario_debut_model.column_objects[i].data_type.set_offset, debut_offsets)
          for i in range(3, 7)]
+        scenario_combo.add_control_widget(scenario_debut_table)
 
         [scenario_debut_table.setColumnWidth(i, width) for i, width in enumerate([56, 40, 100, 80, 72, 40, 40])]
 
