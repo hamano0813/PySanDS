@@ -7,7 +7,7 @@ from editors.window import MainWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyleSheet('''*{font: 12pt '宋体';}''')
+    app.setStyleSheet('''*{font: 10pt 'Microsoft YaHei UI';}''')
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

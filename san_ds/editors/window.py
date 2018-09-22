@@ -8,12 +8,12 @@ from PyQt5.QtGui import QIcon
 from editors.value import CharAttr, DebutAttr, NpcAttr, PropAttr, SpecAttr, ForceAttr
 
 CHILD_MAPPING = {
-    '武將修改': CharAttr,
-    '登場修改': DebutAttr,
-    'NPC修改': NpcAttr,
-    '道具修改': PropAttr,
-    '特產修改': SpecAttr,
-    '勢力修改': ForceAttr,
+    '武將編輯': CharAttr,
+    '登場編輯': DebutAttr,
+    'NPC編輯': NpcAttr,
+    '道具編輯': PropAttr,
+    '特產編輯': SpecAttr,
+    '勢力編輯': ForceAttr,
 }
 
 
@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
         self.init_menu()
-        self.setWindowTitle('三國志DS Rom修改器')
+        self.setWindowTitle('三國志DS Rom編輯器')
         self.setMinimumSize(1280, 720)
 
     def init_menu(self):
@@ -36,16 +36,16 @@ class MainWindow(QMainWindow):
         save_as.setEnabled(False)
         close_child = self.create_action('關閉窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
-        file_menu = self.create_menu('主菜單', None, [load_rom, save_rom, save_as, close_child, exit_editor])
+        file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
         
-        char_attr = self.create_action('武將修改', self.open_editor_frame)
-        npc_attr = self.create_action('NPC修改', self.open_editor_frame)
-        debut_attr = self.create_action('登場修改', self.open_editor_frame)
-        prop_attr = self.create_action('道具修改', self.open_editor_frame)
-        spec_attr = self.create_action('特產修改', self.open_editor_frame)
-        force_attr = self.create_action('勢力修改', self.open_editor_frame)
+        char_attr = self.create_action('武將編輯', self.open_editor_frame)
+        npc_attr = self.create_action('NPC編輯', self.open_editor_frame)
+        debut_attr = self.create_action('登場編輯', self.open_editor_frame)
+        prop_attr = self.create_action('道具編輯', self.open_editor_frame)
+        spec_attr = self.create_action('特產編輯', self.open_editor_frame)
+        force_attr = self.create_action('勢力編輯', self.open_editor_frame)
 
-        data_menu = self.create_menu('數值修改', None,
+        data_menu = self.create_menu('數值', None,
                                      [char_attr, npc_attr, debut_attr, prop_attr, spec_attr, force_attr])
         data_menu.setEnabled(False)
 
@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
     def start_edit(self):
         self.findChild(QAction, '保存Rom').setEnabled(True)
         self.findChild(QAction, '另存為').setEnabled(True)
-        self.findChild(QMenu, '數值修改').setEnabled(True)
+        self.findChild(QMenu, '數值').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)

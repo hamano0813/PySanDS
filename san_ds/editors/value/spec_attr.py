@@ -30,7 +30,7 @@ class SpecAttr(BackgroundFrame):
             (ValueSpin, '物品屬性_忠誠上昇', None, 100),
             (ValueSpin, '物品屬性_效果1'),
             (ValueSpin, '物品屬性_效果2'),
-            (LineText, '文本_道具效果'),
+            (LineText, '文本_效果描述'),
             (LineText, '特產屬性_種類'),
             (ValueSpin, '特產屬性_武力', None, 30),
             (ValueSpin, '特產屬性_智力', None, 30),
@@ -51,13 +51,13 @@ class SpecAttr(BackgroundFrame):
         spec_attr_table.setItemDelegate(GridDelegate(self))
 
         [spec_attr_model.column_objects[i].data_type.set_start(0xD) for i in range(4)]
-        [spec_attr_table.setColumnWidth(i, 55) for i in range(5, 19)]
-        spec_attr_table.setColumnWidth(0, 110)
-        spec_attr_table.setColumnWidth(1, 72)
-        spec_attr_table.setColumnWidth(2, 55)
-        spec_attr_table.setColumnWidth(3, 55)
-        spec_attr_table.setColumnWidth(4, 200)
-        spec_attr_table.setColumnWidth(19, 72)
+        [spec_attr_table.setColumnWidth(i, 50) for i in range(5, 19)]
+        spec_attr_table.setColumnWidth(0, 100)
+        spec_attr_table.setColumnWidth(1, 60)
+        spec_attr_table.setColumnWidth(2, 50)
+        spec_attr_table.setColumnWidth(3, 50)
+        spec_attr_table.setColumnWidth(4, 180)
+        spec_attr_table.setColumnWidth(19, 60)
 
         layout = QGridLayout()
         layout.addWidget(spec_attr_table)

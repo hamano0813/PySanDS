@@ -63,7 +63,7 @@ class Character:
                         for char in text]).encode(CODE_ALIASES).replace(b'\n', b'\r')
 
     def sequence(self) -> list:
-        return [f'{i+1:{len(str(self.real_quantity+1))}d}. {self.get_data(i)}' for i in range(self.real_quantity)]
+        return [f'{i+1:0{len(str(self.real_quantity+1))}d}. {self.get_data(i)}' for i in range(self.real_quantity)]
 
     def mapping(self) -> dict:
-        return {i: f'{i+1:{len(str(self.real_quantity+1))}d}.{self.get_data(i)}' for i in range(self.real_quantity)}
+        return {i: f'{i+1:0{len(str(self.real_quantity+1))}d}.{self.get_data(i)}' for i in range(self.real_quantity)}

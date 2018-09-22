@@ -174,7 +174,7 @@ DATA_PARAMETER = {
         'length': {'normal_length': 148, 'main_pointer': 0x01CB7E1D, 'pointer_offset': 0x00430C00},
         'quantity': {'normal_quantity': 0x30C},
         'record': 0x4},
-    '文本_道具效果': {
+    '文本_效果描述': {
         'address': {'normal_offset': 0x0002F6EC, 'pointer_offset': -0x1FFC000},
         'length': {'normal_length': None, 'main_pointer': 0x0002F6EC, 'pointer_offset': -0x1FFC000},
         'quantity': {'normal_quantity': 0x36},

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QObject, QAbstractTableModel, Qt, QModelIndex, QVariant
+from PyQt5.QtCore import QObject, QAbstractTableModel, Qt, QModelIndex, QVariant, pyqtSignal
 from PIL import Image
 from parsers import Character, Numerical
 from configs import DATA_PARAMETER
@@ -77,6 +77,8 @@ class ColumnObject(QObject):
 
 
 class NormalModel(QAbstractTableModel):
+    dataEdited = pyqtSignal()
+
     def __init__(self, parent, column_settings: iter, quantity: Quantity = None):
         QAbstractTableModel.__init__(self, parent)
         self.column_objects = [ColumnObject(parent, *settings) for settings in column_settings]
@@ -113,6 +115,7 @@ class NormalModel(QAbstractTableModel):
     def setData(self, index: QModelIndex, data_value, role=Qt.EditRole):
         if index.isValid() and role == Qt.EditRole:
             self.column_objects[index.column()].set_data(index, data_value, role)
+            self.dataEdited.emit()
 
     def flags(self, index: QModelIndex):
         if not index.isValid():

@@ -10,10 +10,11 @@ class AddressSpin(QSpinBox):
         QSpinBox.__init__(self, parent)
         self.main_offset = 0
         self.mirror_offset = 0
+        self.control_widgets = []
         self.control_targets = []
         self.main_address = main_address
         self.mirror_address = mirror_address
-        self.setFixedWidth(90)
+        self.setFixedWidth(108)
         self.setRange(0, 0x7FFFFFFF)
         # noinspection PyUnresolvedReferences
         self.valueChanged[int].connect(self.set_address)
@@ -25,6 +26,11 @@ class AddressSpin(QSpinBox):
     def control_target(self):
         for method, func in self.control_targets:
             method(func(self.value()))
+        for widget in self.control_widgets:
+            widget.refresh_data()
+
+    def add_control_widget(self, widget):
+        self.control_widgets.append(widget)
 
     def refresh_data(self):
         self.get_address()

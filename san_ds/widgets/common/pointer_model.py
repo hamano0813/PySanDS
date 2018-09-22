@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant, QAbstractTableModel
+from PyQt5.QtCore import QObject, Qt, QModelIndex, QVariant, QAbstractTableModel, pyqtSignal
 from PIL import Image
 from parsers import Character, Numerical
 from configs import DATA_PARAMETER
@@ -13,7 +13,6 @@ class ColumnObject(QObject):
 
     def __init__(self, parent, editor, data_name: str, mapping_name: str = None, attach=None):
         QObject.__init__(self, parent)
-        self.offset = 0
         self.editor = editor
         self.data_name = data_name
         self.mapping_name = mapping_name
@@ -21,9 +20,6 @@ class ColumnObject(QObject):
         self.data_type = self.pointer_parser(self.editor.parser_type, data_name)
         self.mapping_type = self.parser(Character, mapping_name)
         self.refresh_data()
-
-    def set_offset(self, offset):
-        self.offset = offset
 
     def parser(self, parser_type, parameter_name):
         parameter = DATA_PARAMETER.get(parameter_name)
@@ -33,7 +29,8 @@ class ColumnObject(QObject):
 
     def pointer_parser(self, parser_type, parameter_name):
         parameter = DATA_PARAMETER.get(parameter_name)
-        parameter['address'] = {'normal_offset': Address(**parameter.get('address'))(self.parent().buffer, self.offset)}
+        parameter['address'] = {'normal_offset': Address(**parameter.get('address'))(self.parent().buffer, 0)}
+        parameter['quantity'] = {'normal_quantity': Quantity(**parameter.get('quantity'))(self.parent().buffer, 0)}
         return parser_type(self.parent(), **parameter)
 
     def refresh_data(self):
@@ -84,6 +81,8 @@ class ColumnObject(QObject):
 
 
 class PointerModel(QAbstractTableModel):
+    dataEdited = pyqtSignal()
+
     def __init__(self, parent, column_settings: iter, quantity: Quantity = None):
         QAbstractTableModel.__init__(self, parent)
         self.column_objects = [ColumnObject(parent, *settings) for settings in column_settings]
@@ -120,6 +119,7 @@ class PointerModel(QAbstractTableModel):
     def setData(self, index: QModelIndex, data_value, role=Qt.EditRole):
         if index.isValid() and role == Qt.EditRole:
             self.column_objects[index.column()].set_data(index, data_value, role)
+            self.dataEdited.emit()
 
     def flags(self, index: QModelIndex):
         if not index.isValid():

@@ -50,10 +50,10 @@ class CharAttr(BackgroundFrame):
         char_attr_table.setModel(char_attr_model)
         char_attr_table.setItemDelegate(GridDelegate(self))
 
-        [char_attr_table.setColumnWidth(i, 75) for i in range(2)]
-        [char_attr_table.setColumnWidth(i, 55) for i in range(2, 16)]
-        char_attr_table.setColumnWidth(16, 100)
-        char_attr_table.setColumnWidth(17, 300)
+        [char_attr_table.setColumnWidth(i, 70) for i in range(2)]
+        [char_attr_table.setColumnWidth(i, 50) for i in range(2, 16)]
+        char_attr_table.setColumnWidth(16, 90)
+        char_attr_table.setColumnWidth(17, 260)
 
         layout = QGridLayout()
         layout.addWidget(char_attr_table)
