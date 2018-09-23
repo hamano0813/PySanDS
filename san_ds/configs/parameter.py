@@ -151,6 +151,120 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x8},
         'quantity': {'normal_quantity': 0x2E},
         'record': 0x26},
+    '都市屬性_次都市': {
+        'address': {'normal_offset': 0x0011D4E0},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_軍師': {
+        'address': {'normal_offset': 0x0011D4E2},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_港口': {
+        'address': {'normal_offset': 0x0011D4EA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20,
+        'bit': (7, 8)},
+    '都市屬性_商人': {
+        'address': {'normal_offset': 0x0011D4EB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20,
+        'bit': (4, 5)},
+    '都市屬性_肥沃度': {
+        'address': {'normal_offset': 0x0011D4EA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20,
+        'bit': (0, 4)},
+    '都市屬性_人口': {
+        'address': {'normal_offset': 0x0011D4E4},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_金': {
+        'address': {'normal_offset': 0x0011D4E6},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_兵糧': {
+        'address': {'normal_offset': 0x0011D4E8},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_開発': {
+        'address': {'normal_offset': 0x0011D4ED},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_灌漑': {
+        'address': {'normal_offset': 0x0011D4EE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_治水': {
+        'address': {'normal_offset': 0x0011D4EF},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_商業': {
+        'address': {'normal_offset': 0x0011D4F0},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_税率': {
+        'address': {'normal_offset': 0x0011D4F2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_民忠': {
+        'address': {'normal_offset': 0x0011D4F3},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_弩': {
+        'address': {'normal_offset': 0x0011D4F4},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_強弩': {
+        'address': {'normal_offset': 0x0011D4F6},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_軍馬': {
+        'address': {'normal_offset': 0x0011D4F8},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_闘艦': {
+        'address': {'normal_offset': 0x0011D4FA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_蒙衝': {
+        'address': {'normal_offset': 0x0011D4FB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_走舸': {
+        'address': {'normal_offset': 0x0011D4FC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_訓練': {
+        'address': {'normal_offset': 0x0011D4FD},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+    '都市屬性_士気': {
+        'address': {'normal_offset': 0x0011D4FE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x2E},
+        'record': 0x20},
+
 
     '戰場屬性_戰場名': {
         'address': {'normal_offset': 0x00126F61},

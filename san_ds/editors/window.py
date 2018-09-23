@@ -5,12 +5,13 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.value import CharAttr, DebutAttr, NpcAttr, PropAttr, SpecAttr, ForceAttr
+from editors.value import CharAttr, DebutAttr, NpcAttr, PropAttr, SpecAttr, ForceAttr, CityAttr
 
 CHILD_MAPPING = {
     '武將編輯': CharAttr,
-    '登場編輯': DebutAttr,
     'NPC編輯': NpcAttr,
+    '登場編輯': DebutAttr,
+    '都市編輯': CityAttr,
     '道具編輯': PropAttr,
     '特產編輯': SpecAttr,
     '勢力編輯': ForceAttr,
@@ -37,16 +38,9 @@ class MainWindow(QMainWindow):
         close_child = self.create_action('關閉窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
         file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
-        
-        char_attr = self.create_action('武將編輯', self.open_editor_frame)
-        npc_attr = self.create_action('NPC編輯', self.open_editor_frame)
-        debut_attr = self.create_action('登場編輯', self.open_editor_frame)
-        prop_attr = self.create_action('道具編輯', self.open_editor_frame)
-        spec_attr = self.create_action('特產編輯', self.open_editor_frame)
-        force_attr = self.create_action('勢力編輯', self.open_editor_frame)
 
-        data_menu = self.create_menu('數值', None,
-                                     [char_attr, npc_attr, debut_attr, prop_attr, spec_attr, force_attr])
+        value_editors = [self.create_action(editor_name, self.open_editor_frame) for editor_name in CHILD_MAPPING]
+        data_menu = self.create_menu('數值', None, value_editors)
         data_menu.setEnabled(False)
 
         self.menuBar().addMenu(file_menu)
