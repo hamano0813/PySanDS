@@ -264,8 +264,6 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0x2E},
         'record': 0x20},
-
-
     '戰場屬性_戰場名': {
         'address': {'normal_offset': 0x00126F61},
         'length': {'normal_length': 0x8},
@@ -282,6 +280,31 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x20},
         'quantity': {'normal_quantity': 0x7},
         'record': 0x4},
+    '劇本屬性_劇本年': {
+        'address': {'normal_offset': 0x000FC150},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x2},
+    '劇本屬性_開始年': {
+        'address': {'normal_offset': 0x001275B8},
+        'length': {'normal_length': 0x2},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x22},
+    '劇本屬性_開始月': {
+        'address': {'normal_offset': 0x001275BA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x22},
+    '劇本屬性_勢力數': {
+        'address': {'normal_offset': 0x001275BB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x22},
+    '劇本屬性_玩家數': {
+        'address': {'normal_offset': 0x000FBCD4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x1},
 
     '文本_人物列傳': {
         'address': {'normal_offset': 0x01CB7E1D, 'pointer_offset': 0x00430C00},

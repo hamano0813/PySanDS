@@ -11,11 +11,11 @@ class FieldAttr(BackgroundFrame):
         BackgroundFrame.__init__(self, buffer)
 
         field_attr_table = GridTable(self)
-        city_attr_model = NormalModel(self, [
+        field_attr_model = NormalModel(self, [
             (LineText, '戰場屬性_戰場名'),
             (LineText, '戰場屬性_讀音'),
         ])
-        field_attr_table.setModel(city_attr_model)
+        field_attr_table.setModel(field_attr_model)
         field_attr_table.setItemDelegate(GridDelegate(self))
         [field_attr_table.setColumnWidth(i, 75) for i in range(0, 2)]
 
