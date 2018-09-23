@@ -5,13 +5,14 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.value import CharAttr, DebutAttr, NpcAttr, PropAttr, SpecAttr, ForceAttr, CityAttr
+from editors.value import *
 
 CHILD_MAPPING = {
     '武將編輯': CharAttr,
     'NPC編輯': NpcAttr,
     '登場編輯': DebutAttr,
     '都市編輯': CityAttr,
+    '戰場編輯': FieldAttr,
     '道具編輯': PropAttr,
     '特產編輯': SpecAttr,
     '勢力編輯': ForceAttr,

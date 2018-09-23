@@ -3,7 +3,6 @@
 
 from PyQt5.QtWidgets import QGridLayout
 from widgets.common import *
-from attributes import Quantity
 
 city_offsets = [0x0, -0x5C0, -0xB80, -0x1140, -0x1700, -0x1CC0, 0x5C0]
 choose = {0: '—', 1: '○'}
@@ -42,7 +41,7 @@ class CityAttr(BackgroundFrame):
             (ValueSpin, '都市屬性_走舸', None, 99),
             (ValueSpin, '都市屬性_訓練', None, 100),
             (ValueSpin, '都市屬性_士気', None, 120),
-        ], Quantity(0x2E))
+        ])
         city_attr_table.setModel(city_attr_model)
         city_attr_table.setItemDelegate(GridDelegate(self))
         [city_attr_table.setColumnWidth(i, 75) for i in range(0, 3)]
