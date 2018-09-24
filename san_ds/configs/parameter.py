@@ -497,6 +497,31 @@ DATA_PARAMETER = {
         'length': {'normal_length': None, 'main_pointer': 0x0002F6EC, 'pointer_offset': -0x1FFC000},
         'quantity': {'normal_quantity': 0x36},
         'record': 0x4},
+    '文本_物品名稱': {
+        'address': {'normal_offset': 0x0017D15C, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': None, 'main_pointer': 0x0017D15C, 'pointer_offset': -0x1FFC000},
+        'quantity': {'normal_quantity': 0x43},
+        'record': 0x14},
+    '文本_物品讀音': {
+        'address': {'normal_offset': 0x0017D160, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': None, 'main_pointer': 0x0017D160, 'pointer_offset': -0x1FFC000},
+        'quantity': {'normal_quantity': 0x43},
+        'record': 0x14},
+    '文本_物品類別': {
+        'address': {'normal_offset': 0x0017D164, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': None, 'main_pointer': 0x0017D164, 'pointer_offset': -0x1FFC000},
+        'quantity': {'normal_quantity': 0x43},
+        'record': 0x14},
+    '文本_物品能力': {
+        'address': {'normal_offset': 0x0017D168, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': None, 'main_pointer': 0x0017D168, 'pointer_offset': -0x1FFC000},
+        'quantity': {'normal_quantity': 0x43},
+        'record': 0x14},
+    '文本_物品描述': {
+        'address': {'normal_offset': 0x0017D16C, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': None, 'main_pointer': 0x0017D16C, 'pointer_offset': -0x1FFC000},
+        'quantity': {'normal_quantity': 0x43},
+        'record': 0x14},
     '圖片_角色頭像': {
         'address': {'normal_offset': 0x00A479E8},
         'size': (56, 64),

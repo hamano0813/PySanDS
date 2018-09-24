@@ -25,8 +25,10 @@ class MultilineText(QTextEdit, SingleObject):
         self.textChanged.connect(self.check_reg_exp)
 
     def check_reg_exp(self):
+        max_len = self.data_type.length(self.data_type.buffer,
+                                        self.data_type.record * self.parent().parent().currentIndex().row())
         self.setToolTip(
-            f'''最大字節長度{self.data_type.length.normal_length}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
+            f'''最大字節長度{max_len}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
         temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])
         if not temp == self.toPlainText():
             self.setText(temp)

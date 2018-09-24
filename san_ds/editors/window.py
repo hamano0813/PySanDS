@@ -16,6 +16,7 @@ CHILD_MAPPING = {
     '戰場編輯': FieldAttr,
     '道具編輯': PropAttr,
     '特產編輯': SpecAttr,
+    '物品編輯': ItemAttr,
     '劇本編輯': SceAttr,
     '勢力編輯': ForceAttr,
 }
