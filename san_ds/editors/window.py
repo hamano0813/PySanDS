@@ -5,7 +5,7 @@ from types import MethodType
 from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from editors.value import *
+from editors.data_edit import *
 
 CHILD_MAPPING = {
     '武將編輯': CharAttr,
