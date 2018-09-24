@@ -141,6 +141,187 @@ DATA_PARAMETER = {
         'quantity': {'main_pointer': 0x000FBC50, 'record_length': 0x4, 'sub_pointer': 0x0017B3C4},
         'record': 0x4},
 
+    '武將戰技_戰鬥系': {
+        'address': {'normal_offset': 0x01D5D8D1},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_不意': {
+        'address': {'normal_offset': 0x01D5D8D2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_突擊': {
+        'address': {'normal_offset': 0x01D5D8D3},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_牽制': {
+        'address': {'normal_offset': 0x01D5D8D4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_一騎': {
+        'address': {'normal_offset': 0x01D5D8D5},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_受流': {
+        'address': {'normal_offset': 0x01D5D8D6},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_彈返': {
+        'address': {'normal_offset': 0x01D5D8D7},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_單騎': {
+        'address': {'normal_offset': 0x01D5D8D8},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_騎突': {
+        'address': {'normal_offset': 0x01D5D8D9},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_用兵系': {
+        'address': {'normal_offset': 0x01D5D8DA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_壁越': {
+        'address': {'normal_offset': 0x01D5D8DB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_威嚇': {
+        'address': {'normal_offset': 0x01D5D8DC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_一齊': {
+        'address': {'normal_offset': 0x01D5D8DD},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_齊射': {
+        'address': {'normal_offset': 0x01D5D8DE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_門射': {
+        'address': {'normal_offset': 0x01D5D8DF},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_火矢': {
+        'address': {'normal_offset': 0x01D5D8E0},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_狙擊': {
+        'address': {'normal_offset': 0x01D5D8E1},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_連弩': {
+        'address': {'normal_offset': 0x01D5D8E2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_軍學系': {
+        'address': {'normal_offset': 0x01D5D8E3},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_鎮火': {
+        'address': {'normal_offset': 0x01D5D8E4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_火計': {
+        'address': {'normal_offset': 0x01D5D8E5},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_伏兵': {
+        'address': {'normal_offset': 0x01D5D8E6},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_偽令': {
+        'address': {'normal_offset': 0x01D5D8E7},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_同討': {
+        'address': {'normal_offset': 0x01D5D8E8},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_論破': {
+        'address': {'normal_offset': 0x01D5D8E9},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_落穴': {
+        'address': {'normal_offset': 0x01D5D8EA},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_大火': {
+        'address': {'normal_offset': 0x01D5D8EB},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_掌握系': {
+        'address': {'normal_offset': 0x01D5D8EC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_挑發': {
+        'address': {'normal_offset': 0x01D5D8ED},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_說得': {
+        'address': {'normal_offset': 0x01D5D8EE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_治療': {
+        'address': {'normal_offset': 0x01D5D8EF},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_鼓舞': {
+        'address': {'normal_offset': 0x01D5D8F0},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_誘引': {
+        'address': {'normal_offset': 0x01D5D8F1},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_祈禱': {
+        'address': {'normal_offset': 0x01D5D8F2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_衝車': {
+        'address': {'normal_offset': 0x01D5D8F3},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+    '武將戰技_生存': {
+        'address': {'normal_offset': 0x01D5D8F4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x302},
+        'record': 0x24},
+
     '都市屬性_都市名': {
         'address': {'normal_offset': 0x0011B15A},
         'length': {'normal_length': 0x8},
@@ -582,3 +763,7 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x15},
         'record': 0x1A},
 }
+
+
+if __name__ == '__main__':
+    print([i for i in DATA_PARAMETER])

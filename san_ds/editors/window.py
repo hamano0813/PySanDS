@@ -11,6 +11,7 @@ CHILD_MAPPING = {
     '武將編輯': CharAttr,
     'NPC編輯': NpcAttr,
     '登場編輯': DebutAttr,
+    '技能編輯': SkillAttr,
     '都市編輯': CityAttr,
     '戰場編輯': FieldAttr,
     '道具編輯': PropAttr,
