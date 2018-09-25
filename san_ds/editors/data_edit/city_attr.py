@@ -44,10 +44,11 @@ class CityAttr(BackgroundFrame):
         ])
         city_attr_table.setModel(city_attr_model)
         city_attr_table.setItemDelegate(GridDelegate(self))
-        [city_attr_table.setColumnWidth(i, 75) for i in range(0, 3)]
-        city_attr_table.setColumnWidth(3, 110)
-        [city_attr_table.setColumnWidth(i, 50) for i in range(4, 24)]
-        [city_attr_table.setColumnWidth(i, 60) for i in (7, 9, 13, 16, 17, 18)]
+        [city_attr_table.setColumnWidth(i, 60) for i in range(0, 2)]
+        city_attr_table.setColumnWidth(2, 70)
+        city_attr_table.setColumnWidth(3, 100)
+        [city_attr_table.setColumnWidth(i, 45) for i in range(4, 24)]
+        [city_attr_table.setColumnWidth(i, 55) for i in (7, 9, 13, 16, 17, 18)]
 
         [scenario_combo.add_control_target(city_attr_model.column_objects[i].data_type.set_offset, city_offsets)
          for i in range(2, 24)]

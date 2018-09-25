@@ -56,8 +56,8 @@ class SkillAttr(BackgroundFrame):
         ])
         skill_attr_table.setModel(skill_attr_model)
         skill_attr_table.setItemDelegate(GridDelegate(self))
-        skill_attr_table.setColumnWidth(0, 70)
-        [skill_attr_table.setColumnWidth(i, 50) for i in range(1, 37)]
+        skill_attr_table.setColumnWidth(0, 60)
+        [skill_attr_table.setColumnWidth(i, 45) for i in range(1, 37)]
 
         [scenario_combo.add_control_target(skill_attr_model.column_objects[i].data_type.set_offset, skill_offsets)
          for i in range(1, 37)]

@@ -72,9 +72,9 @@ class ForceAttr(BackgroundFrame):
         scenario_combo.add_control_widget(force_attr_table)
 
         force_attr_table.setColumnWidth(0, 45)
-        force_attr_table.setColumnWidth(1, 110)
-        force_attr_table.setColumnWidth(2, 75)
-        [force_attr_table.setColumnWidth(i, 60) for i in range(3, 24)]
+        force_attr_table.setColumnWidth(1, 100)
+        force_attr_table.setColumnWidth(2, 70)
+        [force_attr_table.setColumnWidth(i, 56) for i in range(3, 24)]
 
         force_attr_model.dataEdited.connect(force_attr_table.refresh_data)
 

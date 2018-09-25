@@ -21,8 +21,8 @@ class SceAttr(BackgroundFrame):
         ])
         scenario_attr_table.setModel(scenario_attr_model)
         scenario_attr_table.setItemDelegate(GridDelegate(self))
-        scenario_attr_table.setColumnWidth(0, 280)
-        [scenario_attr_table.setColumnWidth(i, 55) for i in range(1, 6)]
+        scenario_attr_table.setColumnWidth(0, 200)
+        [scenario_attr_table.setColumnWidth(i, 50) for i in range(1, 6)]
 
         layout = QGridLayout()
         layout.addWidget(scenario_attr_table, 0, 0, 1, 1)

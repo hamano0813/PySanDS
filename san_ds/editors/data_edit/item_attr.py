@@ -20,11 +20,11 @@ class ItemAttr(BackgroundFrame):
         item_attr_table.setModel(item_attr_model)
         item_attr_table.setItemDelegate(GridDelegate(self))
 
-        item_attr_table.setColumnWidth(0, 100)
-        item_attr_table.setColumnWidth(1, 120)
-        item_attr_table.setColumnWidth(2, 70)
-        item_attr_table.setColumnWidth(3, 150)
-        item_attr_table.setColumnWidth(4, 260)
+        item_attr_table.setColumnWidth(0, 90)
+        item_attr_table.setColumnWidth(1, 100)
+        item_attr_table.setColumnWidth(2, 56)
+        item_attr_table.setColumnWidth(3, 140)
+        item_attr_table.setColumnWidth(4, 250)
 
         layout = QGridLayout()
         layout.addWidget(item_attr_table)
