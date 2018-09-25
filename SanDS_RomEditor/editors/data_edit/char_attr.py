@@ -41,7 +41,7 @@ class CharAttr(BackgroundFrame):
             (ValueSpin, '武將屬性_冷靜'),
             (ValueSpin, '武將屬性_勇猛'),
             (ValueSpin, '武將屬性_相性'),
-            (ValueSpin, '武將屬性_義理'),
+            (ValueSpin, '武將屬性_義理', None, 100),
             (ValueSpin, '武將屬性_生年'),
             (ValueSpin, '武將屬性_壽命'),
             (MappingCombo, '武將屬性_家族', None, family),

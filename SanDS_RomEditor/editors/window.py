@@ -51,8 +51,8 @@ class MainWindow(QMainWindow):
         self.menuBar().addMenu(data_menu)
 
     def load_rom(self):
-        file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', '../../', 'Rom文件 *.nds',
-                                                  options=QFileDialog.DontResolveSymlinks)[0]
+        file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', __file__.split('\\editors\\window.py')[0],
+                                                  'Rom文件 *.nds', options=QFileDialog.DontResolveSymlinks)[0]
         if file_path:
             self.file_path = file_path
             self.buffer = bytearray(open(self.file_path, 'rb').read())
