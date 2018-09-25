@@ -4,7 +4,7 @@
 from struct import unpack_from, pack_into
 from PyQt5.QtCore import QRegExp
 from attributes import Address, Length, Quantity
-from configs import CODE_ALIASES, DECODE_MAPPING, ENCODE_MAPPING, EXPAND_CHARACTER
+from configs import CODE_ALIASES, DECODE_MAPPING, ENCODE_MAPPING, EXPAND_CHARACTER, CHARACTER_PATH
 
 
 class Character:
@@ -15,7 +15,7 @@ class Character:
         self.length = Length(**length)
         self.quantity = Quantity(**quantity)
         self.record = record
-        char_file = open('./configs/character.txt', 'r', encoding='UTF-8')
+        char_file = open(CHARACTER_PATH, 'r', encoding='UTF-8')
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
         self.reg_exp = QRegExp(f'[{regex_char}\\n\\r]+')

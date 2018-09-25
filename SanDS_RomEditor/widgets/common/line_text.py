@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import CODE_ALIASES, EXPAND_CHARACTER
+from configs import CODE_ALIASES, EXPAND_CHARACTER, CHARACTER_PATH
 
 
 class LineText(QLineEdit, SingleObject):
@@ -18,7 +18,7 @@ class LineText(QLineEdit, SingleObject):
         self.mapping_name = mapping_name
         self.attach = attach
         self.data_type: Character = self.parser(self.parser_type, data_name)
-        char_file = open('./configs/character.txt', 'r', encoding='UTF-8')
+        char_file = open(CHARACTER_PATH, 'r', encoding='UTF-8')
         regex_char = char_file.read() + EXPAND_CHARACTER
         char_file.close()
         self.setValidator(QRegExpValidator(QRegExp(f'[{regex_char}\\n\\r]+')))

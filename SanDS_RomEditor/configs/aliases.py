@@ -298,3 +298,5 @@ ENCODE_MAPPING = {
 }
 
 EXPAND_CHARACTER = ''.join(ENCODE_MAPPING)
+
+CHARACTER_PATH = __file__.split('configs')[0] + '\\configs\\character.txt'

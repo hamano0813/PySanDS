@@ -51,7 +51,7 @@ class MainWindow(QMainWindow):
         self.menuBar().addMenu(data_menu)
 
     def load_rom(self):
-        file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', './', 'Rom文件 *.nds',
+        file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', '../../', 'Rom文件 *.nds',
                                                   options=QFileDialog.DontResolveSymlinks)[0]
         if file_path:
             self.file_path = file_path
@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
             self.close()
 
     def save_as(self):
-        file_path = QFileDialog().getSaveFileName(None, '保存Rom文件', './', 'Rom文件 *.nds',
+        file_path = QFileDialog().getSaveFileName(None, '保存Rom文件', '../../', 'Rom文件 *.nds',
                                                   options=QFileDialog.DontResolveSymlinks)[0]
         if file_path:
             self.file_path = file_path
