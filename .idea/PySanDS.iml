@@ -7,7 +7,7 @@
     <content url="file://$MODULE_DIR$/resource">
       <sourceFolder url="file://$MODULE_DIR$/resource" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/san_ds" />
+    <content url="file://$MODULE_DIR$/SanDS_RomEditor" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
