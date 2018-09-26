@@ -114,7 +114,7 @@ class NormalModel(QAbstractTableModel):
             return self.column_objects[index.column()].get_data(index, role)
 
     def setData(self, index: QModelIndex, data_value, role=Qt.EditRole):
-        if index.isValid() and role == Qt.EditRole:
+        if index.isValid() and role == Qt.EditRole and data_value is not None:
             self.column_objects[index.column()].set_data(index, data_value, role)
             self.dataEdited.emit()
 
@@ -128,9 +128,12 @@ class NormalModel(QAbstractTableModel):
     def paste_data(self, index: QModelIndex, value):
         if self.column_objects[index.column()].editor in (LineText, MultilineText):
             _value = str(value).replace('_', '\n') if value is not None else self.data(index, Qt.EditRole)
+        elif self.column_objects[index.column()].mapping:
+            _mapping = {v: k for k, v in self.column_objects[index].mapping.items()}
+            _value = _mapping.get(value, None)
         else:
             try:
-                _value = int(value) if value is not None else 0
+                _value = int(value) if value not in (None, '', ' ') else 0
             except ValueError:
                 _value = self.data(index, Qt.EditRole)
         self.setData(index, _value, Qt.EditRole)
@@ -151,5 +154,5 @@ class NormalModel(QAbstractTableModel):
         if select_range:
             r = range(max([index.row() for index in select_range]) - min([index.row() for index in select_range]) + 1)
             c = max([index.column() for index in select_range]) - min([index.column() for index in select_range]) + 1
-            return '\n'.join(['\t'.join([str(self.data(select_range[c * rid + cid], Qt.EditRole)).replace('\n', '_')
+            return '\n'.join(['\t'.join([str(self.data(select_range[c * rid + cid], Qt.DisplayRole)).replace('\n', '_')
                                          for cid in range(c)]) for rid in r])

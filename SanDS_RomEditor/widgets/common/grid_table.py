@@ -77,13 +77,7 @@ class GridTable(QTableView, ControlObject):
             elif event.key() == Qt.Key_V and event.modifiers() == Qt.ControlModifier:
                 self.model().paste_range(self.selectedIndexes(), QApplication.clipboard().text())
                 self.reset()
-            elif event.key() == Qt.Key_E and event.modifiers() == Qt.ControlModifier:
-                self.export_data()
             else:
                 func(event)
 
         return wrapper
-
-    def export_data(self):
-        wb = Workbook()
-        wb.close()
