@@ -127,7 +127,7 @@ class NormalModel(QAbstractTableModel):
 
     def paste_data(self, index: QModelIndex, value):
         if self.column_objects[index.column()].editor in (LineText, MultilineText):
-            _value = str(value) if value is not None else self.data(index, Qt.EditRole)
+            _value = str(value).replace('_', '\n') if value is not None else self.data(index, Qt.EditRole)
         else:
             try:
                 _value = int(value) if value is not None else 0
@@ -149,8 +149,7 @@ class NormalModel(QAbstractTableModel):
 
     def copy_range(self, select_range):
         if select_range:
-            r = max([index.row() for index in select_range]) - min([index.row() for index in select_range]) + 1
-            r -= 1 if max([index.row() for index in select_range]) == self.rowCount() - 1 else 0
+            r = range(max([index.row() for index in select_range]) - min([index.row() for index in select_range]) + 1)
             c = max([index.column() for index in select_range]) - min([index.column() for index in select_range]) + 1
-            return '\n'.join(['\t'.join([self.data(select_range[c * rid + cid], Qt.DisplayRole) for cid in range(c)])
-                              for rid in range(r)])
+            return '\n'.join(['\t'.join([str(self.data(select_range[c * rid + cid], Qt.EditRole)).replace('\n', '_')
+                                         for cid in range(c)]) for rid in r])
