@@ -129,7 +129,7 @@ class NormalModel(QAbstractTableModel):
         if self.column_objects[index.column()].editor in (LineText, MultilineText):
             _value = str(value).replace('_', '\n') if value is not None else self.data(index, Qt.EditRole)
         elif self.column_objects[index.column()].mapping:
-            _mapping = {v: k for k, v in self.column_objects[index].mapping.items()}
+            _mapping = {str(v): k for k, v in self.column_objects[index.column()].mapping.items()}
             _value = _mapping.get(value, None)
         else:
             try:
