@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QTableView, QStyledItemDelegate
+from PyQt5.QtWidgets import QApplication, QTableView, QStyledItemDelegate
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize
+from PyQt5.QtGui import QKeyEvent
 from widgets.abstract import ControlObject
 from widgets.common.multiline_text import MultilineText
 
@@ -50,6 +51,7 @@ class GridTable(QTableView, ControlObject):
         # noinspection PyUnresolvedReferences
         self.clicked[QModelIndex].connect(self.index_changed)
         self.currentIndexChanged[int].connect(self.control_index)
+        self.keyPressEvent = self.key_press(self.keyPressEvent)
 
     def refresh_data(self):
         self.reset()
@@ -63,5 +65,18 @@ class GridTable(QTableView, ControlObject):
         def wrapper(model):
             func(model)
             [self.setRowHeight(i, 30) for i in range(self.model().rowCount())]
+
+        return wrapper
+
+    def key_press(self, func):
+        # noinspection PyArgumentList
+        def wrapper(event: QKeyEvent):
+            if event.key() == Qt.Key_C and event.modifiers() == Qt.ControlModifier:
+                QApplication.clipboard().setText(self.model().copy_range(self.selectedIndexes()))
+            elif event.key() == Qt.Key_V and event.modifiers() == Qt.ControlModifier:
+                self.model().paste_range(self.selectedIndexes(), QApplication.clipboard().text())
+                self.reset()
+            else:
+                func(event)
 
         return wrapper

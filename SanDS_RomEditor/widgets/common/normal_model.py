@@ -6,6 +6,7 @@ from PIL import Image
 from parsers import Character, Numerical
 from configs import DATA_PARAMETER
 from attributes import Quantity
+from widgets.common import LineText, MultilineText
 
 
 class ColumnObject(QObject):
@@ -123,3 +124,33 @@ class NormalModel(QAbstractTableModel):
         if self.column_objects[index.column()].get_data(index, Qt.EditRole) is None:
             return Qt.ItemIsEnabled
         return Qt.ItemIsEditable | Qt.ItemIsEnabled | Qt.ItemIsSelectable
+
+    def paste_data(self, index: QModelIndex, value):
+        if self.column_objects[index.column()].editor in (LineText, MultilineText):
+            _value = str(value) if value is not None else self.data(index, Qt.EditRole)
+        else:
+            try:
+                _value = int(value) if value is not None else 0
+            except ValueError:
+                _value = self.data(index, Qt.EditRole)
+        self.setData(index, _value, Qt.EditRole)
+
+    def paste_range(self, select_range: list, text_data: str):
+        if select_range and text_data:
+            start_row = min([index.row() for index in select_range])
+            start_column = min([index.column() for index in select_range])
+            max_row = self.rowCount() - start_row
+            max_column = self.columnCount() - start_column
+            data = [row.split('\t')[: max_column] for row in text_data.split('\n') if row][: max_row]
+            for rid, row_data in enumerate(data):
+                for cid, value in enumerate(row_data):
+                    idx = self.createIndex(start_row + rid, start_column + cid)
+                    self.paste_data(idx, value)
+
+    def copy_range(self, select_range):
+        if select_range:
+            r = max([index.row() for index in select_range]) - min([index.row() for index in select_range]) + 1
+            r -= 1 if max([index.row() for index in select_range]) == self.rowCount() - 1 else 0
+            c = max([index.column() for index in select_range]) - min([index.column() for index in select_range]) + 1
+            return '\n'.join(['\t'.join([self.data(select_range[c * rid + cid], Qt.DisplayRole) for cid in range(c)])
+                              for rid in range(r)])
