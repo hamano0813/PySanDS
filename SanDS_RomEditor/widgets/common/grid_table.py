@@ -4,7 +4,6 @@
 from PyQt5.QtWidgets import QApplication, QTableView, QStyledItemDelegate
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize
 from PyQt5.QtGui import QKeyEvent
-from openpyxl import Workbook
 from widgets.abstract import ControlObject
 from widgets.common.multiline_text import MultilineText
 
@@ -53,6 +52,7 @@ class GridTable(QTableView, ControlObject):
         self.clicked[QModelIndex].connect(self.index_changed)
         self.currentIndexChanged[int].connect(self.control_index)
         self.keyPressEvent = self.key_press(self.keyPressEvent)
+        self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
 
     def refresh_data(self):
         self.reset()
