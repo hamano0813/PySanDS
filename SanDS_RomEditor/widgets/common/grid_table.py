@@ -4,6 +4,7 @@
 from PyQt5.QtWidgets import QApplication, QTableView, QStyledItemDelegate
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize
 from PyQt5.QtGui import QKeyEvent
+from openpyxl import Workbook
 from widgets.abstract import ControlObject
 from widgets.common.multiline_text import MultilineText
 
@@ -76,7 +77,13 @@ class GridTable(QTableView, ControlObject):
             elif event.key() == Qt.Key_V and event.modifiers() == Qt.ControlModifier:
                 self.model().paste_range(self.selectedIndexes(), QApplication.clipboard().text())
                 self.reset()
+            elif event.key() == Qt.Key_E and event.modifiers() == Qt.ControlModifier:
+                self.export_data()
             else:
                 func(event)
 
         return wrapper
+
+    def export_data(self):
+        wb = Workbook()
+        wb.close()

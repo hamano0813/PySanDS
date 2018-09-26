@@ -6,6 +6,7 @@ from PIL import Image
 from parsers import Character, Numerical
 from configs import DATA_PARAMETER
 from attributes import Address, Quantity
+from widgets.common import LineText, MultilineText
 
 
 class ColumnObject(QObject):
