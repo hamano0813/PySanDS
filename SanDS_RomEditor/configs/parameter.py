@@ -455,6 +455,41 @@ DATA_PARAMETER = {
         'length': {'normal_length': 0x8},
         'quantity': {'normal_quantity': 0x16},
         'record': 0x20},
+    '戰場屬性_劇本1': {
+        'address': {'normal_offset': 0x00126EBC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本2': {
+        'address': {'normal_offset': 0x00126EBD},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本3': {
+        'address': {'normal_offset': 0x00126EBE},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本4': {
+        'address': {'normal_offset': 0x00126EBF},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本5': {
+        'address': {'normal_offset': 0x00126EC0},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本6': {
+        'address': {'normal_offset': 0x00126EC1},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
+    '戰場屬性_劇本7': {
+        'address': {'normal_offset': 0x00126EC2},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x16},
+        'record': 0x7},
 
     '劇本屬性_劇本名': {
         'address': {'normal_offset': 0x0012B0E8, 'pointer_offset': -0x1FFC000},
@@ -488,6 +523,11 @@ DATA_PARAMETER = {
         'record': 0x22},
     '劇本屬性_玩家數': {
         'address': {'normal_offset': 0x000FBCD4},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x1},
+    '劇本屬性_獻帝位置': {
+        'address': {'normal_offset': 0x00120240},
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0x7},
         'record': 0x1},

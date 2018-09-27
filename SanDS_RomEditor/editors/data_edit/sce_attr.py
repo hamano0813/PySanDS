@@ -19,11 +19,13 @@ class SceAttr(BackgroundFrame):
             (ValueSpin, '劇本屬性_勢力數', None, 19),
             (ValueSpin, '劇本屬性_旗幟數', None, 21),
             (ValueSpin, '劇本屬性_玩家數', None, 8),
+            (MappingCombo, '劇本屬性_獻帝位置', '都市屬性_都市名', True),
         ])
         scenario_attr_table.setModel(scenario_attr_model)
         scenario_attr_table.setItemDelegate(GridDelegate(self))
         scenario_attr_table.setColumnWidth(0, 200)
         [scenario_attr_table.setColumnWidth(i, 50) for i in range(1, 7)]
+        scenario_attr_table.setColumnWidth(7, 70)
 
         layout = QGridLayout()
         layout.addWidget(scenario_attr_table, 0, 0, 1, 1)
