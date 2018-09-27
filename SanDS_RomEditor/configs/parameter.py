@@ -477,6 +477,11 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x7},
         'record': 0x22},
     '劇本屬性_勢力數': {
+        'address': {'normal_offset': 0x000FBCCC},
+        'length': {'normal_length': 0x1},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x1},
+    '劇本屬性_旗幟數': {
         'address': {'normal_offset': 0x001275BB},
         'length': {'normal_length': 0x1},
         'quantity': {'normal_quantity': 0x7},
