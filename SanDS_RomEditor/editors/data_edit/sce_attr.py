@@ -12,6 +12,7 @@ class SceAttr(BackgroundFrame):
 
         scenario_attr_table = GridTable(self)
         scenario_attr_model = NormalModel(self, [
+            (LineText, '劇本屬性_劇本標題'),
             (LineText, '劇本屬性_劇本名'),
             (ValueSpin, '劇本屬性_劇本年', None, 350),
             (ValueSpin, '劇本屬性_開始年', None, 350),
@@ -24,8 +25,9 @@ class SceAttr(BackgroundFrame):
         scenario_attr_table.setModel(scenario_attr_model)
         scenario_attr_table.setItemDelegate(GridDelegate(self))
         scenario_attr_table.setColumnWidth(0, 200)
-        [scenario_attr_table.setColumnWidth(i, 50) for i in range(1, 7)]
-        scenario_attr_table.setColumnWidth(7, 70)
+        scenario_attr_table.setColumnWidth(1, 160)
+        [scenario_attr_table.setColumnWidth(i, 50) for i in range(2, 8)]
+        scenario_attr_table.setColumnWidth(8, 70)
 
         layout = QGridLayout()
         layout.addWidget(scenario_attr_table, 0, 0, 1, 1)

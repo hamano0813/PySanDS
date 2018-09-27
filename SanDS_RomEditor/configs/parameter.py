@@ -491,9 +491,14 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x16},
         'record': 0x7},
 
-    '劇本屬性_劇本名': {
+    '劇本屬性_劇本標題': {
         'address': {'normal_offset': 0x0012B0E8, 'pointer_offset': -0x1FFC000},
         'length': {'normal_length': 0x20},
+        'quantity': {'normal_quantity': 0x7},
+        'record': 0x4},
+    '劇本屬性_劇本名': {
+        'address': {'normal_offset': 0x000FBC34, 'pointer_offset': -0x1FFC000},
+        'length': {'normal_length': 0x1B},
         'quantity': {'normal_quantity': 0x7},
         'record': 0x4},
     '劇本屬性_劇本年': {
