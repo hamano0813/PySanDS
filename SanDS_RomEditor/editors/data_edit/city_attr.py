@@ -13,7 +13,7 @@ class CityAttr(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
-        scenario_combo = ControlCombo(self, '劇本屬性_劇本名')
+        scenario_combo = ControlCombo(self, '劇本屬性_劇本標題')
 
         city_attr_table = GridTable(self)
         city_attr_model = NormalModel(self, [

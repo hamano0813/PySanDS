@@ -31,7 +31,7 @@ class MultilineText(QTextEdit, SingleObject):
             max_len = self.data_type.length(self.data_type.buffer,
                                         self.data_type.record * self.parent().parent().currentIndex().row())
         self.setToolTip(
-            f'''最大字節長度{max_len}\n當前字節長度{len(self.toPlainText().encode(CODE_ALIASES))}''')
+            f'''最大字節長度{max_len}\n當前字節長度{len(self.data_type.encode_text(self.toPlainText()))}''')
         temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])
         if not temp == self.toPlainText():
             self.setText(temp)

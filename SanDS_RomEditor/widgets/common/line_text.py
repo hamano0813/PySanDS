@@ -32,7 +32,7 @@ class LineText(QLineEdit, SingleObject):
         else:
             max_len = self.data_type.length(self.data_type.buffer,
                                             self.data_type.record * self.parent().parent().currentIndex().row())
-            current_len = len(self.displayText().encode(CODE_ALIASES))
+            current_len = len(self.data_type.encode_text(self.displayText()))
             self.setToolTip(f'最大字節長度{max_len}\n當前字節長度{current_len}')
 
     def refresh_data(self):

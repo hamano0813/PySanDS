@@ -12,7 +12,7 @@ class SkillAttr(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
-        scenario_combo = ControlCombo(self, '劇本屬性_劇本名')
+        scenario_combo = ControlCombo(self, '劇本屬性_劇本標題')
 
         skill_attr_table = GridTable(self)
         skill_attr_model = NormalModel(self, [

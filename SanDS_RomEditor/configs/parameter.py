@@ -324,7 +324,7 @@ DATA_PARAMETER = {
 
     '都市屬性_都市名': {
         'address': {'normal_offset': 0x0011B15A},
-        'length': {'normal_length': 0x8},
+        'length': {'normal_length': 0x6},
         'quantity': {'normal_quantity': 0x2E},
         'record': 0x26},
     '都市屬性_讀音': {
@@ -446,8 +446,8 @@ DATA_PARAMETER = {
         'quantity': {'normal_quantity': 0x2E},
         'record': 0x20},
     '戰場屬性_戰場名': {
-        'address': {'normal_offset': 0x00126F61},
-        'length': {'normal_length': 0x8},
+        'address': {'normal_offset': 0x00126F62},
+        'length': {'normal_length': 0x6},
         'quantity': {'normal_quantity': 0x16},
         'record': 0x20},
     '戰場屬性_讀音': {

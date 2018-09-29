@@ -34,7 +34,7 @@ class ForceAttr(BackgroundFrame):
         picture = Picture(self, **DATA_PARAMETER.get('圖片_紋章1')).get_data(0)
         emblem_dict = {i + 1: picture.crop((10 + 10 * i, 0, 20 + 10 * i, 10)).resize((18, 18)) for i in range(21)}
 
-        scenario_combo = ControlCombo(self, '劇本屬性_劇本名')
+        scenario_combo = ControlCombo(self, '劇本屬性_劇本標題')
 
         force_attr_table = GridTable(self)
         force_attr_model = Model(self, [
