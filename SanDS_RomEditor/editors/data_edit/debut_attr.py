@@ -40,7 +40,7 @@ class DebutAttr(BackgroundFrame):
          for i in range(3, 7)]
         self.scenario_combo.add_control_widget(debut_attr_table)
 
-        [debut_attr_table.setColumnWidth(i, width) for i, width in enumerate([60, 45, 100, 80, 70, 45, 45])]
+        [debut_attr_table.setColumnWidth(i, width) for i, width in enumerate([60, 45, 110, 90, 75, 45, 45])]
 
         self.debut_city_table = GridTable(self)
         debut_city_model = PointerModel(self, [
@@ -64,8 +64,8 @@ class DebutAttr(BackgroundFrame):
         self.debut_city_table.setModel(debut_city_model)
         self.debut_city_table.setItemDelegate(GridDelegate(self))
 
-        self.debut_city_table.setColumnWidth(0, 100)
-        self.debut_city_table.setColumnWidth(1, 70)
+        self.debut_city_table.setColumnWidth(0, 105)
+        self.debut_city_table.setColumnWidth(1, 75)
 
         layout = QGridLayout()
         layout.addWidget(self.scenario_combo, 0, 0, 1, 5)

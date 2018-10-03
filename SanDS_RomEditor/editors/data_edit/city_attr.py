@@ -45,8 +45,8 @@ class CityAttr(BackgroundFrame):
         city_attr_table.setModel(city_attr_model)
         city_attr_table.setItemDelegate(GridDelegate(self))
         [city_attr_table.setColumnWidth(i, 60) for i in range(0, 2)]
-        city_attr_table.setColumnWidth(2, 70)
-        city_attr_table.setColumnWidth(3, 100)
+        city_attr_table.setColumnWidth(2, 75)
+        city_attr_table.setColumnWidth(3, 105)
         [city_attr_table.setColumnWidth(i, 45) for i in range(4, 24)]
         [city_attr_table.setColumnWidth(i, 55) for i in (7, 9, 13, 16, 17, 18)]
 
