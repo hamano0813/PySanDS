@@ -51,6 +51,7 @@ class MainWindow(QMainWindow):
         tool_bar.setObjectName('工具')
         tool_bar.addActions(value_editors)
         tool_bar.setEnabled(False)
+        tool_bar.setMovable(False)
         self.addToolBar(tool_bar)
 
         action_group = QActionGroup(self)

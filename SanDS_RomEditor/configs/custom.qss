@@ -7,71 +7,99 @@
 
 /*****************主窗口*****************/
 QMainWindow {
-        background: rgb(255, 255, 255);
+        background: #CCFFFF;
+}
+
+/*****************菜单栏*****************/
+QMenuBar {
+    background-color: #CCFFFF;
+}
+
+QMenuBar::item {
+    spacing: 3px;
+    padding: 5px;
+    background: transparent;
+}
+
+QMenuBar::item:selected {
+    background: lightblue;
+}
+
+QMenuBar::item:pressed {
+    background: lightblue;
+}
+
+
+/******************菜单******************/
+QMenu {
+    background-color: #CCFFFF;
+    border: none;
+    /*border: 1px solid black;*/
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 5px 20px;
+}
+
+QMenu::item:selected {
+    background-color: lightblue;
 }
 
 
 /***************工具栏按钮***************/
 QToolButton {
-        background: rgb(255, 255, 255);
-        border: none;
-        padding: 5px;
+    background: #CCFFFF;
+    padding: 2px;
 }
 QToolButton:disabled {
-        color: rgb(150, 150, 150);
-}
-QToolButton:enabled {
-        color: rgb(0, 0, 0);
+    color: gray;
 }
 QToolButton:hover {
-        background-color: rgb(150, 150, 150);
-        color: rgb(255, 255, 255);
-        font-weight: 700;
+    background-color: lightblue;
+    font-weight: 700;
 }
 QToolButton:on {
-        background-color: rgb(200, 200, 200);
-        color: rgb(0, 0, 0);
-        font-weight: 700;
+    background-color: lightblue;
 }
-
 
 /**************表格行列标题**************/
 QHeaderView {
-        background: rgb(57, 58, 60);
+    background: rgb(57, 58, 60);
 }
 QHeaderView::section:horizontal, QHeaderView::section:vertical, QTableCornerButton::section {
-        border: none;
-        color: white;
-        background: transparent;
-        padding: 5px;
+    border: none;
+    color: white;
+    background: transparent;
+    padding: 5px;
 }
 QHeaderView::section:horizontal:hover, QHeaderView::section:vertical:hover, QTableCornerButton:hover {
-        background: rgb(0, 160, 230);
-        border-right: 1px solid rgb(57, 58, 60);
-        border-bottom: 1px solid rgb(57, 58, 60);
+    background: rgb(0, 160, 230);
+    border-right: 1px solid rgb(57, 58, 60);
+    border-bottom: 1px solid rgb(57, 58, 60);
 }
 QHeaderView::section:horizontal:pressed, QHeaderView::section:vertical:pressed, QTableCornerButton:pressed {
-        background: rgb(0, 180, 255);
-        border-right: 1px solid rgb(57, 58, 60);
-        border-bottom: 1px solid rgb(57, 58, 60);
+    background: rgb(0, 180, 255);
+    border-right: 1px solid rgb(57, 58, 60);
+    border-bottom: 1px solid rgb(57, 58, 60);
 }
 
 
 /******************表格******************/
 QTableView {
-        border: 1px solid rgb(45, 45, 45);
-        background: rgb(57, 58, 60);
-        gridline-color: rgb(60, 60, 60);
+    border: 1px solid rgb(45, 45, 45);
+    background: rgb(57, 58, 60);
+    gridline-color: rgb(60, 60, 60);
 }
 QTableView::item {
-        color: rgb(200, 200, 200);
-        border: none;
-        background: rgb(72, 72, 74);
-        /*border: 1px solid rgb(45, 45, 45);*/
+    color: rgb(200, 200, 200);
+    border: none;
+    background: rgb(72, 72, 74);
+    /*border: 1px solid rgb(45, 45, 45);*/
 }
 QTableView::item:selected {
-        background: rgba(255, 255, 255, 40);
+    background: rgba(255, 255, 255, 40);
 }
 QTableView::item:selected:!active {
-        color: white;
+    color: white;
 }
