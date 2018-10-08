@@ -1,0 +1,186 @@
+/****************全局字体****************/
+* {
+    font-family: 'Consolas', 'Inziu Roboto J', 'Microsoft YaHei UI', monospace;
+}
+
+
+/*****************主窗口*****************/
+QMainWindow {
+    background: #B1B1B1;
+}
+
+
+/*****************菜单栏*****************/
+QMenuBar {
+    background-color: #444444;
+    color: #EFEFEF;
+    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+}
+QMenuBar::item {
+    padding: 5px 15px;
+    background: transparent;
+}
+QMenuBar::item:selected, QMenuBar::item:pressed {
+    background: #505050;
+}
+
+
+/******************菜单******************/
+QMenu {
+    background-color: #F0F0F0;
+    border: 1px solid #ACACAC;
+    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 5px 15px;
+    border: 1px solid #F0F0F0;
+}
+
+QMenu::item:selected {
+    background-color: #969696;
+}
+
+
+/*****************工具栏*****************/
+QToolBar {
+    background: #444444;
+    border-bottom: 1px solid #B1B1B1;
+}
+
+
+/***************工具栏按钮***************/
+QToolButton {
+    background: #444444;
+    color: #FFFFFF;
+    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+    font-size: 9pt;
+    padding: 5px 5px;
+    margin-right: 2px;
+    border: none;
+}
+QToolButton:disabled {
+    color: darkgray;
+}
+QToolButton:hover {
+    background-color: #217346;
+}
+QToolButton:on {
+    background-color: #B1B1B1;
+    color: #262626;
+}
+
+
+/**************表格行列标题**************/
+QHeaderView {
+    border: 1px transparent;
+    border-radius: 2px;
+    margin: 0;
+    padding: 0;
+    background: #666666;
+    gridline-color: #A0ADA6;
+}
+QTableCornerButton::section {
+    background-color: #666666;
+}
+QHeaderView::section:horizontal:first {
+    border-left: 1px solid #A0ADA6;
+}
+QHeaderView::section:vertical:first {
+    border-top: 1px solid #A0ADA6;
+}
+QHeaderView::section:horizontal {
+    background: #666666;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    border-right: 1px solid #A0ADA6;
+    border-bottom: 1px solid #666666;
+    border-radius: 0;
+    text-align: center;
+}
+QHeaderView::section:vertical {
+    background: #666666;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    border-bottom: 1px solid #A0ADA6;
+    border-right: 1px solid #666666;
+    border-radius: 0;
+    text-align: center;
+}
+QHeaderView::section:horizontal:checked {
+    color: white;
+    background-color: #262626;
+    border-bottom: 1px solid #0A6332;
+}
+QHeaderView::section:vertical:checked {
+    color: white;
+    background-color: #262626;
+    border-right: 1px solid #0A6332;
+}
+QHeaderView::section:horizontal:hover {
+    background: #0A6332;
+    border-bottom: 1px solid #0A6332;
+}
+QHeaderView::section:vertical:hover {
+    background: #0A6332;
+    border-right: 1px solid #0A6332;
+}
+
+
+/******************表格******************/
+QTableView {
+    border: none;
+    background: #C4C4C4;
+    gridline-color: #D4D4D4;
+    alternate-background-color: #D9D9D9;
+}
+QTableView::item {
+    color: #000000;
+    border: 1px solid transparent;
+}
+QTableView::item:!alternate:!selected {
+    background-color: #A6A6A6;
+}
+QTableView::item:selected {
+    background: #444444;
+    color: #FFFFFF;
+}
+
+
+/*****************下拉框*****************/
+QComboBox {
+    height: 25px;
+    border: 1px solid #444444;
+    background: #B2B2B2;
+}
+
+QComboBox::drop-down {
+    width: 20px;
+    border: none;
+    background: transparent;
+}
+/*
+QComboBox::down-arrow {
+    image: url(:/Black/arrowBottom);
+}
+*/
+
+QComboBox QAbstractItemView {
+    border: 1px solid #0078D7;
+    background: #B2B2B2;
+    selection-background-color: #000000;
+    outline: none;
+}
+QComboBox QAbstractItemView::item {
+    height: 25px;
+    background: #B2B2B2;
+    selection-background-color: #000000;
+    border: 1px solid #B2B2B2;
+    color: #000000;
+}
+QComboBox QAbstractItemView::item:hover {
+    background: #444444;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+}

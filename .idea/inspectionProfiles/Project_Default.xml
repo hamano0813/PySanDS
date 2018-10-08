@@ -1,6 +1,47 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="CssInvalidPseudoSelector" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myCustomPropertiesEnabled" value="true" />
+      <option name="myIgnoreVendorSpecificProperties" value="false" />
+      <option name="myCustomPropertiesList">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="selection-background-color" />
+            <item index="1" class="java.lang.String" itemvalue="gridline-color" />
+            <item index="2" class="java.lang.String" itemvalue="alternate-background-color" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="18">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="qmainwindow" />
+            <item index="7" class="java.lang.String" itemvalue="qmenubar" />
+            <item index="8" class="java.lang.String" itemvalue="qmenu" />
+            <item index="9" class="java.lang.String" itemvalue="qtoolbar" />
+            <item index="10" class="java.lang.String" itemvalue="qtoolbutton" />
+            <item index="11" class="java.lang.String" itemvalue="qheaderview" />
+            <item index="12" class="java.lang.String" itemvalue="qtablecornerbutton" />
+            <item index="13" class="java.lang.String" itemvalue="qtableview" />
+            <item index="14" class="java.lang.String" itemvalue="qcombobox" />
+            <item index="15" class="java.lang.String" itemvalue="qabstractitemview" />
+            <item index="16" class="java.lang.String" itemvalue="alternate" />
+            <item index="17" class="java.lang.String" itemvalue="selected" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>

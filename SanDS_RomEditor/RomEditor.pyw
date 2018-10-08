@@ -8,7 +8,7 @@ from editors.window import MainWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    file = QFile('configs/custom.qss')
+    file = QFile('configs/custom.css')
     file.open(QFile.ReadOnly)
     stylesheet = bytearray(file.readAll()).decode('UTF-8')
     app.setStyleSheet(stylesheet)

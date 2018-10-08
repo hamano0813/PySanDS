@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QComboBox, QStyledItemDelegate
 from parsers import Numerical, Character
 from widgets.abstract import SingleObject
 
@@ -18,6 +18,7 @@ class MappingCombo(QComboBox, SingleObject):
         self.mapping_type: Character = self.parser(Character, mapping_name)
         self.addItems(self.mapping.values())
         self.setMaxVisibleItems(20)
+        self.setItemDelegate(QStyledItemDelegate())
 
     @property
     def mapping(self):

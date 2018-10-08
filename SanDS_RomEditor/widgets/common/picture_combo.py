@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QComboBox, QStyledItemDelegate
 from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QIcon
 from parsers import Numerical, Picture
@@ -21,6 +21,7 @@ class PictureCombo(QComboBox, SingleObject):
         [self.addItem(QIcon(pic.toqpixmap()), '') for code, pic in self.mapping.items()]
         self.setIconSize(QSize(*list(self.mapping.values())[0].size))
         self.setMaxVisibleItems(10)
+        self.setItemDelegate(QStyledItemDelegate())
 
     @property
     def mapping(self):

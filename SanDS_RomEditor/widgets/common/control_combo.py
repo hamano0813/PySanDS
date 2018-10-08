@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QComboBox, QStyledItemDelegate
 from parsers import Character
 from widgets.abstract import ControlObject
 from configs import DATA_PARAMETER
@@ -16,6 +16,7 @@ class ControlCombo(QComboBox, ControlObject):
         self.setCurrentIndex(0)
         # noinspection PyUnresolvedReferences
         self.currentIndexChanged[int].connect(self.control_index)
+        self.setItemDelegate(QStyledItemDelegate())
 
     def refresh_data(self):
         pass

@@ -52,6 +52,7 @@ class GridTable(QTableView, ControlObject):
         self.clicked[QModelIndex].connect(self.index_changed)
         self.currentIndexChanged[int].connect(self.control_index)
         self.keyPressEvent = self.key_press(self.keyPressEvent)
+        self.setAlternatingRowColors(True)
         self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
 
     def refresh_data(self):
