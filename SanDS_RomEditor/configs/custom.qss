@@ -1,0 +1,77 @@
+/****************************************/
+/****************全局字体****************/
+* {
+        font-family: Consolas, 'Inziu Roboto J', 'Microsoft YaHei UI';
+}
+
+
+/*****************主窗口*****************/
+QMainWindow {
+        background: rgb(255, 255, 255);
+}
+
+
+/***************工具栏按钮***************/
+QToolButton {
+        background: rgb(255, 255, 255);
+        border: none;
+        padding: 5px;
+}
+QToolButton:disabled {
+        color: rgb(150, 150, 150);
+}
+QToolButton:enabled {
+        color: rgb(0, 0, 0);
+}
+QToolButton:hover {
+        background-color: rgb(150, 150, 150);
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+}
+QToolButton:on {
+        background-color: rgb(200, 200, 200);
+        color: rgb(0, 0, 0);
+        font-weight: 700;
+}
+
+
+/**************表格行列标题**************/
+QHeaderView {
+        background: rgb(57, 58, 60);
+}
+QHeaderView::section:horizontal, QHeaderView::section:vertical, QTableCornerButton::section {
+        border: none;
+        color: white;
+        background: transparent;
+        padding: 5px;
+}
+QHeaderView::section:horizontal:hover, QHeaderView::section:vertical:hover, QTableCornerButton:hover {
+        background: rgb(0, 160, 230);
+        border-right: 1px solid rgb(57, 58, 60);
+        border-bottom: 1px solid rgb(57, 58, 60);
+}
+QHeaderView::section:horizontal:pressed, QHeaderView::section:vertical:pressed, QTableCornerButton:pressed {
+        background: rgb(0, 180, 255);
+        border-right: 1px solid rgb(57, 58, 60);
+        border-bottom: 1px solid rgb(57, 58, 60);
+}
+
+
+/******************表格******************/
+QTableView {
+        border: 1px solid rgb(45, 45, 45);
+        background: rgb(57, 58, 60);
+        gridline-color: rgb(60, 60, 60);
+}
+QTableView::item {
+        color: rgb(200, 200, 200);
+        border: none;
+        background: rgb(72, 72, 74);
+        /*border: 1px solid rgb(45, 45, 45);*/
+}
+QTableView::item:selected {
+        background: rgba(255, 255, 255, 40);
+}
+QTableView::item:selected:!active {
+        color: white;
+}

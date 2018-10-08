@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from types import MethodType
-from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox, QToolBar, QActionGroup
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.data_edit import *
@@ -44,11 +44,18 @@ class MainWindow(QMainWindow):
         file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
 
         value_editors = [self.create_action(editor_name, self.open_editor_frame) for editor_name in CHILD_MAPPING]
-        data_menu = self.create_menu('數值', None, value_editors)
-        data_menu.setEnabled(False)
 
         self.menuBar().addMenu(file_menu)
-        self.menuBar().addMenu(data_menu)
+
+        tool_bar = QToolBar('顯示標籤')
+        tool_bar.setObjectName('工具')
+        tool_bar.addActions(value_editors)
+        tool_bar.setEnabled(False)
+        self.addToolBar(tool_bar)
+
+        action_group = QActionGroup(self)
+        [(action_group.addAction(i), i.setCheckable(True)) for i in value_editors]
+        action_group.setExclusive(True)
 
     def load_rom(self):
         file_path = QFileDialog().getOpenFileName(None, '載入Rom文件', __file__.split('\\editors\\window.py')[0],
@@ -83,7 +90,7 @@ class MainWindow(QMainWindow):
     def start_edit(self):
         self.findChild(QAction, '保存Rom').setEnabled(True)
         self.findChild(QAction, '另存為').setEnabled(True)
-        self.findChild(QMenu, '數值').setEnabled(True)
+        self.findChild(QToolBar, '工具').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)

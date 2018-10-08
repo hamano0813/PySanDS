@@ -2,12 +2,15 @@
   <dictionary name="HT">
     <words>
       <w>consolas</w>
+      <w>gridline</w>
       <w>inziu</w>
       <w>iosevka</w>
       <w>multiline</w>
       <w>pywin</w>
+      <w>rgba</w>
       <w>roboto</w>
       <w>shiftjisx</w>
+      <w>subcontrol</w>
       <w>venv</w>
     </words>
   </dictionary>

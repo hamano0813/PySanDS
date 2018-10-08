@@ -3,11 +3,15 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import QFile
 from editors.window import MainWindow
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyleSheet('''*{font-family: Consolas, 'Inziu Roboto J', 'Microsoft YaHei UI';}''')
+    file = QFile('configs/custom.qss')
+    file.open(QFile.ReadOnly)
+    stylesheet = bytearray(file.readAll()).decode('UTF-8')
+    app.setStyleSheet(stylesheet)
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
