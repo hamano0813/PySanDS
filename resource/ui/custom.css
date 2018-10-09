@@ -31,13 +31,11 @@ QMenu {
     border: 1px solid #ACACAC;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
 }
-
 QMenu::item {
     background-color: transparent;
     padding: 5px 15px;
     border: 1px solid #F0F0F0;
 }
-
 QMenu::item:selected {
     background-color: #969696;
 }
@@ -69,6 +67,7 @@ QToolButton:hover {
 QToolButton:on {
     background-color: #666666;
     color: #FFFFFF;
+    font-weight: bold;
 }
 
 
@@ -95,6 +94,7 @@ QHeaderView::section:horizontal {
     border-bottom: 1px solid #666666;
     border-radius: 0;
     text-align: center;
+    font-weight: bold;
 }
 QHeaderView::section:vertical {
     background: #666666;
@@ -146,6 +146,7 @@ QTableCornerButton::section:pressed {
     background-color: #262626;
 }
 
+
 /*****************文本框*****************/
 QLabel {
     color: #FFFFFF;
@@ -181,7 +182,6 @@ QComboBox QAbstractItemView {
     background: transparent;
     outline: none;
 }
-
 QComboBox QAbstractItemView::item {
     height: 25px;
     background: #FFFFFF;
@@ -201,6 +201,7 @@ QComboBox QAbstractItemView::item:hover {
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
 }
+
 
 /*****************微调框*****************/
 QSpinBox {

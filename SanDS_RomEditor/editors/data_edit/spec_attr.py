@@ -53,7 +53,7 @@ class SpecAttr(BackgroundFrame):
         [spec_attr_model.column_objects[i].data_type.set_start(0xD) for i in range(4)]
         [spec_attr_table.setColumnWidth(i, 50) for i in range(5, 19)]
         spec_attr_table.setColumnWidth(0, 90)
-        spec_attr_table.setColumnWidth(1, 56)
+        spec_attr_table.setColumnWidth(1, 60)
         spec_attr_table.setColumnWidth(2, 45)
         spec_attr_table.setColumnWidth(3, 45)
         spec_attr_table.setColumnWidth(4, 160)

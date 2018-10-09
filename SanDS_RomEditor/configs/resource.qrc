@@ -3,18 +3,18 @@
         <file alias="character.txt">./character.txt</file>
     </qresource>
     <qresource prefix="qss/" >
-        <file alias="custom.css">./custom.css</file>
+        <file alias="custom.css">../../resource/ui/custom.css</file>
     </qresource>
     <qresource prefix="arrow/" >
-        <file alias="down-arrow.png">./down-arrow.png</file>
+        <file alias="down-arrow.png">../../resource/ui/down-arrow.png</file>
     </qresource>
     <qresource prefix="arrow/" >
-        <file alias="up-arrow.png">./up-arrow.png</file>
+        <file alias="up-arrow.png">../../resource/ui/up-arrow.png</file>
     </qresource>
     <qresource prefix="button/" >
-        <file alias="down-button.png">./down-button.png</file>
+        <file alias="down-button.png">../../resource/ui/down-button.png</file>
     </qresource>
     <qresource prefix="button/" >
-        <file alias="up-button.png">./up-button.png</file>
+        <file alias="up-button.png">../../resource/ui/up-button.png</file>
     </qresource>
 </RCC>
