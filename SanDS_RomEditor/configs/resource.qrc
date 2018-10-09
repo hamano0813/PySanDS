@@ -2,4 +2,19 @@
     <qresource prefix="/" >
         <file alias="character.txt">./character.txt</file>
     </qresource>
+    <qresource prefix="qss/" >
+        <file alias="custom.css">./custom.css</file>
+    </qresource>
+    <qresource prefix="arrow/" >
+        <file alias="down-arrow.png">./down-arrow.png</file>
+    </qresource>
+    <qresource prefix="arrow/" >
+        <file alias="up-arrow.png">./up-arrow.png</file>
+    </qresource>
+    <qresource prefix="button/" >
+        <file alias="down-button.png">./down-button.png</file>
+    </qresource>
+    <qresource prefix="button/" >
+        <file alias="up-button.png">./up-button.png</file>
+    </qresource>
 </RCC>

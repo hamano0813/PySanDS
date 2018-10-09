@@ -17,7 +17,7 @@ class MappingCombo(QComboBox, SingleObject):
         self.data_type: Numerical = self.parser(self.parser_type, data_name)
         self.mapping_type: Character = self.parser(Character, mapping_name)
         self.addItems(self.mapping.values())
-        self.setMaxVisibleItems(20)
+        self.setMaxVisibleItems(15)
         self.setItemDelegate(QStyledItemDelegate())
 
     @property

@@ -5,10 +5,11 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QFile
 from editors.window import MainWindow
+from configs.resource import *
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    file = QFile('configs/custom.css')
+    file = QFile(':/qss/custom.css')
     file.open(QFile.ReadOnly)
     stylesheet = bytearray(file.readAll()).decode('UTF-8')
     app.setStyleSheet(stylesheet)

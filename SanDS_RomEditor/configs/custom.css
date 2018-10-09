@@ -131,48 +131,56 @@ QHeaderView::section:vertical:hover {
 /******************表格******************/
 QTableView {
     border: none;
-    background: #C4C4C4;
+    background: #B1B1B1;
     gridline-color: #D4D4D4;
-    alternate-background-color: #D9D9D9;
 }
 QTableView::item {
+    background: #FFFFFF;
     color: #000000;
-    border: 1px solid transparent;
-}
-QTableView::item:!alternate:!selected {
-    background-color: #A6A6A6;
 }
 QTableView::item:selected {
-    background: #444444;
-    color: #FFFFFF;
+    background: #C6C6C6;
 }
 
 
 /*****************下拉框*****************/
 QComboBox {
     height: 25px;
-    border: 1px solid #444444;
-    background: #B2B2B2;
+    border: 1px solid transparent;
+    background: #FFFFFF;
 }
-
-QComboBox::drop-down {
-    width: 20px;
-    border: none;
+QFrame>QComboBox {
+    height: 25px;
+    border: 1px solid #444444;
     background: transparent;
 }
-/*
-QComboBox::down-arrow {
-    image: url(:/Black/arrowBottom);
+QComboBox::drop-down {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 17px;
+    background: transparent;
 }
-*/
-
+QComboBox::drop-down:hover {
+    background: rgba(255, 255, 255, 50);
+}
+QComboBox::down-arrow {
+    image: url(:/arrow/down-arrow.png);
+}
 QComboBox QAbstractItemView {
     border: 1px solid #0078D7;
-    background: #B2B2B2;
-    selection-background-color: #000000;
+    background: transparent;
     outline: none;
 }
+
 QComboBox QAbstractItemView::item {
+    height: 25px;
+    background: #FFFFFF;
+    selection-background-color: #000000;
+    border: 1px solid #FFFFFF;
+    color: #000000;
+}
+QFrame>QComboBox QAbstractItemView::item {
     height: 25px;
     background: #B2B2B2;
     selection-background-color: #000000;
@@ -183,4 +191,44 @@ QComboBox QAbstractItemView::item:hover {
     background: #444444;
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
+}
+
+/*****************微调框*****************/
+QSpinBox {
+    border-radius: 0;
+    height: 25px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+}
+QSpinBox::up-button {
+    width: 15px;
+    height: 12px;
+    image: url(:/button/up-button.png);
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    background: #B1B1B1;
+}
+QSpinBox::up-button:hover {
+    background: #D4D4D4
+}
+QSpinBox::up-button:!enabled {
+    background: transparent;
+}
+QSpinBox::down-button {
+    width: 15px;
+    height: 12px;
+    image: url(:/button/down-button.png);
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+    background: #B1B1B1;
+}
+QSpinBox::down-button:hover {
+    background: #D4D4D4
+}
+QSpinBox::down-button:!enabled {
+    background: transparent;
+}
+QFrame>QSpinBox {
+    font-family: 'Lucida Sans Typewriter', 'Consolas', monospace;
+    font-size: 10pt;
 }
