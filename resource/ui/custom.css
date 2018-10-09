@@ -186,19 +186,16 @@ QComboBox QAbstractItemView::item {
     height: 25px;
     background: #FFFFFF;
     selection-background-color: #000000;
-    border: 1px solid #FFFFFF;
     color: #000000;
 }
 QFrame>QComboBox QAbstractItemView::item {
     height: 25px;
     background: #B2B2B2;
     selection-background-color: #000000;
-    border: 1px solid #B2B2B2;
     color: #000000;
 }
 QComboBox QAbstractItemView::item:hover {
     background: #444444;
-    border: 1px solid #FFFFFF;
     color: #FFFFFF;
 }
 

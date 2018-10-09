@@ -47,12 +47,10 @@ class GridTable(QTableView, ControlObject):
         self.control_widgets = []
         self.control_targets = []
         self.buffer = parent.buffer
-        self.setModel = self.set_width(self.setModel)
         # noinspection PyUnresolvedReferences
         self.clicked[QModelIndex].connect(self.index_changed)
         self.currentIndexChanged[int].connect(self.control_index)
         self.keyPressEvent = self.key_press(self.keyPressEvent)
-        self.setAlternatingRowColors(True)
         self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
 
     def refresh_data(self):
@@ -62,13 +60,6 @@ class GridTable(QTableView, ControlObject):
     def index_changed(self, index: QModelIndex):
         row_index = index.row()
         self.currentIndexChanged.emit(row_index)
-
-    def set_width(self, func):
-        def wrapper(model):
-            func(model)
-            [self.setRowHeight(i, 28) for i in range(self.model().rowCount())]
-
-        return wrapper
 
     def key_press(self, func):
         # noinspection PyArgumentList
