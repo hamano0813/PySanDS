@@ -6,7 +6,7 @@
 
 /*****************主窗口*****************/
 QMainWindow {
-    background: #B1B1B1;
+    background: #666666;
 }
 
 
@@ -46,7 +46,7 @@ QMenu::item:selected {
 /*****************工具栏*****************/
 QToolBar {
     background: #444444;
-    border-bottom: 1px solid #B1B1B1;
+    border-bottom: 1px solid #666666;
 }
 
 
@@ -67,8 +67,8 @@ QToolButton:hover {
     background-color: #217346;
 }
 QToolButton:on {
-    background-color: #B1B1B1;
-    color: #262626;
+    background-color: #666666;
+    color: #FFFFFF;
 }
 
 
@@ -80,9 +80,6 @@ QHeaderView {
     padding: 0;
     background: #666666;
     gridline-color: #A0ADA6;
-}
-QTableCornerButton::section {
-    background-color: #666666;
 }
 QHeaderView::section:horizontal:first {
     border-left: 1px solid #A0ADA6;
@@ -141,6 +138,18 @@ QTableView::item {
 QTableView::item:selected {
     background: #C6C6C6;
 }
+QTableCornerButton::section {
+    border: none;
+    background-color: #666666;
+}
+QTableCornerButton::section:pressed {
+    background-color: #262626;
+}
+
+/*****************文本框*****************/
+QLabel {
+    color: #FFFFFF;
+}
 
 
 /*****************下拉框*****************/
@@ -152,7 +161,7 @@ QComboBox {
 QFrame>QComboBox {
     height: 25px;
     border: 1px solid #444444;
-    background: transparent;
+    background: #B1B1B1;
 }
 QComboBox::drop-down {
     margin: 0;
