@@ -17,7 +17,7 @@ QMenuBar {
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
 }
 QMenuBar::item {
-    padding: 5px 15px;
+    padding: 5px 10px;
     background: transparent;
 }
 QMenuBar::item:selected, QMenuBar::item:pressed {
