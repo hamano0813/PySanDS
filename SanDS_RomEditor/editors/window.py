@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         save_as.setEnabled(False)
         close_child = self.create_action('關閉窗口', self.close_child)
         exit_editor = self.create_action('退出', self.close)
-        file_menu = self.create_menu('文件', None, [load_rom, save_rom, save_as, close_child, exit_editor])
+        file_menu = self.create_menu('文件(&F)', None, [load_rom, save_rom, save_as, close_child, exit_editor])
 
         value_editors = [self.create_action(editor_name, self.open_editor_frame) for editor_name in CHILD_MAPPING]
 

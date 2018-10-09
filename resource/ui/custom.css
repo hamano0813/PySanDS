@@ -12,16 +12,18 @@ QMainWindow {
 
 /*****************菜单栏*****************/
 QMenuBar {
-    background-color: #444444;
+    background-color: #666666;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
     color: #EFEFEF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
 }
 QMenuBar::item {
-    padding: 5px 10px;
+    padding: 5px 12px;
     background: transparent;
 }
 QMenuBar::item:selected, QMenuBar::item:pressed {
-    background: #505050;
+    background: #888888;
 }
 
 
@@ -33,7 +35,7 @@ QMenu {
 }
 QMenu::item {
     background-color: transparent;
-    padding: 5px 15px;
+    padding: 3px 15px;
     border: 1px solid #F0F0F0;
 }
 QMenu::item:selected {
@@ -54,22 +56,21 @@ QToolButton {
     color: #FFFFFF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
     font-size: 9pt;
-    padding: 5px 5px;
-    margin-right: 2px;
+    padding: 3px 5px;
+    margin-right: 3px;
     border: none;
 }
 QToolButton:disabled {
     color: darkgray;
-}
-QToolButton:hover {
-    background-color: #217346;
 }
 QToolButton:on {
     background-color: #666666;
     color: #FFFFFF;
     font-weight: bold;
 }
-
+QToolButton:hover {
+    background-color: #217346;
+}
 
 /**************表格行列标题**************/
 QHeaderView {
