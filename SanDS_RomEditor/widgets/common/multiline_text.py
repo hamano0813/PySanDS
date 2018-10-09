@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QTextCursor
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import CODE_ALIASES, EXPAND_CHARACTER, CHARACTER_PATH
+from configs import EXPAND_CHARACTER, CHARACTER_PATH
 
 
 class MultilineText(QTextEdit, SingleObject):
@@ -29,7 +29,7 @@ class MultilineText(QTextEdit, SingleObject):
             max_len = self.data_type.length.normal_length
         else:
             max_len = self.data_type.length(self.data_type.buffer,
-                                        self.data_type.record * self.parent().parent().currentIndex().row())
+                                            self.data_type.record * self.parent().parent().currentIndex().row())
         self.setToolTip(
             f'''最大字節長度{max_len}\n當前字節長度{len(self.data_type.encode_text(self.toPlainText()))}''')
         temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in self.toPlainText()])

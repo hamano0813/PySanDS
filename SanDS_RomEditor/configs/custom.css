@@ -229,6 +229,6 @@ QSpinBox::down-button:!enabled {
     background: transparent;
 }
 QFrame>QSpinBox {
-    font-family: 'Lucida Sans Typewriter', 'Consolas', monospace;
+    font-family: 'Lucida Console', 'Consolas', monospace;
     font-size: 10pt;
 }

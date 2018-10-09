@@ -6,7 +6,7 @@ from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from parsers import Character
 from widgets.abstract import SingleObject
-from configs import CODE_ALIASES, EXPAND_CHARACTER, CHARACTER_PATH
+from configs import EXPAND_CHARACTER, CHARACTER_PATH
 
 
 class LineText(QLineEdit, SingleObject):
