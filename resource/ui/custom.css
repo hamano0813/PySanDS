@@ -104,7 +104,6 @@ QHeaderView::section:vertical {
     border-bottom: 1px solid #A0ADA6;
     border-right: 1px solid #666666;
     border-radius: 0;
-    text-align: center;
 }
 QHeaderView::section:horizontal:checked {
     color: white;
@@ -149,7 +148,7 @@ QTableCornerButton::section:pressed {
 
 
 /*****************文本框*****************/
-QLabel {
+QFrame>QLabel {
     color: #FFFFFF;
 }
 
@@ -157,7 +156,7 @@ QLabel {
 /*****************下拉框*****************/
 QComboBox {
     height: 25px;
-    border: 1px solid transparent;
+    border: 1px solid #444444;
     background: #FFFFFF;
 }
 QFrame>QComboBox {
@@ -205,7 +204,7 @@ QComboBox QAbstractItemView::item:hover {
 QSpinBox {
     border-radius: 0;
     height: 25px;
-    border: 1px solid #000000;
+    border: 1px solid #444444;
     background: #FFFFFF;
 }
 QSpinBox::up-button {

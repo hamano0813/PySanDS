@@ -53,7 +53,7 @@ class CharAttr(BackgroundFrame):
         [char_attr_table.setColumnWidth(i, 60) for i in range(2)]
         [char_attr_table.setColumnWidth(i, 45) for i in range(2, 16)]
         char_attr_table.setColumnWidth(16, 90)
-        char_attr_table.setColumnWidth(17, 250)
+        char_attr_table.setColumnWidth(17, 230)
 
         layout = QGridLayout()
         layout.addWidget(char_attr_table)

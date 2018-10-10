@@ -52,6 +52,7 @@ class GridTable(QTableView, ControlObject):
         self.currentIndexChanged[int].connect(self.control_index)
         self.keyPressEvent = self.key_press(self.keyPressEvent)
         self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
+        self.verticalHeader().setDefaultSectionSize(28)
 
     def refresh_data(self):
         self.reset()

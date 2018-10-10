@@ -42,6 +42,13 @@
       </option>
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
     <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredIdentifiers">
         <list>
@@ -49,6 +56,7 @@
           <option value="PyQt5.QtWidgets.textChanged.*" />
           <option value="PyQt5.QtWidgets.valueChanged.*" />
           <option value="PyQt5.QtWidgets.textEdited.*" />
+          <option value="PyQt5.QtWidgets.clicked.connect" />
         </list>
       </option>
     </inspection_tool>

@@ -17,4 +17,31 @@
     <qresource prefix="button/" >
         <file alias="up-button.png">../../resource/ui/up-button.png</file>
     </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-top.png">../../resource/ui/frame-top.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-bottom.png">../../resource/ui/frame-bottom.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-left.png">../../resource/ui/frame-left.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-right.png">../../resource/ui/frame-right.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-left-top.png">../../resource/ui/frame-left-top.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-right-top.png">../../resource/ui/frame-right-top.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-left-bottom.png">../../resource/ui/frame-left-bottom.png</file>
+    </qresource>
+    <qresource prefix="frame/" >
+        <file alias="frame-right-bottom.png">../../resource/ui/frame-right-bottom.png</file>
+    </qresource>
+    <qresource prefix="icon/" >
+        <file alias="icon.png">../../resource/ui/icon.png</file>
+    </qresource>
 </RCC>
