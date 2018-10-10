@@ -239,3 +239,28 @@ QFrame>QSpinBox {
     font-family: 'Lucida Console', 'Consolas', monospace;
     font-size: 10pt;
 }
+
+
+TitleLabel {
+    background-color: rgba(200,200,200,50);
+    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+}
+TitleLabel#Dummy {
+    background-color: rgba(0,0,0,0);
+}
+TitleButton {
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    border: 0px;
+    font-family: 'Webdings';
+}
+TitleButton#MinButton:hover {
+    background-color: #D0D0D1;
+}
+TitleButton#MaxButton:hover {
+    background-color: #D0D0D1;
+}
+TitleButton#CloseButton:hover {
+    background-color: #D32424;
+    color: white;
+}

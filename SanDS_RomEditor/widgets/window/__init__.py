@@ -4,3 +4,4 @@
 from widgets.window.icon_label import IconLabel, I_WIDTH
 from widgets.window.title_label import TitleLabel, T_HEIGHT
 from widgets.window.title_button import TitleButton, T_B_WIDTH
+from widgets.window.unframe_window import UnFrameWindow

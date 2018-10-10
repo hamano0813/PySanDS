@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QMenuBar, QToolBar, QFrame
+from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout
 from PyQt5.QtCore import Qt, QPoint, QRect
 from PyQt5.QtGui import QResizeEvent, QPixmap, QPainter, QMouseEvent, QIcon
+from widgets.common import BackgroundFrame
 from widgets.window import IconLabel, TitleLabel, TitleButton, T_HEIGHT, T_B_WIDTH, I_WIDTH
 from configs.resource import *
 
-F_WIDTH = 5
+F_WIDTH = 12
 PADDING = 5
 
 
-class QUnFrameWindow(QWidget):
+class UnFrameWindow(QWidget):
     def __init__(self):
-        super(QUnFrameWindow, self).__init__(None, Qt.FramelessWindowHint)
+        super(UnFrameWindow, self).__init__(None, Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.move_drag_position = 0
         self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = False
@@ -56,24 +57,32 @@ class QUnFrameWindow(QWidget):
         close_button.clicked.connect(self.close)
 
         dummy_label = TitleLabel()
+        dummy_label.setFixedHeight(T_HEIGHT)
         dummy_label.setObjectName('Dummy')
+        self.main_window = QMainWindow(None, Qt.FramelessWindowHint)
 
-        main_layout = QVBoxLayout()
+        main_layout = QGridLayout()
         main_layout.setSpacing(0)
-        main_layout.addWidget(dummy_label, alignment=Qt.AlignCenter)
-        main_layout.addStretch()
+        main_layout.addWidget(icon_label, 0, 0, 1, 1)
+        main_layout.addWidget(title_label, 0, 1, 1, 1)
+        main_layout.addWidget(min_button, 0, 2, 1, 1)
+        main_layout.addWidget(max_button, 0, 3, 1, 1)
+        main_layout.addWidget(close_button, 0, 4, 1, 1)
+        main_layout.addWidget(self.main_window, 1, 0, 1, 5)
 
         self.setLayout(main_layout)
 
         self.setMinimumSize(320, 240)
         self.setMouseTracking(True)
 
-    def centralWidget(self):
-        return self._centralWidget
+    def menuBar(self):
+        return self.main_window.menuBar()
 
-    def setCentralWidget(self, widget):
-        if self._centralWidget:
-            self._centralWidget.close()
+    def addToolBar(self, *args):
+        self.main_window.addToolBar(*args)
+
+    def setCentralWidget(self, *args):
+        self.main_window.setCentralWidget(*args)
 
     def _set_title(self, func):
         def wrapper(*args):
@@ -109,9 +118,9 @@ class QUnFrameWindow(QWidget):
         self._corner_rect = [QPoint(x, y) for x in range(self.width() - PADDING, self.width() + 1)
                              for y in range(self.height() - PADDING, self.height() + 1)]
 
-        self.findChild(TitleButton, 'CloseButton').move(self.width() - T_B_WIDTH - F_WIDTH + 1, F_WIDTH)
-        self.findChild(TitleButton, 'MinButton').move(self.width() - (T_B_WIDTH + 1) * 3 - F_WIDTH + 2, F_WIDTH)
-        self.findChild(TitleButton, 'MaxButton').move(self.width() - (T_B_WIDTH + 1) * 2 - F_WIDTH + 2, F_WIDTH)
+        self.findChild(TitleButton, 'CloseButton').move(self.width() - T_B_WIDTH - F_WIDTH, F_WIDTH)
+        self.findChild(TitleButton, 'MinButton').move(self.width() - (T_B_WIDTH + 1) * 3 - F_WIDTH, F_WIDTH)
+        self.findChild(TitleButton, 'MaxButton').move(self.width() - (T_B_WIDTH + 1) * 2 - F_WIDTH, F_WIDTH)
 
     def mousePressEvent(self, event: QMouseEvent):
         if (event.button() == Qt.LeftButton) and (event.pos() in self._corner_rect):
@@ -182,40 +191,3 @@ class QUnFrameWindow(QWidget):
         painter.setBrush(Qt.white)
         rect = QRect(F_WIDTH, F_WIDTH, self.width() - 2 * F_WIDTH, self.height() - 2 * F_WIDTH)
         painter.drawRect(rect)
-
-
-if __name__ == '__main__':
-    import sys
-    from PyQt5.QtWidgets import QApplication
-
-    app = QApplication(sys.argv)
-    app.setStyleSheet("""
-    TitleLabel {
-    background-color: rgba(200,200,200,50);
-    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
-    }
-    TitleLabel#Dummy {
-    background-color: rgba(0,0,0,0);
-    }
-    TitleButton{
-    background-color: rgba(0, 0, 0, 0);
-    color: black;
-    border: 0px;
-    font-family: 'Webdings';
-    }
-    TitleButton#MinButton:hover{
-    background-color: #D0D0D1;
-    }
-    TitleButton#MaxButton:hover{
-    background-color: #D0D0D1;
-    }
-    TitleButton#CloseButton:hover{
-    background-color: #D32424;
-    color: white;
-    }
-    """)
-    w = QUnFrameWindow()
-    w.setWindowTitle('三国志DS Rom编辑器')
-    w.setWindowIcon(QIcon(r':icon/icon.png'))
-    w.show()
-    sys.exit(app.exec_())

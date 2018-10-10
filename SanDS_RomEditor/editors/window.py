@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBo
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from editors.data_edit import *
+from widgets.window import UnFrameWindow
 
 CHILD_MAPPING = {
     '武將編輯': CharAttr,
@@ -22,15 +23,16 @@ CHILD_MAPPING = {
 }
 
 
-class MainWindow(QMainWindow):
+class MainWindow(UnFrameWindow):
     file_path: str = None
     buffer: bytearray = None
     child_frame = None
 
     def __init__(self):
-        QMainWindow.__init__(self, parent=None, flags=Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
+        UnFrameWindow.__init__(self)
         self.init_menu()
         self.setWindowTitle('三國志DS Rom編輯器')
+        self.setWindowIcon(QIcon(r':icon/icon.png'))
         self.setMinimumSize(1280, 720)
 
     def init_menu(self):
