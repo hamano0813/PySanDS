@@ -3,19 +3,22 @@
 
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout
 from PyQt5.QtCore import Qt, QPoint, QRect
-from PyQt5.QtGui import QResizeEvent, QPixmap, QPainter, QMouseEvent, QIcon
-from widgets.common import BackgroundFrame
-from widgets.window import IconLabel, TitleLabel, TitleButton, T_HEIGHT, T_B_WIDTH, I_WIDTH
+from PyQt5.QtGui import QResizeEvent, QPixmap, QPainter, QMouseEvent
+from widgets.window import IconLabel, TitleLabel, TitleButton, T_HEIGHT, I_WIDTH
 from configs.resource import *
 
-F_WIDTH = 12
-PADDING = 5
+F_WIDTH = 3
+PADDING = 3
 
 
 class UnFrameWindow(QWidget):
-    def __init__(self):
+    # noinspection PyArgumentList
+    def __init__(self, rect: QRect):
         super(UnFrameWindow, self).__init__(None, Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
+        self.used_rect = rect
+        self.normal_rect = rect
+
         self.move_drag_position = 0
         self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = False
         self._right_rect = self._bottom_rect = self._corner_rect = []
@@ -46,7 +49,7 @@ class UnFrameWindow(QWidget):
         max_button.setToolTip('最大化')
         max_button.setMouseTracking(True)
         max_button.setFixedHeight(T_HEIGHT)
-        max_button.clicked.connect(self.charge_button)
+        max_button.clicked.connect(self.charge_window)
 
         close_button = TitleButton(b'\xef\x81\xb2'.decode('utf-8'), self)
         close_button.setWhatsThis('CloseButton')
@@ -60,8 +63,10 @@ class UnFrameWindow(QWidget):
         dummy_label.setFixedHeight(T_HEIGHT)
         dummy_label.setObjectName('Dummy')
         self.main_window = QMainWindow(None, Qt.FramelessWindowHint)
+        self.main_window.setMouseTracking(True)
 
         main_layout = QGridLayout()
+        main_layout.setContentsMargins(F_WIDTH, F_WIDTH, F_WIDTH, F_WIDTH)
         main_layout.setSpacing(0)
         main_layout.addWidget(icon_label, 0, 0, 1, 1)
         main_layout.addWidget(title_label, 0, 1, 1, 1)
@@ -71,18 +76,25 @@ class UnFrameWindow(QWidget):
         main_layout.addWidget(self.main_window, 1, 0, 1, 5)
 
         self.setLayout(main_layout)
-
+        self.setMinimumSize = self._set_size(self.setMinimumSize)
         self.setMinimumSize(320, 240)
         self.setMouseTracking(True)
 
-    def menuBar(self):
-        return self.main_window.menuBar()
+    def __getattr__(self, attr):
+        if attr in ('menuBar', 'addToolBar', 'setStatusBar', 'setCentralWidget',):
+            return getattr(self.main_window, attr)
+        else:
+            return getattr(self, attr)
 
-    def addToolBar(self, *args):
-        self.main_window.addToolBar(*args)
+    def _set_size(self, func):
+        def wrapper(*args):
+            width, height = args
+            self.normal_rect = QRect(self.used_rect.x() + (self.used_rect.width() - width) // 2,
+                                     self.used_rect.y() + (self.used_rect.height() - height) // 2,
+                                     width, height)
+            return func(*args)
 
-    def setCentralWidget(self, *args):
-        self.main_window.setCentralWidget(*args)
+        return wrapper
 
     def _set_title(self, func):
         def wrapper(*args):
@@ -98,14 +110,16 @@ class UnFrameWindow(QWidget):
 
         return wrapper
 
-    def charge_button(self):
+    def charge_window(self):
         button: TitleButton = self.findChild(TitleButton, 'MaxButton')
         if button.text() == b'\xef\x80\xb2'.decode('utf-8'):
-            self.showNormal()
+            self.setGeometry(self.normal_rect)
             button.setText(b'\xef\x80\xb1'.decode('utf-8'))
             button.setToolTip('最大化')
         else:
-            self.showMaximized()
+            max_rect = QRect(self.used_rect.x() - F_WIDTH, self.used_rect.y() - F_WIDTH,
+                             self.used_rect.width() + F_WIDTH * 2, self.used_rect.height() + F_WIDTH * 2)
+            self.setGeometry(max_rect)
             button.setText(b'\xef\x80\xb2'.decode('utf-8'))
             button.setToolTip('恢复')
 
@@ -118,9 +132,9 @@ class UnFrameWindow(QWidget):
         self._corner_rect = [QPoint(x, y) for x in range(self.width() - PADDING, self.width() + 1)
                              for y in range(self.height() - PADDING, self.height() + 1)]
 
-        self.findChild(TitleButton, 'CloseButton').move(self.width() - T_B_WIDTH - F_WIDTH, F_WIDTH)
-        self.findChild(TitleButton, 'MinButton').move(self.width() - (T_B_WIDTH + 1) * 3 - F_WIDTH, F_WIDTH)
-        self.findChild(TitleButton, 'MaxButton').move(self.width() - (T_B_WIDTH + 1) * 2 - F_WIDTH, F_WIDTH)
+    def mouseDoubleClickEvent(self, event: QMouseEvent):
+        if (event.button() == Qt.LeftButton) and (event.y() < T_HEIGHT + F_WIDTH):
+            self.charge_window()
 
     def mousePressEvent(self, event: QMouseEvent):
         if (event.button() == Qt.LeftButton) and (event.pos() in self._corner_rect):
@@ -132,10 +146,10 @@ class UnFrameWindow(QWidget):
         elif (event.button() == Qt.LeftButton) and (event.pos() in self._bottom_rect):
             self._bottom_drag = True
             event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.y() < T_HEIGHT + F_WIDTH - 1):
+        elif (event.button() == Qt.LeftButton) and (event.y() < T_HEIGHT + F_WIDTH):
             self._move_drag = True
-            self.move_drag_position = event.globalPos() - self.pos()
             event.accept()
+        self.move_drag_position = event.globalPos() - self.pos()
 
     def mouseMoveEvent(self, event: QMouseEvent):
         if event.pos() in self._corner_rect:
@@ -146,21 +160,25 @@ class UnFrameWindow(QWidget):
             self.setCursor(Qt.SizeHorCursor)
         else:
             self.setCursor(Qt.ArrowCursor)
-        if Qt.LeftButton and self._right_drag:
+        if self._right_drag:
             self.resize(event.pos().x(), self.height())
+            self.normal_rect = self.geometry()
             event.accept()
-        elif Qt.LeftButton and self._bottom_drag:
+        elif self._bottom_drag:
             self.resize(self.width(), event.pos().y())
+            self.normal_rect = self.geometry()
             event.accept()
-        elif Qt.LeftButton and self._corner_drag:
+        elif self._corner_drag:
             self.resize(event.pos().x(), event.pos().y())
+            self.normal_rect = self.geometry()
             event.accept()
-        elif Qt.LeftButton and self._move_drag:
+        elif self._move_drag:
             self.move(event.globalPos() - self.move_drag_position)
+            self.normal_rect = self.geometry()
             event.accept()
 
     def mouseReleaseEvent(self, event: QMouseEvent):
-        self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = False
+        self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = self._left_drag = False
 
     def drawShadow(self, painter):
         borders = [':frame/frame-left-top.png', ':frame/frame-left-bottom.png', ':frame/frame-right-top.png',

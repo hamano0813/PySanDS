@@ -13,7 +13,7 @@ QMainWindow {
 /*****************菜单栏*****************/
 QMenuBar {
     background-color: #666666;
-    border-bottom: 1px solid #000000;
+
     padding-bottom: 10px;
     color: #EFEFEF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
@@ -56,7 +56,8 @@ QToolButton {
     color: #FFFFFF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
     font-size: 9pt;
-    padding: 3px 5px;
+    padding: 8px;
+    margin-top: 3px;
     margin-right: 3px;
     border: none;
 }
@@ -75,7 +76,7 @@ QToolButton:hover {
 /**************表格行列标题**************/
 QHeaderView {
     border: 1px transparent;
-    border-radius: 2px;
+    border-radius: 0;
     margin: 0;
     padding: 0;
     background: #666666;
@@ -208,7 +209,7 @@ QSpinBox {
     background: #FFFFFF;
 }
 QSpinBox::up-button {
-    width: 15px;
+    width: 13px;
     height: 12px;
     image: url(:/button/up-button.png);
     border-left: 1px solid #000000;
@@ -222,7 +223,7 @@ QSpinBox::up-button:!enabled {
     background: transparent;
 }
 QSpinBox::down-button {
-    width: 15px;
+    width: 13px;
     height: 12px;
     image: url(:/button/down-button.png);
     border-left: 1px solid #000000;
@@ -236,31 +237,39 @@ QSpinBox::down-button:!enabled {
     background: transparent;
 }
 QFrame>QSpinBox {
-    font-family: 'Lucida Console', 'Consolas', monospace;
-    font-size: 10pt;
+    font-family: 'Consolas', monospace;
+    font-size: 11pt;
 }
 
 
+/***************无边框标题***************/
 TitleLabel {
-    background-color: rgba(200,200,200,50);
+    background-color: #000000;
+    color: #FFFFFF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+    font-size: 10pt;
+    font-weight: 400;
 }
 TitleLabel#Dummy {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 TitleButton {
-    background-color: rgba(0, 0, 0, 0);
-    color: black;
-    border: 0px;
+    background-color: rgba(0, 0, 0, 255);
+    color: #FFFFFF;
+    border: none;
     font-family: 'Webdings';
+    font-size: 11pt;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
 }
 TitleButton#MinButton:hover {
-    background-color: #D0D0D1;
+    background-color: #191919;
 }
 TitleButton#MaxButton:hover {
-    background-color: #D0D0D1;
+    background-color: #191919;
 }
 TitleButton#CloseButton:hover {
-    background-color: #D32424;
+    background-color: #E81123;
     color: white;
 }

@@ -9,3 +9,4 @@ class BackgroundFrame(QFrame):
     def __init__(self, buffer: bytearray):
         QFrame.__init__(self, parent=None, flags=Qt.FramelessWindowHint)
         self.buffer = buffer
+        self.setMouseTracking(True)

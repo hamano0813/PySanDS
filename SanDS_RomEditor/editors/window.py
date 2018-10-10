@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from types import MethodType
-from PyQt5.QtWidgets import QMainWindow, QAction, QMenu, QFileDialog, QMessageBox, QToolBar, QActionGroup
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QAction, QMenu, QFileDialog, QMessageBox, QToolBar, QActionGroup
 from PyQt5.QtGui import QIcon
 from editors.data_edit import *
 from widgets.window import UnFrameWindow
@@ -28,10 +27,10 @@ class MainWindow(UnFrameWindow):
     buffer: bytearray = None
     child_frame = None
 
-    def __init__(self):
-        UnFrameWindow.__init__(self)
+    def __init__(self, rect):
+        UnFrameWindow.__init__(self, rect)
         self.init_menu()
-        self.setWindowTitle('三國志DS Rom編輯器')
+        self.setWindowTitle('三国志DS Rom编辑器')
         self.setWindowIcon(QIcon(r':icon/icon.png'))
         self.setMinimumSize(1280, 720)
 
