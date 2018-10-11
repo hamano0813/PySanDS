@@ -59,9 +59,10 @@ class UnFrameWindow(QWidget):
         close_button.setFixedHeight(T_HEIGHT)
         close_button.clicked.connect(self.close)
 
-        dummy_label = TitleLabel()
-        dummy_label.setFixedHeight(T_HEIGHT)
-        dummy_label.setObjectName('Dummy')
+        shadow_label = TitleLabel()
+        shadow_label.setFixedHeight(T_HEIGHT)
+        shadow_label.setObjectName('Shadow')
+
         self.main_window = QMainWindow(None, Qt.FramelessWindowHint)
         self.main_window.setMouseTracking(True)
 
@@ -70,6 +71,7 @@ class UnFrameWindow(QWidget):
         main_layout.setSpacing(0)
         main_layout.addWidget(icon_label, 0, 0, 1, 1)
         main_layout.addWidget(title_label, 0, 1, 1, 1)
+        main_layout.addWidget(shadow_label, 0, 1, 1, 1)
         main_layout.addWidget(min_button, 0, 2, 1, 1)
         main_layout.addWidget(max_button, 0, 3, 1, 1)
         main_layout.addWidget(close_button, 0, 4, 1, 1)
@@ -81,7 +83,7 @@ class UnFrameWindow(QWidget):
         self.setMouseTracking(True)
 
     def __getattr__(self, attr):
-        if attr in ('menuBar', 'addToolBar', 'setStatusBar', 'setCentralWidget',):
+        if attr in ('menuBar', 'addToolBar', 'setStatusBar', 'setCentralWidget', 'centralWidget'):
             return getattr(self.main_window, attr)
         else:
             return getattr(self, attr)
@@ -98,6 +100,7 @@ class UnFrameWindow(QWidget):
 
     def _set_title(self, func):
         def wrapper(*args):
+            self.findChild(TitleLabel, 'Shadow').setText(*args)
             self.findChild(TitleLabel, 'Title').setText(*args)
             return func(*args)
 

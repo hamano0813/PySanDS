@@ -14,7 +14,7 @@ class AddressSpin(QSpinBox):
         self.control_targets = []
         self.main_address = main_address
         self.mirror_address = mirror_address
-        self.setFixedWidth(108)
+        self.setFixedWidth(90)
         self.setRange(0, 0x7FFFFFFF)
         # noinspection PyUnresolvedReferences
         self.valueChanged[int].connect(self.set_address)

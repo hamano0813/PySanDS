@@ -32,7 +32,7 @@ class MainWindow(UnFrameWindow):
         self.init_menu()
         self.setWindowTitle('三国志DS Rom编辑器')
         self.setWindowIcon(QIcon(r':icon/icon.png'))
-        self.setMinimumSize(1280, 720)
+        self.setMinimumSize(1080, 720)
 
     def init_menu(self):
         load_rom = self.create_action('載入Rom', self.load_rom)

@@ -13,7 +13,6 @@ QMainWindow {
 /*****************菜单栏*****************/
 QMenuBar {
     background-color: #666666;
-
     padding-bottom: 10px;
     color: #EFEFEF;
     font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
@@ -72,6 +71,7 @@ QToolButton:on {
 QToolButton:hover {
     background-color: #217346;
 }
+
 
 /**************表格行列标题**************/
 QHeaderView {
@@ -238,36 +238,41 @@ QSpinBox::down-button:!enabled {
 }
 QFrame>QSpinBox {
     font-family: 'Consolas', monospace;
-    font-size: 11pt;
+    font-size: 9pt;
 }
 
 
 /***************无边框标题***************/
 TitleLabel {
-    background-color: #000000;
-    color: #FFFFFF;
-    font-family: 'Microsoft YaHei UI', '微软雅黑', monospace;
+    background-color: qlineargradient(x1:0, y1: 0, x2:0, y2: 1, stop: 0 #444444, stop: 1 #666666);
+    color: #000000;
+    font-family: 'Microsoft New Tai Lue', 'Microsoft YaHei UI', '微软雅黑', monospace;
     font-size: 10pt;
-    font-weight: 400;
+    font-weight: 500;
+    text-align: bottom center;
 }
-TitleLabel#Dummy {
-    background-color: rgba(0, 0, 0, 0);
+TitleLabel#Title {
+    padding-top: 2px;
+    padding-left: 1px;
+}
+TitleLabel#Shadow {
+    background-color: rgba(255, 255, 255, 0);
+    color: #FFFFFF;
 }
 TitleButton {
-    background-color: rgba(0, 0, 0, 255);
     color: #FFFFFF;
     border: none;
     font-family: 'Webdings';
-    font-size: 11pt;
+    font-size: 10pt;
     font-weight: 100;
     margin: 0;
     padding: 0;
 }
 TitleButton#MinButton:hover {
-    background-color: #191919;
+    background-color: #555555;
 }
 TitleButton#MaxButton:hover {
-    background-color: #191919;
+    background-color: #555555;
 }
 TitleButton#CloseButton:hover {
     background-color: #E81123;
