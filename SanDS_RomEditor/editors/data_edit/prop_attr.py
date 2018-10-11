@@ -48,5 +48,6 @@ class PropAttr(BackgroundFrame):
         [prop_attr_table.setColumnWidth(i, 105) for i in range(4, 11)]
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(prop_attr_table)
         self.setLayout(layout)

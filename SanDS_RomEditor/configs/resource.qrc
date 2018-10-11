@@ -11,6 +11,12 @@
     <qresource prefix="arrow/" >
         <file alias="up-arrow.png">../../resource/ui/up-arrow.png</file>
     </qresource>
+    <qresource prefix="arrow/" >
+        <file alias="left-arrow.png">../../resource/ui/left-arrow.png</file>
+    </qresource>
+    <qresource prefix="arrow/" >
+        <file alias="right-arrow.png">../../resource/ui/right-arrow.png</file>
+    </qresource>
     <qresource prefix="button/" >
         <file alias="down-button.png">../../resource/ui/down-button.png</file>
     </qresource>

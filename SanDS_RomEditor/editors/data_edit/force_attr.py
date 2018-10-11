@@ -79,6 +79,7 @@ class ForceAttr(BackgroundFrame):
         force_attr_model.dataEdited.connect(force_attr_table.refresh_data)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(scenario_combo, 0, 0, 1, 1)
         layout.addWidget(force_attr_table, 1, 0, 1, 1)
         self.setLayout(layout)

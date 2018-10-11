@@ -129,7 +129,7 @@ QHeaderView::section:vertical:hover {
 /******************表格******************/
 QTableView {
     border: none;
-    background: #B1B1B1;
+    background: #666666;
     gridline-color: #D4D4D4;
 }
 QTableView::item {
@@ -277,4 +277,96 @@ TitleButton#MaxButton:hover {
 TitleButton#CloseButton:hover {
     background-color: #E81123;
     color: white;
+}
+
+
+/***************水平滚动条***************/
+QScrollBar:horizontal {
+    background: #575757;
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+QScrollBar::handle:horizontal {
+    height: 15px;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    min-width: 20px;
+}
+QScrollBar::sub-line:horizontal {
+    width: 13px;
+    height: 13px;
+    left: 0px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    image: url(:/arrow/left-arrow.png);
+}
+QScrollBar::add-line:horizontal {
+    width: 13px;
+    height: 13px;
+    right: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    image: url(:/arrow/right-arrow.png);
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+QScrollBar::sub-line:horizontal:hover {
+    background: #B1B1B1;
+}
+QScrollBar::add-line:horizontal:hover {
+    background: #B1B1B1;
+}
+
+
+/***************垂直滚动条***************/
+QScrollBar:vertical {
+    background: #575757;
+    width: 21px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+QScrollBar::handle:vertical {
+    width: 15px;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    min-height: 20px;
+}
+QScrollBar::sub-line:vertical {
+    width: 13px;
+    height: 13px;
+    top: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    image: url(:/arrow/up-arrow.png);
+}
+QScrollBar::add-line:vertical {
+    width: 13px;
+    height: 13px;
+    bottom: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+    border: 1px solid #3B3B3B;
+    background: #999999;
+    image: url(:/arrow/down-arrow.png);
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+QScrollBar::sub-line:vertical:hover {
+    background: #B1B1B1;
+}
+QScrollBar::add-line:vertical:hover {
+    background: #B1B1B1;
 }

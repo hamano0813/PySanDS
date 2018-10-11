@@ -60,5 +60,6 @@ class SpecAttr(BackgroundFrame):
         spec_attr_table.setColumnWidth(19, 56)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(spec_attr_table)
         self.setLayout(layout)

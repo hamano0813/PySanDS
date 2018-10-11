@@ -56,5 +56,6 @@ class CharAttr(BackgroundFrame):
         char_attr_table.setColumnWidth(17, 230)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(char_attr_table)
         self.setLayout(layout)

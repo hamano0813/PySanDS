@@ -23,5 +23,6 @@ class NpcAttr(BackgroundFrame):
         npc_attribute_table.setColumnWidth(1, 230)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(npc_attribute_table)
         self.setLayout(layout)

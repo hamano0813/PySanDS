@@ -27,5 +27,6 @@ class ItemAttr(BackgroundFrame):
         item_attr_table.setColumnWidth(4, 250)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(item_attr_table)
         self.setLayout(layout)

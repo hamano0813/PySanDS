@@ -30,5 +30,6 @@ class SceAttr(BackgroundFrame):
         scenario_attr_table.setColumnWidth(8, 75)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(scenario_attr_table, 0, 0, 1, 1)
         self.setLayout(layout)

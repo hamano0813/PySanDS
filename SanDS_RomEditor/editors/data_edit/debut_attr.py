@@ -68,13 +68,14 @@ class DebutAttr(BackgroundFrame):
         self.debut_city_table.setColumnWidth(1, 75)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(self.scenario_combo, 0, 0, 1, 5)
-        layout.addWidget(debut_attr_table, 2, 0, 1, 1)
-        layout.addWidget(QLabel('開始地址'), 1, 1, 1, 1)
-        layout.addWidget(self.start_address, 1, 2, 1, 1)
-        layout.addWidget(QLabel('結束地址'), 1, 3, 1, 1)
-        layout.addWidget(self.end_address, 1, 4, 1, 1)
-        layout.addWidget(self.debut_city_table, 2, 1, 1, 4)
+        layout.addWidget(debut_attr_table, 1, 0, 2, 1)
+        layout.addWidget(QLabel('開始地址'), 2, 1, 1, 1)
+        layout.addWidget(self.start_address, 2, 2, 1, 1)
+        layout.addWidget(QLabel('結束地址'), 2, 3, 1, 1)
+        layout.addWidget(self.end_address, 2, 4, 1, 1)
+        layout.addWidget(self.debut_city_table, 1, 1, 1, 4)
         self.setLayout(layout)
 
     def new_model(self):

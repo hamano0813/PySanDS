@@ -181,7 +181,7 @@ class UnFrameWindow(QWidget):
             event.accept()
 
     def mouseReleaseEvent(self, event: QMouseEvent):
-        self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = self._left_drag = False
+        self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = False
 
     def drawShadow(self, painter):
         borders = [':frame/frame-left-top.png', ':frame/frame-left-bottom.png', ':frame/frame-right-top.png',

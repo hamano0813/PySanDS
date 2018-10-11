@@ -38,5 +38,6 @@ class FieldAttr(BackgroundFrame):
         [field_attr_table.setColumnWidth(i, 105) for i in range(2, 9)]
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(field_attr_table, 0, 0, 1, 1)
         self.setLayout(layout)

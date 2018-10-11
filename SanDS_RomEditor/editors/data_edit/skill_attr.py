@@ -64,6 +64,7 @@ class SkillAttr(BackgroundFrame):
         scenario_combo.add_control_widget(skill_attr_table)
 
         layout = QGridLayout()
+        layout.setContentsMargins(3, 5, 3, 5)
         layout.addWidget(scenario_combo, 0, 0, 1, 1)
         layout.addWidget(skill_attr_table, 1, 0, 1, 1)
         self.setLayout(layout)
