@@ -41,7 +41,7 @@ class Character:
 
     def set_data(self, data_index: int, text: str):
         if data_index < self.real_quantity:
-            temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in text])
+            temp = ''.join([i if not self.reg_exp.indexIn(i) else '' for i in text.strip()])
             data = self.encode_text(temp)
             self.length(self.buffer, self.record * (data_index + self.start) + self.offset, len(data))
             address = self.address(self.buffer, self.record * (data_index + self.start) + self.offset)

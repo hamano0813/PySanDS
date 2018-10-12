@@ -23,6 +23,39 @@ class MultilineText(QTextEdit, SingleObject):
         char_file.close()
         self.reg_exp = QRegExp(f'[{regex_char}\\n\\r]+')
         self.textChanged.connect(self.check_reg_exp)
+        self.verticalScrollBar().setStyleSheet(
+            '''
+            QScrollBar:vertical {
+                background: #E7E7E7;
+                width: 15px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            QScrollBar::handle:vertical {
+                border: 1px solid transparent;
+                background: #B1B1B1;
+            }
+            QScrollBar::sub-line:vertical {
+                border: 1px solid transparent;
+                background: #B1B1B1;
+            }
+            QScrollBar::add-line:vertical {
+                border: 1px solid transparent;
+                background: #B1B1B1;
+            }
+            QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                background: none;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #D4D4D4;
+            }
+            QScrollBar::sub-line:vertical:hover {
+                background: #D4D4D4;
+            }
+            QScrollBar::add-line:vertical:hover {
+                background: #D4D4D4;
+            }
+            ''')
 
     def check_reg_exp(self):
         if self.data_type.length.normal_length:
