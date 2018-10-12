@@ -19,6 +19,7 @@ class UnFrameWindow(QWidget):
         self.used_rect = rect
         self.normal_rect = rect
 
+        self.is_maximized = False
         self.move_drag_position = 0
         self._move_drag = self._corner_drag = self._bottom_drag = self._right_drag = False
         self._right_rect = self._bottom_rect = self._corner_rect = []
@@ -119,12 +120,14 @@ class UnFrameWindow(QWidget):
             self.setGeometry(self.normal_rect)
             button.setText(b'\xef\x80\xb1'.decode('utf-8'))
             button.setToolTip('最大化')
+            self.is_maximized = False
         else:
             max_rect = QRect(self.used_rect.x() - F_WIDTH, self.used_rect.y() - F_WIDTH,
                              self.used_rect.width() + F_WIDTH * 2, self.used_rect.height() + F_WIDTH * 2)
             self.setGeometry(max_rect)
             button.setText(b'\xef\x80\xb2'.decode('utf-8'))
             button.setToolTip('恢复')
+            self.is_maximized = True
 
     def resizeEvent(self, event: QResizeEvent):
         self.findChild(TitleLabel, 'Title').setFixedWidth(self.width() - F_WIDTH * 2 - I_WIDTH)
@@ -175,7 +178,7 @@ class UnFrameWindow(QWidget):
             self.resize(event.pos().x(), event.pos().y())
             self.normal_rect = self.geometry()
             event.accept()
-        elif self._move_drag:
+        elif self._move_drag and not self.is_maximized:
             self.move(event.globalPos() - self.move_drag_position)
             self.normal_rect = self.geometry()
             event.accept()
