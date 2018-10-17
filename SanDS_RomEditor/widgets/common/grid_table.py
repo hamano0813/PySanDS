@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QHeaderView, QApplication, QTableView, QStyledItemDelegate, QAbstractButton, QStyleOptionHeader, QStyle, QStylePainter
+from PyQt5.QtWidgets import (QApplication, QTableView, QStyledItemDelegate, QAbstractButton, QStyleOptionHeader, QStyle,
+                             QStylePainter)
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize, QEvent
 from PyQt5.QtGui import QKeyEvent
 from widgets.abstract import ControlObject

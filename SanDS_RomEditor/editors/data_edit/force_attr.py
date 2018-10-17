@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QGridLayout
+from PyQt5.QtWidgets import QGridLayout, QAbstractButton
 from PyQt5.QtCore import Qt
 from widgets.common import *
 from parsers import Picture
@@ -75,6 +75,7 @@ class ForceAttr(BackgroundFrame):
         force_attr_table.setColumnWidth(1, 105)
         force_attr_table.setColumnWidth(2, 75)
         [force_attr_table.setColumnWidth(i, 56) for i in range(3, 24)]
+        force_attr_table.setObjectName('force')
 
         force_attr_model.dataEdited.connect(force_attr_table.refresh_data)
 

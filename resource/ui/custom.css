@@ -147,6 +147,9 @@ QTableCornerButton::section {
     font-weight: bold;
     background-color: #666666;
 }
+GridTable#force QTableCornerButton::section {
+    padding-top: 14px;
+}
 QTableCornerButton::section:hover {
     background-color: #0A6332;
 }
