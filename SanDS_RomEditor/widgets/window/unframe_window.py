@@ -8,7 +8,6 @@ from widgets.window import IconLabel, TitleLabel, TitleButton, T_HEIGHT, I_WIDTH
 from configs.resource import *
 
 F_WIDTH = 3
-PADDING = 3
 
 
 class UnFrameWindow(QWidget):
@@ -131,12 +130,12 @@ class UnFrameWindow(QWidget):
 
     def resizeEvent(self, event: QResizeEvent):
         self.findChild(TitleLabel, 'Title').setFixedWidth(self.width() - F_WIDTH * 2 - I_WIDTH)
-        self._right_rect = [QPoint(x, y) for x in range(self.width() - PADDING, self.width() + 1)
-                            for y in range(1, self.height() - PADDING)]
-        self._bottom_rect = [QPoint(x, y) for x in range(1, self.width() - PADDING)
-                             for y in range(self.height() - PADDING, self.height() + 1)]
-        self._corner_rect = [QPoint(x, y) for x in range(self.width() - PADDING, self.width() + 1)
-                             for y in range(self.height() - PADDING, self.height() + 1)]
+        self._right_rect = [QPoint(x, y) for x in range(self.width() - F_WIDTH, self.width() + 1)
+                            for y in range(1, self.height() - F_WIDTH)]
+        self._bottom_rect = [QPoint(x, y) for x in range(1, self.width() - F_WIDTH)
+                             for y in range(self.height() - F_WIDTH, self.height() + 1)]
+        self._corner_rect = [QPoint(x, y) for x in range(self.width() - F_WIDTH, self.width() + 1)
+                             for y in range(self.height() - F_WIDTH, self.height() + 1)]
 
     def mouseDoubleClickEvent(self, event: QMouseEvent):
         if (event.button() == Qt.LeftButton) and (event.y() < T_HEIGHT + F_WIDTH):

@@ -141,7 +141,14 @@ QTableView::item:selected {
 }
 QTableCornerButton::section {
     border: none;
+    color: #FFFFFF;
+    font-size: 18pt;
+    padding-left: 24px;
+    font-weight: bold;
     background-color: #666666;
+}
+QTableCornerButton::section:hover {
+    background-color: #0A6332;
 }
 QTableCornerButton::section:pressed {
     background-color: #262626;

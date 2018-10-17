@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtWidgets import QApplication, QTableView, QStyledItemDelegate
-from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize
+from PyQt5.QtWidgets import QHeaderView, QApplication, QTableView, QStyledItemDelegate, QAbstractButton, QStyleOptionHeader, QStyle, QStylePainter
+from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize, QEvent
 from PyQt5.QtGui import QKeyEvent
 from widgets.abstract import ControlObject
 from widgets.common.multiline_text import MultilineText
@@ -52,7 +52,13 @@ class GridTable(QTableView, ControlObject):
         self.currentIndexChanged[int].connect(self.control_index)
         self.keyPressEvent = self.key_press(self.keyPressEvent)
         self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
-        self.verticalHeader().setDefaultSectionSize(28)
+        self.verticalHeader().setMinimumWidth(40)
+        self.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        corner_button: QAbstractButton = self.findChild(QAbstractButton)
+        corner_button.setText('◢')
+        corner_button.installEventFilter(self)
+        option = QStyleOptionHeader()
+        option.text = corner_button.text()
 
     def refresh_data(self):
         self.reset()
@@ -74,3 +80,23 @@ class GridTable(QTableView, ControlObject):
                 func(event)
 
         return wrapper
+
+    def eventFilter(self, obj, event):
+        if event.type() != QEvent.Paint or not isinstance(obj, QAbstractButton):
+            return False
+        option: QStyleOptionHeader = QStyleOptionHeader()
+        option.initFrom(obj)
+        style_state = QStyle.State_None
+        if obj.isEnabled():
+            style_state |= QStyle.State_Enabled
+        if obj.isActiveWindow():
+            style_state |= QStyle.State_Active
+        if obj.isDown():
+            style_state |= QStyle.State_Sunken
+        option.state = style_state
+        option.rect = obj.rect()
+        option.text = obj.text()
+        option.position = QStyleOptionHeader.OnlyOneSection
+        painter = QStylePainter(obj)
+        painter.drawControl(QStyle.CE_Header, option)
+        return True
