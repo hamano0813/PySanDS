@@ -919,7 +919,7 @@ DATA_PARAMETER = {
         'record': 0x0},
     '圖片_進度報告背景': {
         'address': {'normal_offset': 0x00FA6DE8},
-        'size': (256, 160),
+        'size': (192, 160),
         'quantity': {'normal_quantity': 0x1},
         'record': 0x0},
     '圖片_終止按鈕': {

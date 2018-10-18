@@ -161,6 +161,7 @@ QTableCornerButton::section:pressed {
 /*****************文本框*****************/
 QFrame>QLabel {
     color: #FFFFFF;
+    height: 25px;
 }
 
 
@@ -170,7 +171,7 @@ QComboBox {
     border: 1px solid #444444;
     background: #FFFFFF;
 }
-QFrame>QComboBox {
+QFrame QComboBox {
     height: 25px;
     border: 1px solid #444444;
     background: #B1B1B1;
@@ -199,7 +200,7 @@ QComboBox QAbstractItemView::item {
     selection-background-color: #000000;
     color: #000000;
 }
-QFrame>QComboBox QAbstractItemView::item {
+QFrame QComboBox QAbstractItemView::item {
     height: 25px;
     background: #B2B2B2;
     selection-background-color: #000000;
@@ -249,6 +250,23 @@ QSpinBox::down-button:!enabled {
 QFrame>QSpinBox {
     font-family: 'Consolas', monospace;
     font-size: 9pt;
+}
+
+
+/******************按鈕******************/
+.QPushButton{
+        border-radius: 0px;
+        border: 1px solid #000000;
+        height: 25px;
+        width: 60px;
+}
+.QPushButton:enabled {
+        background: #222222;
+        color: white;
+}
+.QPushButton:enabled:hover{
+        background: #444444;
+        color: white
 }
 
 
@@ -445,4 +463,10 @@ QTextEdit QScrollBar::sub-line:vertical:hover {
 }
 QTextEdit QScrollBar::add-line:vertical:hover {
     background: #D4D4D4;
+}
+
+
+/****************滚动区域****************/
+.QScrollArea {
+    background: transparent;
 }

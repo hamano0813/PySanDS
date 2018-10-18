@@ -19,7 +19,7 @@ CHILD_MAPPING = {
     '物品編輯': ItemAttr,
     '劇本編輯': SceAttr,
     '勢力編輯': ForceAttr,
-    '圖片編輯': IconPic,
+    '圖片編輯': PictureAttr,
 }
 
 
