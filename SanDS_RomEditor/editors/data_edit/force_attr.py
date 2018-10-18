@@ -31,7 +31,7 @@ class ForceAttr(BackgroundFrame):
     def __init__(self, buffer):
         BackgroundFrame.__init__(self, buffer)
 
-        picture = Picture(self, **DATA_PARAMETER.get('圖片_紋章1')).get_data(0)
+        picture = Picture(self, **DATA_PARAMETER.get('圖片_勢力選擇紋章')).get_data(0)
         emblem_dict = {i + 1: picture.crop((10 + 10 * i, 0, 20 + 10 * i, 10)).resize((18, 18)) for i in range(21)}
 
         scenario_combo = ControlCombo(self, '劇本屬性_劇本標題')

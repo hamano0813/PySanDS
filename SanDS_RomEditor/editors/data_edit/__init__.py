@@ -12,3 +12,4 @@ from editors.data_edit.field_attr import FieldAttr
 from editors.data_edit.sce_attr import SceAttr
 from editors.data_edit.skill_attr import SkillAttr
 from editors.data_edit.item_attr import ItemAttr
+from editors.data_edit.icon_pic import IconPic

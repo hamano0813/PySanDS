@@ -13,3 +13,4 @@ from widgets.common.normal_model import NormalModel
 from widgets.common.pointer_model import PointerModel
 from widgets.common.value_spin import ValueSpin
 from widgets.common.picture_combo import PictureCombo
+from widgets.common.picture_editor import PictureEditor

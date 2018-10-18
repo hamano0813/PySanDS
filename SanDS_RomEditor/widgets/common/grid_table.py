@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import (QApplication, QTableView, QStyledItemDelegate, QAbstractButton, QStyleOptionHeader, QStyle,
-                             QStylePainter)
+                             QStylePainter, QHeaderView)
 from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize, QEvent
 from PyQt5.QtGui import QKeyEvent
 from widgets.abstract import ControlObject
@@ -54,6 +54,7 @@ class GridTable(QTableView, ControlObject):
         self.keyPressEvent = self.key_press(self.keyPressEvent)
         self.setToolTip('選中內容后\nCtrl+C 複製\nCtrl+V 黏貼')
         self.verticalHeader().setMinimumWidth(40)
+        self.verticalHeader().setDefaultSectionSize(28)
         self.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
         corner_button: QAbstractButton = self.findChild(QAbstractButton)
         corner_button.setText('◢')

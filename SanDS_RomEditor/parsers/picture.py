@@ -15,7 +15,7 @@ class Picture:
         self.width, self.height = size
         self.quantity = Quantity(**quantity)
         self.record = record
-        self.palette = Address(**palette)
+        self.palette = Address(**palette) if palette else None
 
     def set_offset(self, offset: int):
         self.offset = offset
@@ -66,7 +66,7 @@ class Picture:
             address = self.palette(self.buffer, 0x204 * (data_index + self.start))
         else:
             image_address = self.address(self.buffer, self.record * (data_index + self.start) + self.offset)
-            address = self.address(self.buffer, image_address + self.width * self.height + 4)
+            address = image_address + self.width * self.height + 4
         fmt = 'H' * 256
         palette_data = unpack_from(fmt, self.buffer, address)
         palette = []
@@ -79,7 +79,7 @@ class Picture:
             address = self.palette(self.buffer, 0x204 * (data_index + self.start))
         else:
             image_address = self.address(self.buffer, self.record * (data_index + self.start) + self.offset)
-            address = self.address(self.buffer, image_address + self.width * self.height + 4)
+            address = image_address + self.width * self.height + 4
         for i in range(256):
             b, g, r = palette[(0 + 3 * i): (3 + 3 * i)]
             pal = (r << 7) | (g << 2) | (b >> 3)
