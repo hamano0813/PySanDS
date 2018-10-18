@@ -47,13 +47,23 @@ class MainWindow(UnFrameWindow):
 
         value_editors = [self.create_action(editor_name, self.open_editor_frame) for editor_name in CHILD_MAPPING]
 
+        edit_menu = self.create_menu('編輯(&E)', None, value_editors)
+        edit_menu.setEnabled(False)
+
+        help_action = self.create_action('使用說明', self.show_help)
+
+        other_menu = self.create_menu('其他(&O)', None, [help_action])
+
         self.menuBar().addMenu(file_menu)
+        self.menuBar().addMenu(edit_menu)
+        self.menuBar().addMenu(other_menu)
 
         tool_bar = QToolBar('顯示標籤')
         tool_bar.setObjectName('工具')
         tool_bar.addActions(value_editors)
         tool_bar.setEnabled(False)
         tool_bar.setMovable(False)
+        tool_bar.setVisible(False)
         self.addToolBar(tool_bar)
 
         action_group = QActionGroup(self)
@@ -94,6 +104,7 @@ class MainWindow(UnFrameWindow):
         self.findChild(QAction, '保存Rom').setEnabled(True)
         self.findChild(QAction, '另存為').setEnabled(True)
         self.findChild(QToolBar, '工具').setEnabled(True)
+        self.findChild(QMenu, '編輯(&E)').setEnabled(True)
 
     def create_action(self, name: str, slot: MethodType = None, icon: str = None) -> QAction:
         action = QAction(name, self)
@@ -123,3 +134,6 @@ class MainWindow(UnFrameWindow):
         frame_name = self.sender().objectName()
         child_frame = CHILD_MAPPING[frame_name](self.buffer)
         self.setCentralWidget(child_frame)
+
+    def show_help(self):
+        pass

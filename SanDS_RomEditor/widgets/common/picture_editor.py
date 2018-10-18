@@ -24,6 +24,7 @@ class PictureEditor(QFrame):
 
         scroll = QScrollArea(self)
         scroll.setWidget(self.picture_label)
+        scroll.setObjectName('picture')
 
         self.name_combo = QComboBox(self)
         self.index_combo = QComboBox(self)
