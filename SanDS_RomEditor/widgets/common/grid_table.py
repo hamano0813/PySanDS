@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from functools import partial
 from PyQt5.QtWidgets import (QApplication, QTableView, QStyledItemDelegate, QAbstractButton, QStyleOptionHeader, QStyle,
-                             QStylePainter, QHeaderView)
-from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize, QEvent
-from PyQt5.QtGui import QKeyEvent
+                             QStylePainter, QMenu, QAction)
+from PyQt5.QtCore import Qt, QModelIndex, pyqtSignal, QRect, QSize, QEvent, QPoint
+from PyQt5.QtGui import QKeyEvent, QCursor
 from widgets.abstract import ControlObject
 from widgets.common.multiline_text import MultilineText
 
@@ -56,6 +57,9 @@ class GridTable(QTableView, ControlObject):
         self.verticalHeader().setMinimumWidth(40)
         self.verticalHeader().setDefaultSectionSize(28)
         self.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        # noinspection PyUnresolvedReferences
+        self.customContextMenuRequested[QPoint].connect(self.right_click)
         corner_button: QAbstractButton = self.findChild(QAbstractButton)
         corner_button.setText('◢')
         corner_button.installEventFilter(self)
@@ -82,6 +86,31 @@ class GridTable(QTableView, ControlObject):
                 func(event)
 
         return wrapper
+
+    def right_click(self, pos: QPoint):
+        right_click_menu = QMenu()
+        copy_action = QAction('复制', self)
+        copy_action.triggered.connect(partial(self.copy_range, pos))
+        paste_action = QAction('黏贴', self)
+        paste_action.triggered.connect(partial(self.paste_range, pos))
+        right_click_menu.addActions([copy_action, paste_action])
+        right_click_menu.exec_(QCursor().pos())
+
+    # noinspection PyArgumentList
+    def copy_range(self, pos: QPoint):
+        if len(self.selectedIndexes()) > 1:
+            QApplication.clipboard().setText(self.model().copy_range(self.selectedIndexes()))
+        else:
+            position_idx = self.indexAt(pos)
+            QApplication.clipboard().setText(self.model().copy_range([position_idx]))
+
+    # noinspection PyArgumentList
+    def paste_range(self, pos: QPoint):
+        if len(self.selectedIndexes()) > 1:
+            self.model().paste_range(self.selectedIndexes(), QApplication.clipboard().text())
+        else:
+            position_idx = self.indexAt(pos)
+            self.model().paste_range([position_idx], QApplication.clipboard().text())
 
     def eventFilter(self, obj, event):
         if event.type() != QEvent.Paint or not isinstance(obj, QAbstractButton):
