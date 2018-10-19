@@ -50,13 +50,8 @@ class MainWindow(UnFrameWindow):
         edit_menu = self.create_menu('編輯(&E)', None, value_editors)
         edit_menu.setEnabled(False)
 
-        help_action = self.create_action('使用說明', self.show_help)
-
-        other_menu = self.create_menu('其他(&O)', None, [help_action])
-
         self.menuBar().addMenu(file_menu)
         self.menuBar().addMenu(edit_menu)
-        self.menuBar().addMenu(other_menu)
 
         tool_bar = QToolBar('顯示標籤')
         tool_bar.setObjectName('工具')
@@ -134,6 +129,3 @@ class MainWindow(UnFrameWindow):
         frame_name = self.sender().objectName()
         child_frame = CHILD_MAPPING[frame_name](self.buffer)
         self.setCentralWidget(child_frame)
-
-    def show_help(self):
-        pass
