@@ -59,7 +59,7 @@ class Numerical:
     def _save_bin(self, number: int, data: int) -> int:
         if isinstance(self.bit, int):
             return number | (data << self.bit)
-        elif self.bit[0] is 0:
+        elif self.bit[0] == 0:
             return (number >> self.bit[1] << self.bit[1]) | data
         else:
             return number & (((1 << self.bit[0]) - 1 << self.bit[1]) | (1 << self.bit[0]) - 1) | (data << self.bit[0])
